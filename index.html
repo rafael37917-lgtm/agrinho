@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Agro Forte: Produzir Preservando — projeto educativo do Agrinho 2026 sobre sustentabilidade, tecnologia no campo e o papel dos jovens no agronegócio." />
+    <title>Agro Forte: Produzir Preservando | Agrinho 2026</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <button type="button" class="brand" data-to="inicio" aria-label="Ir para início">
+          <span class="brand-icon">&#127811;</span>
+          <span>
+            <strong>Agro Forte</strong>
+            <small>Projeto 1º Ano Ensino Médio</small>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          id="menuToggle"
+          class="menu-toggle"
+          aria-label="Abrir menu de navegação"
+          aria-controls="menu"
+          aria-expanded="false"
+        >
+          &#9776;
+        </button>
+        <nav id="menu" class="menu">
+          <button type="button" data-to="inicio">Início</button>
+          <button type="button" data-to="desafio">O Desafio</button>
+          <button type="button" data-to="solucoes">Boas práticas</button>
+          <button type="button" data-to="tecnologia">Tecnologia</button>
+          <button type="button" data-to="mapa">Mapa</button>
+          <button type="button" data-to="jovens">Juventude</button>
+          <button type="button" data-to="simulador">Simulador</button>
+          <button type="button" data-to="quiz">Quiz</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ── INÍCIO ──────────────────────────────────────────────────────── -->
+      <section id="inicio" class="hero">
+        <div class="orb orb-left"></div>
+        <div class="orb orb-right"></div>
+
+        <div class="container hero-grid">
+          <div class="hero-copy reveal-up">
+            <p class="pill">Agrinho 2026 | 1º Ano do Ensino Médio</p>
+            <h1>Agro forte: <span>produzir preservando</span>.</h1>
+            <p>
+             <br>
+              Projeto desenvolvido para mostrar que o campo
+              pode produzir alimentos, gerar desenvolvimento e cuidar do meio ambiente
+              com tecnologia, conhecimento e responsabilidade.
+			 
+            </p>
+
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-to="desafio">Conhecer o projeto</button>
+              <button type="button" class="btn btn-secondary" data-to="quiz">Responder ao quiz</button>
+            </div>
+
+            <div class="avatar-row">
+              <span>&#128105;&#127997;&#8205;&#127806;</span>
+              <span>&#128104;&#127999;&#8205;&#127806;</span>
+              <span>&#128105;&#127995;&#8205;&#128300;</span>
+              <span>&#129489;&#127998;&#8205;&#128187;</span>
+              <span>&#128104;&#127996;&#8205;&#127806;</span>
+            </div>
+          </div>
+
+          <aside class="hero-panel reveal-scale">
+            <div class="panel-top">
+              <div class="mini-card float-a">
+                <div class="icon">&#128668;</div>
+                <p>Produção responsável</p>
+              </div>
+              <div class="mini-card float-b">
+                <div class="icon">&#127795;</div>
+                <p>Meio ambiente protegido</p>
+              </div>
+            </div>
+
+            <div class="plant-wrap">
+              <div class="sun-glow"></div>
+              <div class="drop drop-1">&#128167;</div>
+              <div class="drop drop-2">&#128167;</div>
+              <div class="drop drop-3">&#128167;</div>
+              <div class="butterfly">&#129419;</div>
+              <div class="soil">
+                <div class="grass g1"></div>
+                <div class="grass g2"></div>
+                <div class="grass g3"></div>
+                <div class="grass g4"></div>
+                <div class="grass g5"></div>
+              </div>
+              <div class="stem"></div>
+              <div class="leaf leaf-left"></div>
+              <div class="leaf leaf-right"></div>
+            </div>
+
+            <div class="panel-tags">
+              <span>Água preservada</span>
+              <span>Solo saudável</span>
+              <span>Futuro sustentável</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ── O DESAFIO ───────────────────────────────────────────────────── -->
+      <section id="desafio" class="section light">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">O desafio do nosso tempo</p>
+            <h2>Como produzir mais sem destruir o planeta?</h2>
+            <p>O maior desafio do agronegócio moderno é encontrar o equilíbrio entre aumentar a produção e preservar o meio ambiente para as próximas gerações.</p>
+          </div>
+
+          <div class="desafio-cards">
+            <article class="desafio-card dc-amber reveal-up delay-1">
+              <div class="dc-icon">&#127806;</div>
+              <h3>O campo precisa produzir</h3>
+              <p>O Brasil é um dos maiores produtores de alimentos do mundo. A agricultura gera alimentos, empregos e riqueza para toda a sociedade.</p>
+            </article>
+            <article class="desafio-card dc-green reveal-up delay-2">
+              <div class="dc-icon">&#127807;</div>
+              <h3>A natureza precisa ser preservada</h3>
+              <p>Água, solo, matas e biodiversidade são recursos essenciais que, se destruídos, comprometem o futuro da própria produção e da vida no planeta.</p>
+            </article>
+            <article class="desafio-card dc-teal reveal-up delay-3">
+              <div class="dc-icon">&#9878;</div>
+              <h3>O equilíbrio é possível</h3>
+              <p>Com tecnologia, planejamento e consciência ambiental, é possível produzir mais, gastar menos e preservar os recursos naturais.</p>
+              <span class="dc-badge">A solução</span>
+            </article>
+          </div>
+
+          <div class="impact-stat reveal-up">
+            &#127806; O Brasil alimenta mais de 1 bilhão de pessoas no mundo. É o maior exportador mundial de soja, carne bovina e açúcar do planeta.
+          </div>
+
+          <blockquote class="desafio-quote reveal-up">
+            "O futuro do agro não está em escolher entre produzir <em>ou</em> preservar, mas em aprender a fazer as duas coisas ao mesmo tempo."
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ── BOAS PRÁTICAS ───────────────────────────────────────────────── -->
+      <section id="solucoes" class="section light">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">Boas práticas no campo</p>
+            <h2>Pequenas atitudes podem gerar grandes mudanças.</h2>
+            <p>
+              Algumas práticas ajudam o produtor rural a cuidar melhor do solo, da água,
+              da energia e da biodiversidade, tornando o agro mais forte e sustentável.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card reveal-up delay-1">
+              <div class="badge bg1">&#127793;</div>
+              <h3>Solo saudável</h3>
+              <p>Com o plantio direto, a rotação de culturas e a cobertura do solo, o produtor reduz a erosão em até <strong>90%</strong>, conserva nutrientes e melhora a produtividade safra após safra. <em>(EMBRAPA)</em></p>
+              <div class="progress p1"></div>
+            </article>
+            <article class="card reveal-up delay-2">
+              <div class="badge bg2">&#128167;</div>
+              <h3>Uso consciente da água</h3>
+              <p>Com sensores de umidade no solo, o produtor irriga somente quando a planta precisa, reduzindo o consumo de água em até <strong>50%</strong> e os custos com energia. <em>(EMBRAPA)</em></p>
+              <div class="progress p2"></div>
+            </article>
+            <article class="card reveal-up delay-3">
+              <div class="badge bg3">&#9728;</div>
+              <h3>Energia renovável</h3>
+              <p>Placas solares e biodigestores podem reduzir a conta de energia em até <strong>80%</strong>, aproveitam resíduos da produção e diminuem emissões de carbono no campo. <em>(Absolar / EMBRAPA)</em></p>
+              <div class="progress p3"></div>
+            </article>
+            <article class="card reveal-up delay-4">
+              <div class="badge bg4">&#127794;</div>
+              <h3>Biodiversidade preservada</h3>
+              <p>Matas ciliares, áreas de preservação e diversidade de espécies ajudam a manter o equilíbrio ambiental e protegem a própria produção rural.</p>
+              <div class="progress p4"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TECNOLOGIA ──────────────────────────────────────────────────── -->
+      <section id="tecnologia" class="section">
+        <div class="glow"></div>
+        <div class="container tech-grid">
+          <div class="tech-banner reveal-left">
+            <h2>A tecnologia transforma o campo.</h2>
+            <p>
+              O uso de drones, sensores, GPS e dados permite que o produtor tome
+              decisões mais rápidas, reduza desperdícios e produza com mais eficiência.
+            </p>
+          </div>
+          <div class="tech-cards">
+            <article class="tech-card reveal-right delay-1">&#128760; <strong>Drones</strong> sobrevoam a lavoura e identificam problemas com pragas, doenças e nutrição com rapidez e precisão.</article>
+            <article class="tech-card reveal-right delay-2">&#128225; <strong>Sensores</strong> de umidade no solo indicam exatamente quando e quanto irrigar, evitando desperdício de água.</article>
+            <article class="tech-card reveal-right delay-3">&#129517; <strong>GPS de precisão</strong> aumenta a exatidão no plantio, na aplicação de defensivos e na colheita, reduzindo custos.</article>
+            <article class="tech-card reveal-right delay-4">&#128202; <strong>Análise de dados</strong> ajuda o produtor a entender padrões, prever problemas e planejar melhor cada safra.</article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MAPA INTERATIVO ─────────────────────────────────────────────── -->
+      <section id="mapa" class="section light">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">Mapa interativo</p>
+            <h2>Explore a propriedade sustentável.</h2>
+            <p>Clique nos pontos do mapa e descubra cada elemento de uma fazenda que produz e preserva ao mesmo tempo.</p>
+          </div>
+
+          <div
+            class="farm-map reveal-scale"
+            role="img"
+            aria-label="Mapa ilustrado de uma propriedade rural sustentável com pontos interativos"
+          >
+            <!-- Foto aérea da fazenda -->
+            <img class="farm-bg" src="lavoura.png" alt="Foto aérea de uma fazenda sustentável com lavoura, rio, mata ciliar, casa com energia solar e biodigestor" />
+
+            <!-- Pins interativos — posições ajustadas para a foto -->
+            <button type="button" class="farm-pin fp-green" data-spot="lavoura"
+              style="left:46%;top:48%" aria-label="Lavoura Sustentável — clique para saber mais">
+              <span class="fp-icon">&#127807;</span><span class="fp-label">Lavoura</span>
+            </button>
+            <button type="button" class="farm-pin fp-blue" data-spot="nascente"
+              style="left:19%;top:34%" aria-label="Nascente Preservada — clique para saber mais">
+              <span class="fp-icon">&#128167;</span><span class="fp-label">Nascente</span>
+            </button>
+            <button type="button" class="farm-pin fp-darkgreen" data-spot="mataCiliar"
+              style="left:8%;top:60%" aria-label="Mata Ciliar — clique para saber mais">
+              <span class="fp-icon">&#127795;</span><span class="fp-label">Mata Ciliar</span>
+            </button>
+            <button type="button" class="farm-pin fp-yellow" data-spot="solar"
+              style="left:83%;top:16%" aria-label="Energia Solar — clique para saber mais">
+              <span class="fp-icon">&#9728;</span><span class="fp-label">Solar</span>
+            </button>
+            <button type="button" class="farm-pin fp-sky" data-spot="tecnologia"
+              style="left:58%;top:32%" aria-label="Tecnologia no Campo — clique para saber mais">
+              <span class="fp-icon">&#128760;</span><span class="fp-label">Tecnologia</span>
+            </button>
+            <button type="button" class="farm-pin fp-teal" data-spot="biodigestor"
+              style="left:75%;top:72%" aria-label="Biodigestor — clique para saber mais">
+              <span class="fp-icon">&#9851;</span><span class="fp-label">Biodigestor</span>
+            </button>
+            <button type="button" class="farm-pin fp-lime" data-spot="jovem"
+              style="left:36%;top:70%" aria-label="Jovem Produtor — clique para saber mais">
+              <span class="fp-icon">&#128104;&#127995;&#8205;&#127806;</span><span class="fp-label">Jovem</span>
+            </button>
+          </div>
+          <p class="farm-hint reveal-up">&#128070; Toque em qualquer ponto para conhecer sua função na fazenda</p>
+        </div>
+      </section>
+
+      <!-- ── NÚMEROS QUE IMPACTAM ──────────────────────────────────────────── -->
+      <section id="numeros" class="section">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">O agro em números</p>
+            <h2>Fatos que mostram o tamanho e a responsabilidade do campo.</h2>
+          </div>
+          <div class="counters-grid">
+            <div class="counter-item reveal-up delay-1">
+              <span class="counter-icon">&#127806;</span>
+              <span class="counter-num" data-target="5000000" data-suffix="">5.000.000</span>
+              <span class="counter-label">propriedades rurais no Brasil</span>
+              <small class="counter-source">IBGE, Censo Agropecuário 2017</small>
+            </div>
+            <div class="counter-item reveal-up delay-2">
+              <span class="counter-icon">&#128200;</span>
+              <span class="counter-num" data-target="27" data-suffix="%">27%</span>
+              <span class="counter-label">do PIB nacional vem do agronegócio</span>
+              <small class="counter-source">CNA, 2023</small>
+            </div>
+            <div class="counter-item reveal-up delay-3">
+              <span class="counter-icon">&#128104;&#127999;&#8205;&#127806;</span>
+              <span class="counter-num" data-target="33" data-suffix="%">33%</span>
+              <span class="counter-label">dos empregos do Brasil estão no agro</span>
+              <small class="counter-source">CNA / Ministério da Agricultura</small>
+            </div>
+            <div class="counter-item reveal-up delay-4">
+              <span class="counter-icon">&#128167;</span>
+              <span class="counter-num" data-target="50" data-suffix="%">50%</span>
+              <span class="counter-label">de economia de água com irrigação inteligente</span>
+              <small class="counter-source">EMBRAPA, 2022</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── JUVENTUDE ───────────────────────────────────────────────────── -->
+      <section id="jovens" class="section dark">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">Juventude e futuro</p>
+            <h2>Os jovens também fazem parte da transformação do campo.</h2>
+            <p>A nova geração pode unir estudo, criatividade e tecnologia para construir um agro mais produtivo, justo e sustentável.</p>
+          </div>
+          <p class="topic-hint reveal-up">
+            Clique nos cards para abrir os detalhes de cada tópico.
+          </p>
+          <div class="youth-grid">
+            <button type="button" class="youth-card yc-blue reveal-up delay-1 topic-card" data-topic="conhecimento" aria-label="Abrir detalhes de Conhecimento">
+              <div class="yc-deco"></div>
+              <span class="yc-emoji">&#128105;&#127997;&#8205;&#128300;</span>
+              <div class="yc-content">
+                <strong>Conhecimento</strong>
+                <p>Novas técnicas e pesquisas transformam o campo</p>
+              </div>
+              <span class="yc-plus" aria-hidden="true">+</span>
+            </button>
+            <button type="button" class="youth-card yc-purple reveal-up delay-2 topic-card" data-topic="inovacao" aria-label="Abrir detalhes de Inovação">
+              <div class="yc-deco"></div>
+              <span class="yc-emoji">&#129489;&#127998;&#8205;&#128187;</span>
+              <div class="yc-content">
+                <strong>Inovação</strong>
+                <p>Tecnologia e criatividade a serviço do agro</p>
+              </div>
+              <span class="yc-plus" aria-hidden="true">+</span>
+            </button>
+            <button type="button" class="youth-card yc-lime reveal-up delay-3 topic-card" data-topic="trabalho" aria-label="Abrir detalhes de Trabalho no campo">
+              <div class="yc-deco"></div>
+              <span class="yc-emoji">&#128104;&#127995;&#8205;&#127806;</span>
+              <div class="yc-content">
+                <strong>Trabalho no campo</strong>
+                <p>Jovens que produzem com responsabilidade</p>
+              </div>
+              <span class="yc-plus" aria-hidden="true">+</span>
+            </button>
+            <button type="button" class="youth-card yc-teal reveal-up delay-4 topic-card" data-topic="consciencia" aria-label="Abrir detalhes de Consciência ambiental">
+              <div class="yc-deco"></div>
+              <span class="yc-emoji">&#128105;&#127999;&#8205;&#127806;</span>
+              <div class="yc-content">
+                <strong>Consciência ambiental</strong>
+                <p>Cuidar da natureza é cuidar do nosso futuro</p>
+              </div>
+              <span class="yc-plus" aria-hidden="true">+</span>
+            </button>
+          </div>
+
+          <blockquote class="youth-quote reveal-up">
+            <p>"Meu avô plantava olhando o céu. Eu planto olhando o tablet. Mas o amor pela terra é o mesmo."</p>
+            <cite>— Lucas, 17 anos, jovem produtor rural do Paraná</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ── SIMULADOR ───────────────────────────────────────────────────── -->
+      <section id="simulador" class="section light">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">Simulador interativo</p>
+            <h2>Monte sua propriedade sustentável.</h2>
+            <p>Selecione as práticas que você usaria na sua propriedade e veja seu índice de sustentabilidade crescer em tempo real.</p>
+          </div>
+
+          <div class="sim-layout reveal-up">
+            <div class="sim-checks">
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#127807; Plantio direto e rotação de culturas</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#128167; Irrigação controlada com sensores</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#127795; Preservação de matas ciliares</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#9728; Energia solar na propriedade</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#128760; Monitoramento com drones</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#9851; Biodigestor para resíduos orgânicos</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#128166; Proteção e recuperação de nascentes</span>
+              </label>
+              <label class="sim-item">
+                <input type="checkbox" class="sim-cb" />
+                <span>&#128202; Análise de dados da lavoura</span>
+              </label>
+            </div>
+
+            <div class="sim-result">
+              <div class="sim-gauge" id="simGauge">
+                <div class="sim-gauge-inner">
+                  <span class="sim-percent" id="simPercent">0%</span>
+                  <small>sustentabilidade</small>
+                </div>
+              </div>
+              <p class="sim-msg" id="simMsg">Selecione práticas ao lado para calcular seu índice.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── QUIZ ────────────────────────────────────────────────────────── -->
+      <section id="quiz" class="section">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">Teste seus conhecimentos</p>
+            <h2>Quiz sobre agro e sustentabilidade</h2>
+            <p>Responda às 8 perguntas e veja como atitudes conscientes ajudam o campo e o meio ambiente.</p>
+          </div>
+
+          <div class="quiz-list" id="quizList">
+
+            <article class="quiz-card reveal-up delay-1">
+
+              <h3>1) Um produtor quer aumentar a produção em 30%. Qual deve ser a primeira ação?</h3>
+              <div class="answers" data-q="0">
+                <button type="button" data-correct="0">Desmatar uma área de mata nativa para ampliar a lavoura</button>
+                <button type="button" data-correct="1">Aplicar tecnologia de precisão e melhorar a gestão da área já cultivada</button>
+                <button type="button" data-correct="0">Usar mais agrotóxicos para garantir a colheita</button>
+              </div>
+              <p class="feedback" id="fb-0" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-2">
+
+              <h3>2) Sua lavoura precisa de mais água, mas a nascente fica em área protegida. O que fazer?</h3>
+              <div class="answers" data-q="1">
+                <button type="button" data-correct="0">Desviar a nascente para dentro da lavoura</button>
+                <button type="button" data-correct="1">Investir em cisternas e captar água da chuva para irrigação</button>
+                <button type="button" data-correct="0">Perfurar poços sem autorização ambiental</button>
+              </div>
+              <p class="feedback" id="fb-1" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-3">
+
+              <h3>3) Um vizinho oferece dinheiro para você retirar a mata ciliar da sua propriedade. Você:</h3>
+              <div class="answers" data-q="2">
+                <button type="button" data-correct="0">Aceita — a mata ciliar não tem valor econômico direto</button>
+                <button type="button" data-correct="0">Vende metade — um pouco não vai fazer diferença</button>
+                <button type="button" data-correct="1">Recusa — a mata ciliar é obrigatória por lei e protege rios e nascentes</button>
+              </div>
+              <p class="feedback" id="fb-2" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-1">
+
+              <h3>4) O que é rotação de culturas?</h3>
+              <div class="answers" data-q="3">
+                <button type="button" data-correct="0">Usar o mesmo tipo de planta em todas as safras</button>
+                <button type="button" data-correct="1">Alternar diferentes culturas na mesma área entre as safras</button>
+                <button type="button" data-correct="0">Plantar em fileiras retas sem cobertura do solo</button>
+              </div>
+              <p class="feedback" id="fb-3" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-2">
+
+              <h3>5) Você tem resíduos orgânicos da criação de animais. Qual é a melhor solução?</h3>
+              <div class="answers" data-q="4">
+                <button type="button" data-correct="0">Lançar os resíduos diretamente no rio próximo</button>
+                <button type="button" data-correct="0">Queimar os resíduos a céu aberto</button>
+                <button type="button" data-correct="1">Usar um biodigestor para transformar em energia e adubo natural</button>
+              </div>
+              <p class="feedback" id="fb-4" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-3">
+
+              <h3>6) O que são matas ciliares?</h3>
+              <div class="answers" data-q="5">
+                <button type="button" data-correct="0">Plantações de árvores frutíferas para o comércio</button>
+                <button type="button" data-correct="1">Vegetação que protege as margens de rios e nascentes</button>
+                <button type="button" data-correct="0">Florestas plantadas exclusivamente para a produção de madeira</button>
+              </div>
+              <p class="feedback" id="fb-5" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-1">
+
+              <h3>7) Sua lavoura foi atacada por pragas. Qual a abordagem mais sustentável?</h3>
+              <div class="answers" data-q="6">
+                <button type="button" data-correct="0">Pulverizar toda a propriedade com defensivos preventivamente</button>
+                <button type="button" data-correct="1">Usar drone para identificar as áreas afetadas e tratar só o necessário</button>
+                <button type="button" data-correct="0">Abandonar a safra e esperar o problema resolver sozinho</button>
+              </div>
+              <p class="feedback" id="fb-6" role="alert"></p>
+            </article>
+
+            <article class="quiz-card reveal-up delay-2">
+
+              <h3>8) Qual é a relação entre campo e cidade?</h3>
+              <div class="answers" data-q="7">
+                <button type="button" data-correct="0">O campo depende da cidade, mas a cidade não precisa do campo</button>
+                <button type="button" data-correct="0">Eles são completamente independentes um do outro</button>
+                <button type="button" data-correct="1">O campo produz alimentos que chegam à mesa das cidades; as cidades fornecem tecnologia e serviços ao campo</button>
+              </div>
+              <p class="feedback" id="fb-7" role="alert"></p>
+            </article>
+
+          </div>
+
+          <div class="score reveal-scale" id="scoreBox" aria-live="polite">Sua pontuação: 0/8</div>
+          <p id="quizFinishMsg" class="quiz-finish-msg" aria-live="polite"></p>
+          <div class="quiz-restart-wrap" id="quizRestartWrap" style="display:none;">
+            <button type="button" class="btn btn-primary" id="quizRestart">&#128260; Refazer o quiz</button>
+          </div>
+
+          <p style="margin-top:32px;">
+            O projeto "Agro Forte: Produzir Preservando" mostra que o agronegócio pode
+            ser moderno, produtivo e sustentável. Por meio da tecnologia, do cuidado com
+            o solo, da preservação da água e da participação dos jovens, é possível
+            construir um campo mais eficiente e responsável com o futuro.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── RODAPÉ ──────────────────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container foot-wrap">
+        <div class="foot-brand">
+          <span class="brand-icon">&#127811;</span>
+          <div>
+            <strong>Agro Forte: Produzir Preservando</strong>
+            <small>Projeto escolar | Agrinho 2026 | 1º Ano do Ensino Médio</small>
+          </div>
+        </div>
+        <p>Um agro forte é aquele que alimenta o presente, respeita a natureza e prepara um futuro melhor para todos.</p>
+        <div class="foot-sources">
+          <strong>Fontes consultadas:</strong>
+          <span>EMBRAPA — Empresa Brasileira de Pesquisa Agropecuária</span>
+          <span>IBGE — Censo Agropecuário 2017</span>
+          <span>CNA — Confederação da Agricultura e Pecuária do Brasil</span>
+          <span>Ministério da Agricultura, Pecuária e Abastecimento</span>
+          <span>Absolar — Associação Brasileira de Energia Solar Fotovoltaica</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ── MODAL ───────────────────────────────────────────────────────────── -->
+    <div id="topicModal" class="topic-modal" aria-hidden="true">
+      <div class="topic-modal-backdrop" data-close-modal></div>
+      <div class="topic-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="topicModalTitle">
+        <button type="button" class="topic-modal-close" id="topicModalClose" aria-label="Fechar pop-up">
+          &times;
+        </button>
+        <p class="topic-modal-kicker" id="topicModalKicker">Juventude no campo</p>
+        <h3 id="topicModalTitle"></h3>
+        <p id="topicModalText"></p>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
