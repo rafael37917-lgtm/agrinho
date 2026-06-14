@@ -268,8 +268,8 @@
         <div class="result-hero">
           <img id="resultTrophy" src="./img/game/trofeu_max.png" alt="Troféu final" />
           <div>
-            <span class="eyebrow">PARABÉNS</span>
-            <h2>Fazendinha salva!</h2>
+            <span class="eyebrow" id="resultEyebrow">PARABÉNS</span>
+            <h2 id="resultTitle">Fazendinha salva!</h2>
             <div class="big-score"><span id="finalScore">0</span> pontos</div>
             <p id="resultMessage">Você transformou a fazenda feia em uma fazenda bonita e sustentável.</p>
             <div class="actions">
@@ -284,7 +284,7 @@
             <div class="trophy-card"><img src="./img/game/trofeu_fazenda.png" alt="Troféu fazenda" /><span>Fazenda</span></div>
             <div class="trophy-card"><img src="./img/game/trofeu_max.png" alt="Troféu máximo" /><span>Máximo</span></div>
           </div>
-          <div class="rank-box">Melhor pontuação salva: <strong id="bestScoreResult">0</strong></div>
+          <div class="rank-box"><span id="resultRankLabel">Melhor pontuação salva:</span> <strong id="bestScoreResult">0</strong></div>
         </div>
       </div>
     </section>
@@ -303,13 +303,6 @@
       </div>
     </div>
   </dialog>
-
-  <footer class="game-footer" aria-label="Créditos do jogo">
-    <p>Arte visual em <code>img/game/</code> — produzida para o projeto Agrinho 2026 ·
-      <a href="./index.html">Voltar ao site</a> ·
-      <a href="https://github.com/rafael37917-lgtm/agrinho" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </p>
-  </footer>
 
   <script src="./game.js"></script>
 </body>

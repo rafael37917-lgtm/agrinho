@@ -462,22 +462,6 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 }
 .skip-link:focus { top: 0; outline: 3px solid var(--gold); outline-offset: 2px; }
 
-.game-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-  padding: 6px 12px;
-  background: rgba(255,253,246,.92);
-  border-top: 1px solid #dcecd8;
-  font-size: 11px;
-  text-align: center;
-  color: #4a674f;
-}
-.game-footer a { color: var(--green-dark); font-weight: 700; }
-.game-footer code { font-size: 10px; }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
