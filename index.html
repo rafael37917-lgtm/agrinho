@@ -284,7 +284,39 @@
         </div>
       </section>
 
-      <!-- ── NÚMEROS QUE IMPACTAM ──────────────────────────────────────────── -->
+      <section id="regiao" class="section">
+        <div class="container">
+          <div class="section-head reveal-up">
+            <p class="section-label">Nossa região</p>
+            <h2>Agro no Sudoeste do Paraná.</h2>
+            <p>Pato Branco e o Sudoeste paranaense unem produção agrícola, cooperativismo e responsabilidade ambiental.</p>
+          </div>
+          <div class="region-grid">
+            <article class="region-card reveal-up delay-1">
+              <span class="region-icon">&#127806;</span>
+              <strong>Grãos e cooperativas</strong>
+              <p>Soja, milho e trigo sustentam a economia local com armazenagem e assistência técnica via cooperativas da região.</p>
+            </article>
+            <article class="region-card reveal-up delay-2">
+              <span class="region-icon">&#128004;</span>
+              <strong>Pecuária e leite</strong>
+              <p>Propriedades de corte e leite adotam manejo de pastagens e biodigestores para reduzir impacto e custos.</p>
+            </article>
+            <article class="region-card reveal-up delay-3">
+              <span class="region-icon">&#128167;</span>
+              <strong>Água e nascentes</strong>
+              <p>Rios como o Pardo e suas nascentes exigem preservação de matas ciliares para garantir água limpa ao campo e às cidades.</p>
+            </article>
+            <article class="region-card reveal-up delay-4">
+              <span class="region-icon">&#127795;</span>
+              <strong>Mata e biodiversidade</strong>
+              <p>Remanescentes de Mata Atlântica pedem integração lavoura-floresta e corredores ecológicos entre propriedades.</p>
+            </article>
+          </div>
+          <p class="region-note reveal-up">Referências: IBGE, SEAB-PR e Embrapa Trigo — dados do oeste e sudoeste paranaense.</p>
+        </div>
+      </section>
+
       <section id="numeros" class="section">
         <div class="container">
           <div class="section-head reveal-up">
@@ -385,35 +417,35 @@
           <div class="sim-layout reveal-up">
             <div class="sim-checks">
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="lavoura" />
                 <span>&#127807; Plantio direto e rotação de culturas</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="nascente" />
                 <span>&#128167; Irrigação controlada com sensores</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="mataCiliar" />
                 <span>&#127795; Preservação de matas ciliares</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="solar" />
                 <span>&#9728; Energia solar na propriedade</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="tecnologia" />
                 <span>&#128760; Monitoramento com drones</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="biodigestor" />
                 <span>&#9851; Biodigestor para resíduos orgânicos</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="nascente" />
                 <span>&#128166; Proteção e recuperação de nascentes</span>
               </label>
               <label class="sim-item">
-                <input type="checkbox" class="sim-cb" />
+                <input type="checkbox" class="sim-cb" data-pin="jovem" />
                 <span>&#128202; Análise de dados da lavoura</span>
               </label>
             </div>
@@ -428,6 +460,7 @@
               <p class="sim-msg" id="simMsg">Selecione práticas ao lado para calcular seu índice.</p>
             </div>
           </div>
+          <p class="sim-map-hint reveal-up">As práticas marcadas destacam os pontos correspondentes no mapa interativo.</p>
         </div>
       </section>
 
@@ -529,6 +562,9 @@
           <div class="quiz-restart-wrap is-hidden" id="quizRestartWrap">
             <button type="button" class="btn btn-primary" id="quizRestart">&#128260; Refazer o quiz</button>
           </div>
+          <div class="cert-offer is-hidden" id="certOffer">
+            <button type="button" class="btn btn-secondary" id="certBtn">Ver certificado Agente do Agro Sustentável</button>
+          </div>
 
           <p class="quiz-closing-note">
             O projeto "Agro Forte: Produzir Preservando" mostra que o agronegócio pode
@@ -578,6 +614,19 @@
     </div>
 
     <!-- ── MODAL ───────────────────────────────────────────────────────────── -->
+    <div id="certModal" class="cert-modal" aria-hidden="true">
+      <div class="cert-backdrop" data-close-cert></div>
+      <div class="cert-dialog" role="dialog" aria-modal="true" aria-labelledby="certTitle">
+        <p class="cert-kicker">Agro Forte — Agrinho 2026</p>
+        <h2 id="certTitle">Certificado</h2>
+        <p class="cert-subtitle">Agente do Agro Sustentável</p>
+        <p class="cert-name" id="certName"></p>
+        <p class="cert-detail" id="certDetail"></p>
+        <p class="cert-foot">Reconhecido por práticas que equilibram produção e preservação do meio ambiente.</p>
+        <button type="button" class="btn btn-primary" id="certClose">Fechar</button>
+      </div>
+    </div>
+
     <div id="topicModal" class="topic-modal" aria-hidden="true">
       <div class="topic-modal-backdrop" data-close-modal></div>
       <div class="topic-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="topicModalTitle">

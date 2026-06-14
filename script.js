@@ -347,6 +347,12 @@ const simPercent = document.getElementById("simPercent");
 const simMsg     = document.getElementById("simMsg");
 const simCbs     = document.querySelectorAll(".sim-cb");
 const simTotal   = simCbs.length;
+const certOffer  = document.getElementById("certOffer");
+const certBtn    = document.getElementById("certBtn");
+const certModal  = document.getElementById("certModal");
+const certName   = document.getElementById("certName");
+const certDetail = document.getElementById("certDetail");
+const certClose  = document.getElementById("certClose");
 
 let simCurrentPct = 0;
 let simRafId = null;
@@ -358,6 +364,47 @@ const simMessages = [
   { min: 63, max: 87,  text: "🌿 Muito bem! Você está no caminho certo para um agro sustentável.", color: "#84cc16" },
   { min: 88, max: 100, text: "🏆 Excelente! Sua propriedade é um modelo de sustentabilidade!", color: "#10b981" },
 ];
+
+function syncMapPins() {
+  const active = new Set();
+  simCbs.forEach((cb) => {
+    if (cb.checked && cb.dataset.pin) active.add(cb.dataset.pin);
+  });
+  document.querySelectorAll(".farm-pin").forEach((pin) => {
+    pin.classList.toggle("pin-active", active.has(pin.getAttribute("data-spot")));
+  });
+}
+
+function updateCertEligibility() {
+  if (!certOffer) return;
+  const quizDone = Object.keys(answered).length >= totalQuestions;
+  const quizPerfect = quizDone && score === totalQuestions;
+  const simReady = simCurrentPct >= 80;
+  certOffer.classList.toggle("is-hidden", !(quizPerfect || simReady));
+}
+
+function openCertModal() {
+  if (!certModal) return;
+  const name = localStorage.getItem("agrinho-user-name") || "Visitante";
+  const parts = [];
+  if (simCurrentPct >= 80) parts.push(`Simulador: ${simCurrentPct}% de sustentabilidade`);
+  if (Object.keys(answered).length >= totalQuestions && score === totalQuestions) {
+    parts.push(`Quiz: ${score}/${totalQuestions} acertos`);
+  }
+  if (certName) certName.textContent = name;
+  if (certDetail) certDetail.textContent = parts.join(" · ") || "Participação no projeto Agro Forte";
+  certModal.classList.add("is-open");
+  certModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  certClose?.focus({ preventScroll: true });
+}
+
+function closeCertModal() {
+  if (!certModal) return;
+  certModal.classList.remove("is-open");
+  certModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
 
 function getSimMsgData(pct) {
   return simMessages.find((m) => pct >= m.min && pct <= m.max) || simMessages[0];
@@ -388,6 +435,7 @@ function animateGauge(target) {
         simMsg.style.color = data.color;
       }
       if (simGauge) simGauge.style.setProperty("--sim-color", data.color);
+      updateCertEligibility();
     }
   }
 
@@ -395,12 +443,23 @@ function animateGauge(target) {
 }
 
 function updateSimulator() {
+  syncMapPins();
   const checked = Array.from(simCbs).filter((cb) => cb.checked).length;
   const pct = simTotal > 0 ? Math.round((checked / simTotal) * 100) : 0;
   animateGauge(pct);
 }
 
 simCbs.forEach((cb) => cb.addEventListener("change", updateSimulator));
+syncMapPins();
+
+certBtn?.addEventListener("click", openCertModal);
+certClose?.addEventListener("click", closeCertModal);
+certModal?.addEventListener("click", (e) => {
+  if (e.target instanceof Element && e.target.hasAttribute("data-close-cert")) closeCertModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && certModal?.classList.contains("is-open")) closeCertModal();
+});
 
 // ── Quiz ──────────────────────────────────────────────────────────────────────
 const quizList      = document.getElementById("quizList");
@@ -429,6 +488,7 @@ function checkQuizComplete() {
 
   if (quizFinishMsg) { quizFinishMsg.textContent = msg; quizFinishMsg.classList.add("show"); }
   if (quizRestartWrap) quizRestartWrap.classList.remove("is-hidden");
+  updateCertEligibility();
 }
 
 document.querySelectorAll(".answers").forEach((group) => {
@@ -479,6 +539,7 @@ if (quizRestart) {
 
     if (quizFinishMsg)   { quizFinishMsg.classList.remove("show"); quizFinishMsg.textContent = ""; }
     if (quizRestartWrap) quizRestartWrap.classList.add("is-hidden");
+    updateCertEligibility();
 
     const quizSection = document.getElementById("quiz");
     if (quizSection && header) {
