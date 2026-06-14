@@ -400,11 +400,17 @@ function getFirstName(name) {
   return name.split(/\s+/)[0];
 }
 
+function showPlayerGreeting() {
+  const el = document.getElementById('gameGreeting');
+  const name = getPlayerName();
+  if (!el || !name || name === 'visitante') return;
+  el.textContent = `Olá, ${getFirstName(name)}! 👋`;
+  el.hidden = false;
+}
+
 function finishGame(){
   burstConfetti(38);
   successSound();
-  const playerName = getPlayerName();
-  const firstName = playerName ? getFirstName(playerName) : '';
   const previousBest = state.best;
   const isNewRecord = state.score > previousBest;
 
@@ -416,34 +422,20 @@ function finishGame(){
   els.bestScoreResult.textContent = state.best;
   els.bestScore.textContent = state.best;
 
-  if(playerName){
-    els.resultEyebrow.textContent = `PARABÉNS, ${firstName.toUpperCase()}!`;
-    els.resultTitle.textContent = `${firstName}, fazendinha salva!`;
-    els.resultRankLabel.textContent = isNewRecord
-      ? `${firstName}, novo recorde pessoal:`
-      : `${firstName}, seu recorde:`;
-  } else {
-    els.resultEyebrow.textContent = 'PARABÉNS';
-    els.resultTitle.textContent = 'Fazendinha salva!';
-    els.resultRankLabel.textContent = isNewRecord
-      ? 'Novo recorde pessoal:'
-      : 'Melhor pontuação salva:';
-  }
+  els.resultEyebrow.textContent = 'PARABÉNS';
+  els.resultTitle.textContent = 'Fazendinha salva!';
+  els.resultRankLabel.textContent = isNewRecord
+    ? 'Novo recorde pessoal:'
+    : 'Melhor pontuação salva:';
 
   if(state.score >= 900){
-    els.resultMessage.textContent = playerName
-      ? `${firstName}, você deixou a fazenda linda, sustentável e fez uma pontuação excelente!`
-      : 'Você deixou a fazenda linda, sustentável e ainda fez uma pontuação excelente!';
+    els.resultMessage.textContent = 'Você deixou a fazenda linda, sustentável e fez uma pontuação excelente!';
     els.resultTrophy.src = './img/game/trofeu_max.png';
   } else if(state.score >= 700){
-    els.resultMessage.textContent = playerName
-      ? `Muito bem, ${firstName}! A fazenda ficou bonita e bem cuidada.`
-      : 'Muito bem! A fazenda ficou bonita e bem cuidada.';
+    els.resultMessage.textContent = 'Muito bem! A fazenda ficou bonita e bem cuidada.';
     els.resultTrophy.src = './img/game/trofeu_fazenda.png';
   } else {
-    els.resultMessage.textContent = playerName
-      ? `${firstName}, você conseguiu salvar a fazenda. Tente novamente para fazer ainda mais pontos!`
-      : 'Você conseguiu salvar a fazenda. Tente novamente para fazer ainda mais pontos!';
+    els.resultMessage.textContent = 'Você conseguiu salvar a fazenda. Tente novamente para fazer ainda mais pontos!';
     els.resultTrophy.src = './img/game/trofeu_quiz.png';
   }
   setTimeout(() => go('result'), 800);
@@ -467,11 +459,7 @@ function resetGame(){
 
 document.getElementById('restartBtn').addEventListener('click', resetGame);
 document.getElementById('shareBtn').addEventListener('click', async () => {
-  const playerName = getPlayerName();
-  const firstName = playerName ? getFirstName(playerName) : '';
-  const text = firstName
-    ? `${firstName} fez ${state.score} pontos no jogo Salve a Fazendinha do Agrinho!`
-    : `Eu fiz ${state.score} pontos no jogo Salve a Fazendinha do Agrinho!`;
+  const text = `Eu fiz ${state.score} pontos no jogo Salve a Fazendinha do Agrinho!`;
   try{
     if(navigator.share){
       await navigator.share({ title: 'Agrinho', text });
@@ -517,5 +505,6 @@ function simulateLoading(){
 }
 
 updateHud();
+showPlayerGreeting();
 simulateLoading();
 
