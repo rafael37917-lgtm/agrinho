@@ -955,6 +955,26 @@ p { margin: 0; line-height: 1.65; }
   margin-top: 16px;
 }
 
+.cert-miss {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff7ed, #fef3c7);
+  border: 2px solid #fbbf24;
+  box-shadow: 0 10px 24px #0f172a12;
+}
+
+.cert-miss-msg {
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.55;
+  color: #92400e;
+}
+
+.cert-miss .btn { width: 100%; max-width: 320px; }
+
 .cert-modal {
   position: fixed;
   inset: 0;
@@ -2172,6 +2192,13 @@ html.dark .cert-detail {
 }
 html.dark .cert-foot { color: #94a3b8; }
 html.dark .sim-map-hint { color: #6ee7b7; }
+
+html.dark .cert-miss {
+  background: linear-gradient(135deg, #422006, #1a1207);
+  border-color: #fbbf24;
+}
+
+html.dark .cert-miss-msg { color: #fde68a; }
 
 html.dark .welcome-dialog h2 { color: #ecfdf5; }
 html.dark .welcome-text { color: #94a3b8; }

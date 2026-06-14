@@ -349,6 +349,9 @@ const simCbs     = document.querySelectorAll(".sim-cb");
 const simTotal   = simCbs.length;
 const certOffer  = document.getElementById("certOffer");
 const certBtn    = document.getElementById("certBtn");
+const certMiss   = document.getElementById("certMiss");
+const certMissMsg = document.getElementById("certMissMsg");
+const certRetryBtn = document.getElementById("certRetryBtn");
 const certModal  = document.getElementById("certModal");
 const certName   = document.getElementById("certName");
 const certDetail = document.getElementById("certDetail");
@@ -375,17 +378,28 @@ function syncMapPins() {
   });
 }
 
-function updateCertEligibility() {
-  if (!certOffer) return;
+function updateCertUI() {
   const quizDone = Object.keys(answered).length >= totalQuestions;
-  const quizAbove80 = quizDone && totalQuestions > 0 && score / totalQuestions > 0.8;
-  certOffer.classList.toggle("is-hidden", !quizAbove80);
+  if (!quizDone) {
+    certOffer?.classList.add("is-hidden");
+    certMiss?.classList.add("is-hidden");
+    return;
+  }
+  const pct = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
+  const passed = totalQuestions > 0 && score / totalQuestions > 0.8;
+  certOffer?.classList.toggle("is-hidden", !passed);
+  certMiss?.classList.toggle("is-hidden", passed);
+  if (certMissMsg && !passed) {
+    certMissMsg.textContent = `Puxa! Você fez ${pct}%, mas o certificado só libera acima de 80%. Releia o site, revise o mapa e o simulador, e tente o quiz de novo. Você consegue!`;
+  }
 }
 
 function openCertModal() {
-  if (!certModal) return;
+  if (!certModal || totalQuestions === 0) return;
+  if (Object.keys(answered).length < totalQuestions) return;
+  if (score / totalQuestions <= 0.8) return;
   const name = localStorage.getItem("agrinho-user-name") || "Visitante";
-  const pct = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
+  const pct = Math.round((score / totalQuestions) * 100);
   if (certName) certName.textContent = name;
   if (certDetail) certDetail.textContent = `${score}/${totalQuestions} acertos no quiz (${pct}%)`;
   certModal.classList.add("is-open");
@@ -447,6 +461,7 @@ simCbs.forEach((cb) => cb.addEventListener("change", updateSimulator));
 syncMapPins();
 
 certBtn?.addEventListener("click", openCertModal);
+certRetryBtn?.addEventListener("click", () => quizRestart?.click());
 certClose?.addEventListener("click", closeCertModal);
 certModal?.addEventListener("click", (e) => {
   if (e.target instanceof Element && e.target.hasAttribute("data-close-cert")) closeCertModal();
@@ -482,7 +497,7 @@ function checkQuizComplete() {
 
   if (quizFinishMsg) { quizFinishMsg.textContent = msg; quizFinishMsg.classList.add("show"); }
   if (quizRestartWrap) quizRestartWrap.classList.remove("is-hidden");
-  updateCertEligibility();
+  updateCertUI();
 }
 
 document.querySelectorAll(".answers").forEach((group) => {
@@ -533,7 +548,7 @@ if (quizRestart) {
 
     if (quizFinishMsg)   { quizFinishMsg.classList.remove("show"); quizFinishMsg.textContent = ""; }
     if (quizRestartWrap) quizRestartWrap.classList.add("is-hidden");
-    updateCertEligibility();
+    updateCertUI();
 
     const quizSection = document.getElementById("quiz");
     if (quizSection && header) {
