@@ -1,184 +1,119 @@
-# 🌱 Agro Forte: Produzir Preservando
-
-## 🏆 Projeto Agrinho 2026
-
-**Agro Forte: Produzir Preservando** é uma landing page educativa desenvolvida para o **Agrinho 2026**, com o objetivo de mostrar que é possível fortalecer o agronegócio sem deixar de lado a responsabilidade ambiental.
-
-O projeto aborda o equilíbrio entre **produção rural, sustentabilidade, tecnologia, preservação dos recursos naturais e participação dos jovens** na construção de um futuro mais consciente.
+# Agro Forte: Produzir Preservando
+**Concurso Agrinho 2026 — Subcategoria 3: Programação Front-End**
+Série: 1º Ano do Ensino Médio | Rede Estadual de Ensino do Paraná
 
 ---
 
-## 🌿 Tema do Projeto
+## 🌱 Objetivo do Tema Agrinho
 
-O projeto foi desenvolvido com base no tema:
+O Concurso Agrinho 2026 propõe reflexão sobre o tema:
+> *"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"*
 
-> **"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente."**
-
-A proposta é demonstrar que o campo pode produzir alimentos, gerar desenvolvimento econômico e, ao mesmo tempo, preservar o solo, a água, a biodiversidade e a qualidade de vida das próximas gerações.
-
----
-
-## 🎯 Objetivo
-
-O principal objetivo do projeto é conscientizar estudantes e visitantes sobre a importância de um agro moderno, produtivo e sustentável.
-
-A página apresenta, de forma visual e interativa, práticas que contribuem para um campo mais equilibrado, como:
-
-- Conservação do solo;
-- Uso consciente da água;
-- Preservação das nascentes;
-- Energia renovável;
-- Tecnologia no campo;
-- Participação da juventude na inovação rural.
+Este site demonstra que o campo brasileiro pode **produzir mais e melhor sem destruir o planeta**, mostrando como tecnologia, boas práticas agrícolas e participação dos jovens transformam o agronegócio em uma atividade sustentável e responsável.
 
 ---
 
-## 💡 Ideia Central
+## 📋 Descrição do Projeto
 
-A ideia central do projeto é mostrar que **produzir mais não precisa significar destruir mais**.
+Site educacional interativo com 8 seções:
 
-Com conhecimento, planejamento e tecnologia, o produtor rural pode tomar melhores decisões, reduzir desperdícios, aumentar a produtividade e preservar o meio ambiente.
-
-O projeto também destaca que os jovens têm papel fundamental nesse processo, pois podem unir criatividade, estudo e inovação para transformar a realidade do campo.
-
----
-
-## 🗂️ Funcionalidades da Página
-
-O site possui uma estrutura simples, moderna e interativa, com seções organizadas para facilitar a navegação do usuário.
-
-### Seções do Projeto
-
-- **Início:** apresentação do projeto e chamada para conhecer o conteúdo;
-- **Sustentabilidade:** explicação sobre o equilíbrio entre produção e preservação;
-- **Boas práticas:** cards com atitudes sustentáveis no campo;
-- **Tecnologia no campo:** exemplos de ferramentas tecnológicas usadas no agro;
-- **Juventude:** destaque para o papel dos jovens na transformação rural;
-- **Quiz:** perguntas interativas para testar os conhecimentos do visitante.
+- **O Desafio** — por que produzir e preservar ao mesmo tempo é urgente e possível
+- **Boas Práticas** — plantio direto, irrigação inteligente, energia solar e preservação da biodiversidade
+- **Tecnologia** — drones, sensores IoT, GPS de precisão e análise de dados no campo
+- **Mapa Interativo** — propriedade rural sustentável com 7 pontos clicáveis (Lavoura, Nascente, Mata Ciliar, Solar, Tecnologia, Biodigestor, Jovem Produtor)
+- **Números** — dados reais do agronegócio brasileiro com animação de contadores
+- **Juventude** — o papel dos jovens na transformação do campo com cards detalhados
+- **Simulador** — usuário escolhe práticas sustentáveis e vê o índice de sustentabilidade em tempo real
+- **Quiz** — 8 perguntas sobre agro e meio ambiente com pontuação e feedback imediato
 
 ---
 
-## 📚 Conteúdos Abordados
+## 🛠 Tecnologias Utilizadas
 
-### 🌱 Solo saudável
-
-O projeto apresenta práticas como plantio direto, rotação de culturas e cobertura do solo, que ajudam a evitar erosões, conservar nutrientes e melhorar a produtividade.
-
-### 💧 Uso consciente da água
-
-A página destaca a importância da irrigação controlada, do reaproveitamento da água e da proteção de nascentes para preservar esse recurso essencial.
-
-### ☀️ Energia renovável
-
-O uso de energia solar e biodigestores é apresentado como alternativa sustentável para reduzir custos e impactos ambientais nas propriedades rurais.
-
-### 🦋 Biodiversidade preservada
-
-O projeto valoriza a preservação de matas ciliares, áreas verdes e espécies nativas como forma de manter o equilíbrio ambiental.
-
-### 💻 Tecnologia no campo
-
-São citadas tecnologias como drones, sensores, GPS e análise de dados, que ajudam o produtor a monitorar lavouras, economizar recursos e melhorar a produção.
-
-### 👩‍🌾 Juventude e futuro
-
-A página mostra que os jovens podem contribuir com novas ideias, conhecimento, tecnologia e consciência ambiental para construir um agro mais sustentável.
+| Tecnologia | Aplicação |
+|---|---|
+| **HTML5** | Estrutura semântica: `<section>`, `<article>`, `<main>`, `<footer>`, `<nav>`, `<button>`, `<label>`, `<input>`, `<blockquote>` |
+| **CSS3** | Layout Flexbox e Grid, animações `@keyframes`, modo escuro via `.dark`, responsividade com `@media`, variáveis CSS (`--font-scale`) |
+| **JavaScript** | Manipulação de DOM, `IntersectionObserver`, `localStorage`, `requestAnimationFrame`, quiz interativo, simulador de sustentabilidade, modo escuro, escala de fonte acessível |
 
 ---
 
-## 🎮 Interatividade
+## 🚀 Como usar o site
 
-O projeto conta com elementos interativos para tornar a experiência do usuário mais dinâmica, como:
-
-- Botões de navegação entre as seções;
-- Animações ao rolar a página;
-- Cards clicáveis na seção de juventude;
-- Modal explicativo com detalhes dos tópicos;
-- Quiz com pontuação automática e botão de reinício.
-
-Esses recursos tornam o aprendizado mais leve, visual e participativo.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-O projeto foi desenvolvido utilizando tecnologias básicas da web:
-
-- **HTML5:** estrutura da página;
-- **CSS3:** estilização, layout responsivo e animações;
-- **JavaScript:** interações, quiz, navegação e abertura de modais.
+1. Acesse o site pelo link do GitHub Pages (campo "About" do repositório)
+2. Ao abrir, insira seu nome para personalizar a saudação na página inicial
+3. Navegue pelas seções pelo **menu fixo** no topo da página
+4. No **Mapa Interativo**: clique nos pontos coloridos para abrir detalhes de cada área da fazenda
+5. No **Simulador**: marque as práticas sustentáveis desejadas e observe o índice crescer em tempo real
+6. No **Quiz**: responda as 8 perguntas e veja sua pontuação final com opção de refazer
+7. Use o botão **🌙** no menu para ativar o modo escuro (preferência salva automaticamente)
+8. Use os botões **A / A+ / A++** para ajustar o tamanho da fonte (preferência salva automaticamente)
 
 ---
 
-## 🎨 Design e Experiência do Usuário
+## 📁 Estrutura de Arquivos
 
-O visual do projeto foi pensado para transmitir uma ideia de natureza, inovação e sustentabilidade.
-
-A interface utiliza:
-
-- Cores associadas ao meio ambiente;
-- Cards informativos;
-- Ícones visuais;
-- Layout responsivo;
-- Animações suaves;
-- Organização por seções.
-
-O objetivo é facilitar a leitura e tornar o conteúdo acessível para diferentes públicos.
-
----
-
-## 📱 Responsividade
-
-A landing page foi construída para se adaptar a diferentes tamanhos de tela, permitindo uma boa experiência tanto em computadores quanto em celulares e tablets.
-
-Isso garante que o conteúdo possa ser acessado de forma simples e organizada em qualquer dispositivo.
+```
+agrinho/
+├── index.html       # Estrutura HTML do site (toda a marcação semântica)
+├── style.css        # Estilos, animações, modo escuro e responsividade
+├── script.js        # Lógica JavaScript: quiz, simulador, contador, modal, acessibilidade
+├── README.md        # Documentação do projeto
+├── .nojekyll        # Garante publicação correta no GitHub Pages
+└── img/
+    ├── favicon.svg  # Ícone da aba do navegador (SVG com emoji de trigo)
+    └── lavoura.png  # Foto aérea usada como fundo do mapa interativo
+```
 
 ---
 
-## 🧠 Quiz Educativo
+## 🌐 Links
 
-Ao final da página, o usuário pode responder a um quiz sobre agro e sustentabilidade.
-
-O quiz ajuda a reforçar os principais aprendizados do projeto, abordando temas como:
-
-- Conservação do solo;
-- Tecnologia no campo;
-- Preservação da água;
-- Boas práticas ambientais.
+- **Repositório:** https://github.com/rafael37917-lgtm/agrinho
+- **Site publicado:** https://rafael37917-lgtm.github.io/agrinho/
 
 ---
 
-## 📖 Aprendizados do Projeto
+## 📚 Fontes de Dados
 
-Durante o desenvolvimento deste projeto, foi possível aprender sobre:
-
-- A importância da sustentabilidade no agronegócio;
-- Como a tecnologia pode melhorar a produção rural;
-- A relação entre campo, cidade e meio ambiente;
-- A criação de páginas web com HTML, CSS e JavaScript;
-- A importância da organização visual e da interatividade em projetos digitais.
+- **EMBRAPA** — Empresa Brasileira de Pesquisa Agropecuária (dados sobre irrigação, solo e biodiversidade)
+- **IBGE** — Censo Agropecuário 2017 (número de propriedades rurais)
+- **CNA** — Confederação da Agricultura e Pecuária do Brasil (participação no PIB e empregos)
+- **Ministério da Agricultura, Pecuária e Abastecimento** (dados gerais do setor)
+- **Absolar** — Associação Brasileira de Energia Solar Fotovoltaica (dados sobre energia solar no campo)
 
 ---
 
-## ✅ Conclusão
+## 🤖 Recursos gerados com Inteligência Artificial
 
-O projeto **Agro Forte: Produzir Preservando** mostra que o futuro do campo depende do equilíbrio entre produção e preservação.
+A imagem `img/lavoura.png` foi gerada com **ChatGPT (DALL-E)** usando o seguinte prompt:
 
-Um agro forte é aquele que alimenta a população, gera desenvolvimento, respeita a natureza e utiliza a tecnologia como aliada para construir um futuro melhor.
+> *"Vista aérea de uma fazenda brasileira sustentável com lavouras verdes, um rio com mata ciliar nativa nas margens, painéis solares no telhado da casa rural, biodigestor e vegetação diversificada. Estilo fotorrealista, durante o dia, iluminação natural, cores verdes e vibrantes."*
 
-Mais do que produzir, é preciso produzir com consciência, responsabilidade e compromisso com as próximas gerações.
-
----
-
-## 🏫 Projeto Escolar
-
-**Projeto:** Agro Forte: Produzir Preservando  
-**Categoria:** Desenvolvimento Front-End  
-**Programa:** Agrinho 2026  
-**Turma:** 1º Ano do Ensino Médio  
+O arquivo `img/favicon.svg` foi criado manualmente em código SVG (emoji de trigo 🌾 sobre fundo verde).
 
 ---
 
-## 🌱 Frase Final
+## Autoria
 
-> *"Um agro forte é aquele que alimenta o presente, respeita a natureza e prepara um futuro sustentável para todos."*
+- **Textos, estrutura do site, quiz, simulador e código HTML/CSS/JS:** produzidos pelos autores do projeto escolar, sem uso de IA generativa para redação ou programação.
+- **Imagem `img/lavoura.png`:** gerada com ChatGPT (prompt documentado acima).
+- **Emojis:** Unicode nativo do navegador.
+
+---
+
+## Configuração no GitHub (edital Subcategoria 3)
+
+Antes de enviar o link na Alura, confira no repositório:
+
+1. **Repositório público** — visível para todos
+2. **Topic `agrinho`** — About → ⚙️ → Topics → adicionar `agrinho`
+3. **GitHub Pages** — Settings → Pages → branch `main`, pasta `/ (root)`
+4. **Website no About** — `https://rafael37917-lgtm.github.io/agrinho`
+5. **Descrição do About** — frase sobre o tema Agrinho 2026
+
+> Após 14/06/2026, 23h59, o edital proíbe alterações no GitHub até o resultado final.
+
+---
+
+*Projeto desenvolvido para o Concurso Agrinho 2026 — SENAR-PR / SEED-PR*

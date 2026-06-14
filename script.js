@@ -1,3 +1,101 @@
+// ── Saudação personalizada + preferências de acessibilidade ───────────────────
+const htmlEl        = document.documentElement;
+const heroGreeting  = document.getElementById("heroGreeting");
+const welcomeModal  = document.getElementById("welcomeModal");
+const nameInput     = document.getElementById("nameInput");
+const nameSubmit    = document.getElementById("nameSubmit");
+const darkToggle    = document.getElementById("darkToggle");
+const fontNormal    = document.getElementById("fontNormal");
+const fontMedium    = document.getElementById("fontMedium");
+const fontLarge     = document.getElementById("fontLarge");
+
+const fontScales = [1, 1.2, 1.4];
+const fontBtns   = [fontNormal, fontMedium, fontLarge];
+
+// Exibe "Olá, [nome]!" no hero
+function showGreeting(name) {
+  if (!heroGreeting) return;
+  if (name) {
+    heroGreeting.textContent = `Olá, ${name}! 👋`;
+    heroGreeting.hidden = false;
+  } else {
+    heroGreeting.textContent = "";
+    heroGreeting.hidden = true;
+  }
+}
+
+function openWelcome() {
+  if (!welcomeModal) return;
+  welcomeModal.classList.add("is-open");
+  welcomeModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  nameInput?.focus({ preventScroll: true });
+}
+
+function closeWelcome() {
+  if (!welcomeModal) return;
+  welcomeModal.classList.remove("is-open");
+  welcomeModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+function handleNameSubmit() {
+  const name = nameInput?.value.trim();
+  if (!name) {
+    nameInput?.focus();
+    return;
+  }
+  localStorage.setItem("agrinho-user-name", name);
+  showGreeting(name);
+  closeWelcome();
+}
+
+function applyFontScale(idx) {
+  htmlEl.style.setProperty("--font-scale", fontScales[idx]);
+  fontBtns.forEach((btn, i) => {
+    if (!btn) return;
+    const active = i === idx;
+    btn.classList.toggle("font-btn-active", active);
+    btn.setAttribute("aria-pressed", String(active));
+  });
+  localStorage.setItem("agrinho-font-scale", idx);
+}
+
+function setDarkMode(on) {
+  htmlEl.classList.toggle("dark", on);
+  if (darkToggle) {
+    darkToggle.classList.toggle("dark-active", on);
+    darkToggle.setAttribute("aria-pressed", String(on));
+    darkToggle.setAttribute("aria-label", on ? "Desativar modo escuro" : "Ativar modo escuro");
+  }
+  localStorage.setItem("agrinho-dark-mode", on ? "1" : "0");
+}
+
+nameSubmit?.addEventListener("click", handleNameSubmit);
+nameInput?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") handleNameSubmit();
+});
+welcomeModal?.addEventListener("click", (e) => {
+  if (e.target instanceof Element && e.target.hasAttribute("data-close-welcome")) closeWelcome();
+});
+
+fontNormal?.addEventListener("click", () => applyFontScale(0));
+fontMedium?.addEventListener("click", () => applyFontScale(1));
+fontLarge?.addEventListener("click", () => applyFontScale(2));
+darkToggle?.addEventListener("click", () => setDarkMode(!htmlEl.classList.contains("dark")));
+
+const savedName = localStorage.getItem("agrinho-user-name");
+if (savedName) {
+  showGreeting(savedName);
+} else {
+  openWelcome();
+}
+
+const savedFont = parseInt(localStorage.getItem("agrinho-font-scale"), 10);
+applyFontScale(Number.isFinite(savedFont) ? savedFont : 0);
+
+if (localStorage.getItem("agrinho-dark-mode") === "1") setDarkMode(true);
+
 // ── Animação de contadores ─────────────────────────────────────────────────────
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
@@ -41,26 +139,26 @@ if ("IntersectionObserver" in window) {
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
 const header = document.querySelector(".header");
+const menuOverlay = document.getElementById("menuOverlay");
 
+// Abre ou fecha a gaveta lateral mobile
 function setMenuState(isOpen) {
   if (!menu || !menuToggle) return;
   menu.classList.toggle("open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+  if (menuOverlay) menuOverlay.classList.toggle("active", isOpen);
 }
+
+// Clique no overlay escuro fecha a gaveta
+menuOverlay?.addEventListener("click", () => setMenuState(false));
 
 if (menuToggle && menu) {
   menuToggle.addEventListener("click", () => {
     setMenuState(!menu.classList.contains("open"));
   });
 
-  document.addEventListener("click", (e) => {
-    if (!menu.classList.contains("open")) return;
-    if (menu.contains(e.target) || menuToggle.contains(e.target)) return;
-    setMenuState(false);
-  });
-
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 980) setMenuState(false);
+    if (window.innerWidth > 1100) setMenuState(false);
   });
 }
 
@@ -330,7 +428,7 @@ function checkQuizComplete() {
   else                    msg = "🌱 Você está começando sua jornada sustentável. Releia o conteúdo e tente de novo!";
 
   if (quizFinishMsg) { quizFinishMsg.textContent = msg; quizFinishMsg.classList.add("show"); }
-  if (quizRestartWrap) quizRestartWrap.style.display = "flex";
+  if (quizRestartWrap) quizRestartWrap.classList.remove("is-hidden");
 }
 
 document.querySelectorAll(".answers").forEach((group) => {
@@ -380,7 +478,7 @@ if (quizRestart) {
     });
 
     if (quizFinishMsg)   { quizFinishMsg.classList.remove("show"); quizFinishMsg.textContent = ""; }
-    if (quizRestartWrap) quizRestartWrap.style.display = "none";
+    if (quizRestartWrap) quizRestartWrap.classList.add("is-hidden");
 
     const quizSection = document.getElementById("quiz");
     if (quizSection && header) {

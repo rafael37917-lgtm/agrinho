@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Agro Forte: Produzir Preservando — projeto educativo do Agrinho 2026 sobre sustentabilidade, tecnologia no campo e o papel dos jovens no agronegócio." />
+    <meta name="description" content="Agro Forte: Produzir Preservando — Agrinho 2026. Tema: agro forte, futuro sustentável — equilíbrio entre produção e meio ambiente." />
     <title>Agro Forte: Produzir Preservando | Agrinho 2026</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -39,6 +39,19 @@
           <button type="button" data-to="simulador">Simulador</button>
           <button type="button" data-to="quiz">Quiz</button>
         </nav>
+
+        <div class="a11y-bar" role="toolbar" aria-label="Preferências de acessibilidade">
+          <div class="font-grp" role="group" aria-label="Tamanho do texto">
+            <button type="button" class="a11y-btn font-btn font-btn-active" id="fontNormal"
+              aria-pressed="true" aria-label="Fonte normal" title="Fonte normal">A</button>
+            <button type="button" class="a11y-btn font-btn" id="fontMedium"
+              aria-pressed="false" aria-label="Fonte média" title="Fonte média">A+</button>
+            <button type="button" class="a11y-btn font-btn" id="fontLarge"
+              aria-pressed="false" aria-label="Fonte grande" title="Fonte grande">A++</button>
+          </div>
+          <button type="button" class="a11y-btn dark-btn" id="darkToggle"
+            aria-pressed="false" aria-label="Ativar modo escuro" title="Modo escuro">&#127769;</button>
+        </div>
       </div>
     </header>
 
@@ -52,13 +65,12 @@
         <div class="container hero-grid">
           <div class="hero-copy reveal-up">
             <p class="pill">Agrinho 2026 | 1º Ano do Ensino Médio</p>
+            <p id="heroGreeting" class="hero-greeting" hidden aria-live="polite"></p>
             <h1>Agro forte: <span>produzir preservando</span>.</h1>
             <p>
-             <br>
-              Projeto desenvolvido para mostrar que o campo
+              <br>Projeto desenvolvido para mostrar que o campo
               pode produzir alimentos, gerar desenvolvimento e cuidar do meio ambiente
               com tecnologia, conhecimento e responsabilidade.
-			 
             </p>
 
             <div class="hero-actions">
@@ -89,6 +101,16 @@
 
             <div class="plant-wrap">
               <div class="sun-glow"></div>
+              <!-- nuvens (modo claro) -->
+              <div class="cloud cloud-a"></div>
+              <div class="cloud cloud-b"></div>
+              <!-- estrelas (modo escuro) -->
+              <div class="star star-1"></div>
+              <div class="star star-2"></div>
+              <div class="star star-3"></div>
+              <div class="star star-4"></div>
+              <div class="star star-5"></div>
+              <div class="star star-6"></div>
               <div class="drop drop-1">&#128167;</div>
               <div class="drop drop-2">&#128167;</div>
               <div class="drop drop-3">&#128167;</div>
@@ -227,36 +249,34 @@
             role="img"
             aria-label="Mapa ilustrado de uma propriedade rural sustentável com pontos interativos"
           >
-            <!-- Foto aérea da fazenda -->
-            <img class="farm-bg" src="lavoura.png" alt="Foto aérea de uma fazenda sustentável com lavoura, rio, mata ciliar, casa com energia solar e biodigestor" />
+            <img class="farm-bg" src="img/lavoura.png" alt="Foto aérea de uma fazenda sustentável com lavoura, rio, mata ciliar, casa com energia solar e biodigestor" />
 
-            <!-- Pins interativos — posições ajustadas para a foto -->
-            <button type="button" class="farm-pin fp-green" data-spot="lavoura"
-              style="left:46%;top:48%" aria-label="Lavoura Sustentável — clique para saber mais">
+            <button type="button" class="farm-pin fp-green pin-lavoura" data-spot="lavoura"
+              aria-label="Lavoura Sustentável — clique para saber mais">
               <span class="fp-icon">&#127807;</span><span class="fp-label">Lavoura</span>
             </button>
-            <button type="button" class="farm-pin fp-blue" data-spot="nascente"
-              style="left:19%;top:34%" aria-label="Nascente Preservada — clique para saber mais">
+            <button type="button" class="farm-pin fp-blue pin-nascente" data-spot="nascente"
+              aria-label="Nascente Preservada — clique para saber mais">
               <span class="fp-icon">&#128167;</span><span class="fp-label">Nascente</span>
             </button>
-            <button type="button" class="farm-pin fp-darkgreen" data-spot="mataCiliar"
-              style="left:8%;top:60%" aria-label="Mata Ciliar — clique para saber mais">
+            <button type="button" class="farm-pin fp-darkgreen pin-mata" data-spot="mataCiliar"
+              aria-label="Mata Ciliar — clique para saber mais">
               <span class="fp-icon">&#127795;</span><span class="fp-label">Mata Ciliar</span>
             </button>
-            <button type="button" class="farm-pin fp-yellow" data-spot="solar"
-              style="left:83%;top:16%" aria-label="Energia Solar — clique para saber mais">
+            <button type="button" class="farm-pin fp-yellow pin-solar" data-spot="solar"
+              aria-label="Energia Solar — clique para saber mais">
               <span class="fp-icon">&#9728;</span><span class="fp-label">Solar</span>
             </button>
-            <button type="button" class="farm-pin fp-sky" data-spot="tecnologia"
-              style="left:58%;top:32%" aria-label="Tecnologia no Campo — clique para saber mais">
+            <button type="button" class="farm-pin fp-sky pin-tecnologia" data-spot="tecnologia"
+              aria-label="Tecnologia no Campo — clique para saber mais">
               <span class="fp-icon">&#128760;</span><span class="fp-label">Tecnologia</span>
             </button>
-            <button type="button" class="farm-pin fp-teal" data-spot="biodigestor"
-              style="left:75%;top:72%" aria-label="Biodigestor — clique para saber mais">
+            <button type="button" class="farm-pin fp-teal pin-biodigestor" data-spot="biodigestor"
+              aria-label="Biodigestor — clique para saber mais">
               <span class="fp-icon">&#9851;</span><span class="fp-label">Biodigestor</span>
             </button>
-            <button type="button" class="farm-pin fp-lime" data-spot="jovem"
-              style="left:36%;top:70%" aria-label="Jovem Produtor — clique para saber mais">
+            <button type="button" class="farm-pin fp-lime pin-jovem" data-spot="jovem"
+              aria-label="Jovem Produtor — clique para saber mais">
               <span class="fp-icon">&#128104;&#127995;&#8205;&#127806;</span><span class="fp-label">Jovem</span>
             </button>
           </div>
@@ -350,10 +370,6 @@
             </button>
           </div>
 
-          <blockquote class="youth-quote reveal-up">
-            <p>"Meu avô plantava olhando o céu. Eu planto olhando o tablet. Mas o amor pela terra é o mesmo."</p>
-            <cite>— Lucas, 17 anos, jovem produtor rural do Paraná</cite>
-          </blockquote>
         </div>
       </section>
 
@@ -427,7 +443,6 @@
           <div class="quiz-list" id="quizList">
 
             <article class="quiz-card reveal-up delay-1">
-
               <h3>1) Um produtor quer aumentar a produção em 30%. Qual deve ser a primeira ação?</h3>
               <div class="answers" data-q="0">
                 <button type="button" data-correct="0">Desmatar uma área de mata nativa para ampliar a lavoura</button>
@@ -438,7 +453,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-2">
-
               <h3>2) Sua lavoura precisa de mais água, mas a nascente fica em área protegida. O que fazer?</h3>
               <div class="answers" data-q="1">
                 <button type="button" data-correct="0">Desviar a nascente para dentro da lavoura</button>
@@ -449,7 +463,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-3">
-
               <h3>3) Um vizinho oferece dinheiro para você retirar a mata ciliar da sua propriedade. Você:</h3>
               <div class="answers" data-q="2">
                 <button type="button" data-correct="0">Aceita — a mata ciliar não tem valor econômico direto</button>
@@ -460,7 +473,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-1">
-
               <h3>4) O que é rotação de culturas?</h3>
               <div class="answers" data-q="3">
                 <button type="button" data-correct="0">Usar o mesmo tipo de planta em todas as safras</button>
@@ -471,7 +483,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-2">
-
               <h3>5) Você tem resíduos orgânicos da criação de animais. Qual é a melhor solução?</h3>
               <div class="answers" data-q="4">
                 <button type="button" data-correct="0">Lançar os resíduos diretamente no rio próximo</button>
@@ -482,7 +493,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-3">
-
               <h3>6) O que são matas ciliares?</h3>
               <div class="answers" data-q="5">
                 <button type="button" data-correct="0">Plantações de árvores frutíferas para o comércio</button>
@@ -493,7 +503,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-1">
-
               <h3>7) Sua lavoura foi atacada por pragas. Qual a abordagem mais sustentável?</h3>
               <div class="answers" data-q="6">
                 <button type="button" data-correct="0">Pulverizar toda a propriedade com defensivos preventivamente</button>
@@ -504,7 +513,6 @@
             </article>
 
             <article class="quiz-card reveal-up delay-2">
-
               <h3>8) Qual é a relação entre campo e cidade?</h3>
               <div class="answers" data-q="7">
                 <button type="button" data-correct="0">O campo depende da cidade, mas a cidade não precisa do campo</button>
@@ -518,11 +526,11 @@
 
           <div class="score reveal-scale" id="scoreBox" aria-live="polite">Sua pontuação: 0/8</div>
           <p id="quizFinishMsg" class="quiz-finish-msg" aria-live="polite"></p>
-          <div class="quiz-restart-wrap" id="quizRestartWrap" style="display:none;">
+          <div class="quiz-restart-wrap is-hidden" id="quizRestartWrap">
             <button type="button" class="btn btn-primary" id="quizRestart">&#128260; Refazer o quiz</button>
           </div>
 
-          <p style="margin-top:32px;">
+          <p class="quiz-closing-note">
             O projeto "Agro Forte: Produzir Preservando" mostra que o agronegócio pode
             ser moderno, produtivo e sustentável. Por meio da tecnologia, do cuidado com
             o solo, da preservação da água e da participação dos jovens, é possível
@@ -555,6 +563,20 @@
       </div>
     </footer>
 
+    <!-- ── BOAS-VINDAS ─────────────────────────────────────────────────────── -->
+    <div id="welcomeModal" class="welcome-modal" aria-hidden="true">
+      <div class="welcome-backdrop" data-close-welcome></div>
+      <div class="welcome-dialog" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+        <p class="welcome-kicker">Agro Forte</p>
+        <h2 id="welcomeTitle">Bem-vindo(a) ao projeto!</h2>
+        <p class="welcome-text">Digite seu nome para personalizar a experiência.</p>
+        <label class="welcome-label" for="nameInput">Seu nome</label>
+        <input type="text" id="nameInput" class="name-input" maxlength="40"
+          placeholder="Ex.: Maria" autocomplete="name" />
+        <button type="button" class="btn btn-primary" id="nameSubmit">Começar</button>
+      </div>
+    </div>
+
     <!-- ── MODAL ───────────────────────────────────────────────────────────── -->
     <div id="topicModal" class="topic-modal" aria-hidden="true">
       <div class="topic-modal-backdrop" data-close-modal></div>
@@ -567,6 +589,9 @@
         <p id="topicModalText"></p>
       </div>
     </div>
+
+    <!-- overlay da gaveta mobile -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <script src="./script.js"></script>
   </body>
