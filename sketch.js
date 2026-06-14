@@ -22,6 +22,7 @@ let gamePhase = 'planting'; // planting | raining | truck_in | harvest | truck_o
 let phaseStartMs = 0;
 let truckX = 0;
 let harvestedCount = 0;
+let harvestHintDismissed = false;
 
 const MAX_PLANTS = 10;
 const SOIL_RATIO = 0.36;
@@ -77,6 +78,7 @@ function resetGame(restartIntro) {
   harvestSparks = [];
   grainFlights = [];
   harvestedCount = 0;
+  harvestHintDismissed = false;
   gamePhase = 'planting';
   phaseStartMs = millis();
   truckX = width + 90;
@@ -103,6 +105,7 @@ function queueResize() {
 }
 
 function setPhase(next) {
+  if (next === 'harvest') harvestHintDismissed = false;
   gamePhase = next;
   phaseStartMs = millis();
 }
@@ -222,16 +225,24 @@ function updateGame() {
 function mousePressed() {
   if (!mouseInsideCanvas()) return;
   dismissIntro();
-  if (gamePhase === 'planting') tryPlantSeed(mouseX, mouseY);
-  else if (gamePhase === 'harvest') tryHarvestClick(mouseX, mouseY);
+  handleSketchTap(mouseX, mouseY);
 }
 
 function touchStarted() {
-  if (!mouseInsideCanvas()) return;
+  if (!mouseInsideCanvas()) return false;
   dismissIntro();
-  if (gamePhase === 'planting') tryPlantSeed(touchX(), touchY());
-  else if (gamePhase === 'harvest') tryHarvestClick(touchX(), touchY());
+  handleSketchTap(touchX(), touchY());
   return false;
+}
+
+function touchEnded() {
+  if (touches.length > 0 || !mouseInsideCanvas()) return;
+  if (gamePhase === 'harvest') handleSketchTap(mouseX, mouseY);
+}
+
+function handleSketchTap(x, y) {
+  if (gamePhase === 'planting') tryPlantSeed(x, y);
+  else if (gamePhase === 'harvest') tryHarvestClick(x, y);
 }
 
 function touchX() {
@@ -447,24 +458,25 @@ function drawIntroCard() {
 }
 
 function drawHarvestHint() {
+  if (harvestHintDismissed) return;
+
   const compact = isCompactCanvas();
-  const msg = compact
-    ? (width < 400 ? 'Toque nas plantas p/ colher' : 'Toque nas plantas para colher')
-    : 'Clique nas plantas para colher';
+  const msg = compact ? 'Toque nas plantas' : 'Clique nas plantas para colher';
+  const sizePx = compact ? 9 : 10;
+  const labelH = Math.round(28 * hudScale());
 
   let cx;
   let cy;
   if (compact) {
     cx = width * 0.5;
-    const top = soilTopY() + 14;
-    cy = top + (height - top) * 0.32;
+    cy = max(labelH * 0.6, soilTopY() - labelH * 0.9);
   } else {
     const bounds = truckBounds();
     cx = (bounds.left + bounds.right) * 0.5;
     cy = bounds.top - 10 * truckScale();
   }
 
-  drawSpeechCard(cx, cy, msg, 10, 1);
+  drawSpeechCard(cx, cy, msg, sizePx, 1);
 }
 
 function drawSpeechCard(cx, cy, text, sizePx, alpha) {
@@ -565,7 +577,8 @@ function plantTopY(plant) {
 }
 
 function plantHitRadius(plant) {
-  return plantSize(plant) * 0.62;
+  const base = plantSize(plant) * 0.62;
+  return isCompactCanvas() ? max(base, 32 * hudScale()) : base;
 }
 
 /** Valida solo, distância entre sementes e zona do caminhão antes de plantar. */
@@ -605,6 +618,7 @@ function tryHarvestClick(x, y) {
     spawnGrainFlight(plant.x, py);
     plants.splice(i, 1);
     harvestedCount++;
+    harvestHintDismissed = true;
     return true;
   }
   return false;
