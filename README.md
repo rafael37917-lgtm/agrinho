@@ -1,5 +1,5 @@
 # Agro Forte: Produzir Preservando
-**Concurso Agrinho 2026 — Subcategoria 3: Programação Front-End**
+**Concurso Agrinho 2026 | Subcategoria 3: Programação Front-End**
 Série: 1º Ano do Ensino Médio | Rede Estadual de Ensino do Paraná
 
 ---
@@ -17,14 +17,14 @@ Este site demonstra que o campo brasileiro pode **produzir mais e melhor sem des
 
 Site educacional interativo com 8 seções:
 
-- **O Desafio** — por que produzir e preservar ao mesmo tempo é urgente e possível
-- **Boas Práticas** — plantio direto, irrigação inteligente, energia solar e preservação da biodiversidade
-- **Tecnologia** — drones, sensores IoT, GPS de precisão e análise de dados no campo
-- **Mapa Interativo** — propriedade rural sustentável com 7 pontos clicáveis (Lavoura, Nascente, Mata Ciliar, Solar, Tecnologia, Biodigestor, Jovem Produtor)
-- **Números** — dados reais do agronegócio brasileiro com animação de contadores
-- **Juventude** — o papel dos jovens na transformação do campo com cards detalhados
-- **Simulador** — usuário escolhe práticas sustentáveis e vê o índice de sustentabilidade em tempo real
-- **Quiz** — 8 perguntas sobre agro e meio ambiente com pontuação e feedback imediato
+- **O Desafio**: por que produzir e preservar ao mesmo tempo é urgente e possível
+- **Boas Práticas**: plantio direto, irrigação inteligente, energia solar e preservação da biodiversidade
+- **Tecnologia**: drones, sensores IoT, GPS de precisão e análise de dados no campo
+- **Mapa Interativo**: propriedade rural sustentável com 7 pontos clicáveis (Lavoura, Nascente, Mata Ciliar, Solar, Tecnologia, Biodigestor, Jovem Produtor)
+- **Números**: dados reais do agronegócio brasileiro com animação de contadores
+- **Juventude**: o papel dos jovens na transformação do campo com cards detalhados
+- **Simulador**: usuário escolhe práticas sustentáveis e vê o índice de sustentabilidade em tempo real
+- **Quiz**: 8 perguntas sobre agro e meio ambiente com pontuação e feedback imediato
 
 ---
 
@@ -62,7 +62,8 @@ Site educacional interativo com 8 seções:
 | `setMenuState` | Menu lateral (gaveta) no mobile |
 | `openModal`, `closeModal`, `getFocusable` | Modal unificado do mapa e dos cards de juventude (foco e tecla Esc) |
 | `topicContent`, `farmSpots` | Objetos com textos dos pins do mapa e dos cards de juventude |
-| `animateGauge`, `updateSimulator`, `getSimMsgData` | Simulador de sustentabilidade com gauge animado |
+| `syncMapPins`, `updateSimulator` | Simulador ligado ao mapa interativo |
+| `updateCertEligibility`, `openCertModal` | Certificado após mais de 80% no quiz |
 | `updateScore`, `checkQuizComplete` | Quiz com pontuação, feedback por pergunta e mensagem final |
 
 ---
@@ -75,8 +76,9 @@ Site educacional interativo com 8 seções:
 4. No **Mapa Interativo**: clique nos pontos coloridos para abrir detalhes de cada área da fazenda
 5. No **Simulador**: marque as práticas sustentáveis desejadas e observe o índice crescer em tempo real
 6. No **Quiz**: responda as 8 perguntas e veja sua pontuação final com opção de refazer
-7. Use o botão **🌙** no menu para ativar o modo escuro (preferência salva automaticamente)
-8. Use os botões **A / A+ / A++** para ajustar o tamanho da fonte (preferência salva automaticamente)
+7. Com **mais de 80% no quiz**, abra o certificado de Agente do Agro Sustentável
+8. Use o botão **🌙** no menu para ativar o modo escuro (preferência salva automaticamente)
+9. Use os botões **A / A+ / A++** para ajustar o tamanho da fonte (preferência salva automaticamente)
 
 ---
 
@@ -105,11 +107,11 @@ agrinho/
 
 ## 📚 Fontes de Dados
 
-- **EMBRAPA** — Empresa Brasileira de Pesquisa Agropecuária (dados sobre irrigação, solo e biodiversidade)
-- **IBGE** — Censo Agropecuário 2017 (número de propriedades rurais)
-- **CNA** — Confederação da Agricultura e Pecuária do Brasil (participação no PIB e empregos)
+- **EMBRAPA**: Empresa Brasileira de Pesquisa Agropecuária (dados sobre irrigação, solo e biodiversidade)
+- **IBGE**: Censo Agropecuário 2017 (número de propriedades rurais)
+- **CNA**: Confederação da Agricultura e Pecuária do Brasil (participação no PIB e empregos)
 - **Ministério da Agricultura, Pecuária e Abastecimento** (dados gerais do setor)
-- **Absolar** — Associação Brasileira de Energia Solar Fotovoltaica (dados sobre energia solar no campo)
+- **Absolar**: Associação Brasileira de Energia Solar Fotovoltaica (dados sobre energia solar no campo)
 
 ---
 
@@ -125,7 +127,7 @@ O arquivo `img/favicon.svg` foi criado manualmente em código SVG (emoji de trig
 
 ## Autoria
 
-**Autor:** Weslley Rafael Padilha Branco — 1º Ano do Ensino Médio, Rede Estadual de Ensino do Paraná 
+**Autor:** Weslley Rafael Padilha Branco: 1º Ano do Ensino Médio, Rede Estadual de Ensino do Paraná 
  (Colégio Estadual São Vicente de Paulo - Turma 1º B)
 
 - **Textos, estrutura do site, quiz, simulador e código HTML/CSS/JS:** produzidos pelo autor do projeto.
@@ -138,11 +140,11 @@ O arquivo `img/favicon.svg` foi criado manualmente em código SVG (emoji de trig
 
 Antes de enviar o link na Alura, confira no repositório:
 
-1. **Repositório público** — visível para todos
-2. **Topic `agrinho`** — About → ⚙️ → Topics → adicionar `agrinho`
-3. **GitHub Pages** — Settings → Pages → branch `main`, pasta `/ (root)`
-4. **Website no About** — `https://rafael37917-lgtm.github.io/agrinho`
-5. **Descrição do About** — frase sobre o tema Agrinho 2026
+1. **Repositório público**: visível para todos
+2. **Topic `agrinho`**: About → ⚙️ → Topics → adicionar `agrinho`
+3. **GitHub Pages**: Settings → Pages → branch `main`, pasta `/ (root)`
+4. **Website no About**: `https://rafael37917-lgtm.github.io/agrinho`
+5. **Descrição do About**: frase sobre o tema Agrinho 2026
 ---
 
-*Projeto desenvolvido para o Concurso Agrinho 2026 — SENAR-PR / SEED-PR*
+*Projeto desenvolvido para o Concurso Agrinho 2026: SENAR-PR / SEED-PR*

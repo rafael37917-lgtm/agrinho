@@ -325,7 +325,7 @@ const farmSpots = {
   biodigestor: {
     kicker: "Mapa da Propriedade",
     title: "♻️ Biodigestor",
-    text: "O biodigestor transforma resíduos orgânicos (esterco animal e restos da lavoura) em biogás — usado como combustível — e biofertilizante — usado na plantação. Isso reduz o desperdício, gera energia e enriquece o solo.",
+    text: "O biodigestor transforma resíduos orgânicos (esterco animal e restos da lavoura) em biogás para combustível e biofertilizante para a plantação. Isso reduz o desperdício, gera energia e enriquece o solo.",
   },
   jovem: {
     kicker: "Mapa da Propriedade",
@@ -378,21 +378,16 @@ function syncMapPins() {
 function updateCertEligibility() {
   if (!certOffer) return;
   const quizDone = Object.keys(answered).length >= totalQuestions;
-  const quizPerfect = quizDone && score === totalQuestions;
-  const simReady = simCurrentPct >= 80;
-  certOffer.classList.toggle("is-hidden", !(quizPerfect || simReady));
+  const quizAbove80 = quizDone && totalQuestions > 0 && score / totalQuestions > 0.8;
+  certOffer.classList.toggle("is-hidden", !quizAbove80);
 }
 
 function openCertModal() {
   if (!certModal) return;
   const name = localStorage.getItem("agrinho-user-name") || "Visitante";
-  const parts = [];
-  if (simCurrentPct >= 80) parts.push(`Simulador: ${simCurrentPct}% de sustentabilidade`);
-  if (Object.keys(answered).length >= totalQuestions && score === totalQuestions) {
-    parts.push(`Quiz: ${score}/${totalQuestions} acertos`);
-  }
+  const pct = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
   if (certName) certName.textContent = name;
-  if (certDetail) certDetail.textContent = parts.join(" · ") || "Participação no projeto Agro Forte";
+  if (certDetail) certDetail.textContent = `${score}/${totalQuestions} acertos no quiz (${pct}%)`;
   certModal.classList.add("is-open");
   certModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -435,7 +430,6 @@ function animateGauge(target) {
         simMsg.style.color = data.color;
       }
       if (simGauge) simGauge.style.setProperty("--sim-color", data.color);
-      updateCertEligibility();
     }
   }
 
