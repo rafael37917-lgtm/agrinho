@@ -38,6 +38,35 @@ Site educacional interativo com 8 seções:
 
 ---
 
+## ⚙️ Detalhes da Implementação
+
+### HTML (`index.html`)
+- Página única com `<header>`, `<main>`, `<footer>`, `<nav>` e 8 `<section>` temáticas
+- Marcação semântica com `<article>`, `<blockquote>`, `<label>`, `<button>` e atributos `aria-*` para acessibilidade
+- CSS e JavaScript vinculados apenas por arquivos externos (`style.css` e `script.js`)
+
+### CSS (`style.css`)
+- Layout com **Flexbox** (menu, cards, hero) e **Grid** (seções, juventude, números)
+- **9 media queries** para responsividade (desktop, tablet e celular)
+- Modo escuro via classe `.dark` no `<html>`
+- Escala de fonte acessível com variável CSS `--font-scale`
+- Animações com `@keyframes` (hero, contadores, modais, gauge do simulador)
+
+### JavaScript (`script.js`)
+
+| Função / recurso | Função no projeto |
+|---|---|
+| `showGreeting`, `openWelcome`, `closeWelcome`, `handleNameSubmit` | Modal de boas-vindas e saudação personalizada com `localStorage` |
+| `applyFontScale`, `setDarkMode` | Barra de acessibilidade (fonte A/A+/A++ e modo escuro) |
+| `animateCounter` + `IntersectionObserver` | Contadores animados na seção “O agro em números” |
+| `setMenuState` | Menu lateral (gaveta) no mobile |
+| `openModal`, `closeModal`, `getFocusable` | Modal unificado do mapa e dos cards de juventude (foco e tecla Esc) |
+| `topicContent`, `farmSpots` | Objetos com textos dos pins do mapa e dos cards de juventude |
+| `animateGauge`, `updateSimulator`, `getSimMsgData` | Simulador de sustentabilidade com gauge animado |
+| `updateScore`, `checkQuizComplete` | Quiz com pontuação, feedback por pergunta e mensagem final |
+
+---
+
 ## 🚀 Como usar o site
 
 1. Acesse o site pelo link do GitHub Pages (campo "About" do repositório)
@@ -96,7 +125,9 @@ O arquivo `img/favicon.svg` foi criado manualmente em código SVG (emoji de trig
 
 ## Autoria
 
-- **Textos, estrutura do site, quiz, simulador e código HTML/CSS/JS:** produzidos pelos autores do projeto escolar, sem uso de IA generativa para redação ou programação.
+**Autor:** Weslley Rafael Padilha — 1º Ano do Ensino Médio, Rede Estadual de Ensino do Paraná
+
+- **Textos, estrutura do site, quiz, simulador e código HTML/CSS/JS:** produzidos pelo autor do projeto, sem uso de IA generativa para redação ou programação.
 - **Imagem `img/lavoura.png`:** gerada com ChatGPT (prompt documentado acima).
 - **Emojis:** Unicode nativo do navegador.
 
