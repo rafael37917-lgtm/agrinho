@@ -23,6 +23,7 @@ function setup() {
   reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = createCanvas(container.offsetWidth, 220);
   canvas.parent('agroSketch');
+  colorMode(HSB, 360, 100, 100, 100);
   noStroke();
 }
 
@@ -153,9 +154,9 @@ function drawPlant(x, y, size, hue) {
 }
 
 function drawHud() {
-  fill(0, 0, 100, 82);
+  fill(0, 0, 0, 70);
   rect(10, 10, 132, 28, 10);
-  fill(isDarkMode() ? 145 : 125, 55, 98);
+  fill(isDarkMode() ? 145 : 125, 25, 98);
   textSize(12);
   textAlign(LEFT, CENTER);
   text(`Plantas: ${plants.length}/${MAX_PLANTS}`, 18, 24);

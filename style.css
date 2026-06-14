@@ -325,33 +325,9 @@ p { margin: 0; line-height: 1.65; }
   height: 220px !important;
 }
 
-.sketch-hint {
-  margin: 8px 0 0;
-  font-size: 11px;
-  font-weight: 700;
-  text-align: center;
-  color: #64748b;
-}
-
-.sketch-hint kbd {
-  display: inline-block;
-  padding: 1px 6px;
-  border-radius: 6px;
-  background: #ecfdf5;
-  border: 1px solid #86efac;
-  font-size: 10px;
-}
-
 html.dark .agro-sketch {
   border-color: #065f46;
   background: #0f172a;
-}
-
-html.dark .sketch-hint { color: #94a3b8; }
-html.dark .sketch-hint kbd {
-  background: #064e3b;
-  border-color: #059669;
-  color: #d1fae5;
 }
 
 .soil {
@@ -1107,24 +1083,33 @@ html.dark .sketch-hint kbd {
 
 body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
-/* ── Card de encerramento (seção jogo) ─────────────────────────────────────── */
-  margin-top: 8px;
-  padding: 28px 24px;
+/* ── Card do jogo (seção jogo) ─────────────────────────────────────────────── */
+.game-launch-card {
+  margin: 8px auto 0;
+  padding: 32px 36px;
+  max-width: 960px;
   border-radius: 24px;
   text-align: center;
   background: linear-gradient(180deg, #ecfdf5, #f0fdf4);
   border: 2px solid #86efac;
   box-shadow: 0 16px 40px #10b9811a;
+  display: grid;
+  grid-template-columns: minmax(280px, 1.15fr) minmax(240px, 0.85fr);
+  grid-template-rows: auto auto;
+  gap: 18px 44px;
+  align-items: center;
 }
 
 .game-launch-visual {
+  grid-column: 1;
+  grid-row: 1 / span 2;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-items: center;
   gap: 12px 16px;
-  max-width: 720px;
-  margin: 0 auto 20px;
+  margin: 0;
+  max-width: none;
 }
 
 .game-launch-img {
@@ -1144,13 +1129,16 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 }
 
 .game-launch-steps {
+  grid-column: 2;
+  grid-row: 1;
   list-style: none;
-  margin: 0 auto 22px;
+  margin: 0;
   padding: 0;
-  max-width: 420px;
+  max-width: none;
   display: grid;
   gap: 10px;
   text-align: left;
+  align-self: end;
 }
 
 .game-launch-steps li {
@@ -1174,10 +1162,15 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 }
 
 .game-launch-btn {
+  grid-column: 2;
+  grid-row: 2;
   display: inline-flex;
-  min-width: min(320px, 100%);
+  width: 100%;
+  min-width: 0;
   justify-content: center;
+  justify-self: stretch;
   text-decoration: none;
+  align-self: start;
 }
 
 .game-launch-note {
@@ -1557,10 +1550,34 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .sim-percent { font-size: 28px; }
   .sim-result { min-width: unset; }
 
+  .game-launch-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
   .game-launch-visual {
+    grid-column: 1;
+    grid-row: auto;
     grid-template-columns: 1fr;
     gap: 10px;
     max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .game-launch-steps {
+    grid-column: 1;
+    grid-row: auto;
+    align-self: stretch;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .game-launch-btn {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: stretch;
+    width: 100%;
   }
 
   .game-launch-img {
