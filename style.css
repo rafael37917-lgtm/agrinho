@@ -1317,6 +1317,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .menu-toggle {
     display: inline-flex;
     flex-shrink: 0;
+    order: -1;
   }
   .brand {
     position: static;
@@ -1324,6 +1325,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
     gap: 6px;
     flex-shrink: 1;
     min-width: 0;
+    order: 0;
   }
   .brand-icon { width: 34px; height: 34px; font-size: 17px; }
   .brand strong { font-size: 14px; white-space: nowrap; }
