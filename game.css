@@ -514,12 +514,10 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 }
 
 
-/* v7 visual improvements */
+/* v7 visual improvements — desktop */
+@media (min-width: 1025px){
 .hero-grid{grid-template-columns:1fr 1.08fr;gap:18px}
-.hero-stage{position:relative;overflow:hidden;background:url('./img/game/home_bg.png') center/cover no-repeat;min-height:100%}
-.hero-soft-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 30%,rgba(255,255,255,0) 55%,rgba(20,60,25,.10) 100%)}
-.cloud{display:none !important}
-.hero-char{z-index:3}
+.hero-stage{min-height:100%}
 .hero-char.agrinho{left:6%;height:min(58%,430px);bottom:6%}
 .hero-char.florinha{right:3%;height:min(60%,440px);bottom:6%}
 .hero-char.arvore{left:34%;height:min(48%,335px);bottom:2%;z-index:2}
@@ -528,9 +526,13 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 .speech{z-index:6;background:rgba(255,255,255,.96);box-shadow:0 12px 26px rgba(26,74,31,.15)}
 .bubble-left{left:7%;top:8%}
 .bubble-right{right:5%;top:8%}
+}
+.hero-soft-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 30%,rgba(255,255,255,0) 55%,rgba(20,60,25,.10) 100%)}
+.cloud{display:none !important}
+.hero-char{z-index:3}
+.hero-stage{position:relative;overflow:hidden;background:url('./img/game/home_bg.png') center/cover no-repeat}
 
 .story-panel{padding:20px 24px;gap:14px;overflow:hidden}
-.story-top h2{font-size:clamp(40px,4vw,64px);margin-top:6px}
 .story-scene{border-radius:28px;overflow:hidden;min-height:0;background:#e8f8ff}
 .story-bg{position:absolute;inset:0;background-size:cover;background-position:center center}
 .story-bg:before,.story-bg:after{display:none}
@@ -570,7 +572,6 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 
 .compare-panel{padding:18px 20px 14px;gap:10px;overflow:hidden}
 .compare-head{align-items:flex-end}
-.compare-head h2{font-size:clamp(42px,4vw,68px);line-height:1;margin-bottom:6px}
 .compare-head p{
   max-width:470px;font-size:15px;line-height:1.45;font-weight:800;color:var(--green-dark);
   margin:0;padding:14px 18px;border-radius:18px;
@@ -581,11 +582,16 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 .visual-compare img{max-height:calc(100vh - 320px)}
 .compare-actions{padding-top:0}
 
-.problem-dialog{max-height:88vh;overflow:hidden;padding:20px 22px;position:relative}
-.dialog-layout{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+.problem-dialog{max-height:88vh;padding:20px 22px;position:relative}
+@media (min-width: 1025px){
+.problem-dialog{overflow:hidden}
+.dialog-layout{grid-template-columns:260px 1fr;gap:16px;align-items:start}
 .dialog-visual{height:220px;padding:10px}
-.dialog-content .eyebrow{margin-bottom:8px}
 .dialog-content h2{font-size:clamp(28px,3vw,44px);line-height:1.05;margin-bottom:10px}
+.compare-head h2{font-size:clamp(42px,4vw,68px);line-height:1;margin-bottom:6px}
+.story-top h2{font-size:clamp(40px,4vw,64px);margin-top:6px}
+}
+.dialog-layout{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
 .dialog-content p{font-size:15px;line-height:1.4;margin-bottom:12px}
 .answer-list.compact{gap:10px}
 .answer-list.compact .answer-btn{padding:12px 14px;font-size:14px}
@@ -768,6 +774,39 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
     display:grid;
     place-items:center;
   }
+
+  .hero-grid{
+    grid-template-columns:1fr !important;
+    height:auto !important;
+    gap:12px;
+  }
+  .hero-stage{
+    min-height:min(36dvh,300px) !important;
+    aspect-ratio:16/10;
+  }
+  .hero-copy h1{
+    font-size:clamp(26px,7vw,38px) !important;
+    line-height:1.05;
+  }
+  .hero-copy p{font-size:15px}
+  .hero-cast-row{gap:8px}
+  .cast-card{width:62px}
+  .cast-card img{width:54px;height:54px}
+  .cast-card span{font-size:9px}
+  .hero-char.agrinho{height:46% !important;left:2% !important;bottom:4% !important}
+  .hero-char.florinha{height:48% !important;right:1% !important;bottom:4% !important}
+  .hero-char.arvore{height:36% !important;left:32% !important;bottom:2% !important}
+  .hero-char.gota{height:24% !important;right:28% !important;bottom:6% !important}
+  .hero-char.abelha{width:72px !important;left:44% !important;top:10% !important;bottom:auto !important}
+  .speech{
+    display:block !important;
+    max-width:42% !important;
+    font-size:11px !important;
+    padding:8px 10px !important;
+  }
+  .bubble-left{left:3% !important;top:6% !important}
+  .bubble-right{right:3% !important;top:6% !important}
+  #home.screen.active{display:block}
 }
 @keyframes storyColorize{
   from{filter:grayscale(1)}
