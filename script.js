@@ -47,7 +47,15 @@ function closeWelcome() {
   if (!welcomeModal) return;
   welcomeModal.classList.remove("is-open");
   welcomeModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
+  syncModalLock();
+}
+
+function syncModalLock() {
+  const welcomeOpen = document.getElementById("welcomeModal")?.classList.contains("is-open");
+  const topicOpen = document.getElementById("topicModal")?.classList.contains("is-open");
+  if (!welcomeOpen && !topicOpen) {
+    document.body.classList.remove("modal-open");
+  }
 }
 
 function handleNameSubmit() {
@@ -90,6 +98,7 @@ function setDarkMode(on) {
 
 nameSubmit?.addEventListener("click", handleNameSubmit);
 nameSkip?.addEventListener("click", handleNameSkip);
+document.querySelector(".welcome-backdrop")?.addEventListener("click", handleNameSkip);
 nameInput?.addEventListener("keydown", (e) => {
   if (e.key === "Enter") handleNameSubmit();
 });
@@ -253,7 +262,7 @@ function closeModal() {
   closeTimer = setTimeout(() => {
     topicModal.classList.remove("is-closing");
     topicModal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
+    syncModalLock();
     lastFocused?.focus({ preventScroll: true });
     modalClosing = false;
     closeTimer = null;
@@ -428,3 +437,4 @@ function updateSimulator() {
 
 simCbs.forEach((cb) => cb.addEventListener("change", updateSimulator));
 syncMapPins();
+syncModalLock();

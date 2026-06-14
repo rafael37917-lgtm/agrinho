@@ -22,7 +22,10 @@ let gamePhase = 'planting'; // planting | raining | truck_in | harvest | truck_o
 let phaseStartMs = 0;
 let truckX = 0;
 let harvestedCount = 0;
-let harvestHintDismissed = false;
+let lastCanvasW = 0;
+let lastCanvasH = 0;
+let touchStartY = 0;
+let touchStartX = 0;
 
 const MAX_PLANTS = 10;
 const SOIL_RATIO = 0.36;
@@ -51,10 +54,12 @@ function setup() {
   const { w, h } = canvasSize();
   const canvas = createCanvas(w, h);
   canvas.parent('agroSketch');
+  canvas.elt.style.touchAction = 'manipulation';
   colorMode(HSB, 360, 100, 100, 100);
   noStroke();
   resetGame(true);
   bindSketchResize(container);
+  bindSketchVisibility(container);
   queueResize();
 }
 
@@ -92,7 +97,19 @@ function bindSketchResize(container) {
   if (typeof ResizeObserver === 'undefined') return;
   sketchObserver = new ResizeObserver(() => queueResize());
   sketchObserver.observe(container);
-  if (container.parentElement) sketchObserver.observe(container.parentElement);
+}
+
+function bindSketchVisibility(container) {
+  if (typeof IntersectionObserver === 'undefined') return;
+  const visObs = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.some((e) => e.isIntersecting);
+      if (visible) loop();
+      else noLoop();
+    },
+    { threshold: 0.08 }
+  );
+  visObs.observe(container);
 }
 
 function queueResize() {
@@ -100,7 +117,11 @@ function queueResize() {
     const container = document.getElementById('agroSketch');
     if (!container) return;
     const { w, h } = canvasSize();
-    if (w > 0 && h > 0) resizeCanvas(w, h);
+    if (w <= 0 || h <= 0) return;
+    if (w === lastCanvasW && h === lastCanvasH) return;
+    lastCanvasW = w;
+    lastCanvasH = h;
+    resizeCanvas(w, h);
   });
 }
 
@@ -229,15 +250,16 @@ function mousePressed() {
 }
 
 function touchStarted() {
-  if (!mouseInsideCanvas()) return false;
+  if (!mouseInsideCanvas()) return;
+  touchStartX = touchX();
+  touchStartY = touchY();
   dismissIntro();
-  handleSketchTap(touchX(), touchY());
-  return false;
 }
 
 function touchEnded() {
-  if (touches.length > 0 || !mouseInsideCanvas()) return;
-  if (gamePhase === 'harvest') handleSketchTap(mouseX, mouseY);
+  if (!mouseInsideCanvas()) return;
+  if (abs(touchX() - touchStartX) > 12 || abs(touchY() - touchStartY) > 12) return;
+  handleSketchTap(touchX(), touchY());
 }
 
 function handleSketchTap(x, y) {

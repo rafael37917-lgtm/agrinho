@@ -53,6 +53,8 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: clip;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
   background: var(--bg);
   color: var(--text);
   font-family: "Segoe UI", Arial, sans-serif;
@@ -313,6 +315,7 @@ p { margin: 0; line-height: 1.65; }
   overflow: hidden;
   background: #87ceeb;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .agro-sketch canvas {
@@ -1076,7 +1079,7 @@ html.dark .agro-sketch {
 
 .topic-modal-close:hover { transform: rotate(90deg) scale(1.08); background: #bbf7d0; }
 
-body.modal-open { overflow: hidden; overscroll-behavior: contain; }
+body.modal-open { overflow: hidden; overscroll-behavior: contain; touch-action: none; }
 
 /* ── Card do jogo (seção jogo) ─────────────────────────────────────────────── */
 .game-launch-card {
