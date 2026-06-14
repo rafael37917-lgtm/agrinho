@@ -88,7 +88,7 @@ agrinho/
 
 A imagem `img/lavoura.png` foi gerada com **ChatGPT (DALL-E)** usando o seguinte prompt:
 
-> *"Vista aérea de uma fazenda brasileira sustentável com lavouras verdes, um rio com mata ciliar nativa nas margens, painéis solares no telhado da casa rural, biodigestor e vegetação diversificada. Estilo fotorrealista, durante o dia, iluminação natural, cores verdes e vibrantes."*
+> *"Vista de cima de uma fazenda sustentável com lavouras verdes, um rio com mata ciliar nativa nas margens, painéis solares no telhado da casa rural, biodigestor e vegetação diversificada. Estilo fotorrealista, durante o dia, iluminação natural, cores verdes e vibrantes."*
 
 O arquivo `img/favicon.svg` foi criado manualmente em código SVG (emoji de trigo 🌾 sobre fundo verde).
 
