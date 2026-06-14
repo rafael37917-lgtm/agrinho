@@ -37,7 +37,7 @@
           <button type="button" data-to="mapa">Mapa</button>
           <button type="button" data-to="jovens">Juventude</button>
           <button type="button" data-to="simulador">Simulador</button>
-          <button type="button" data-to="quiz">Quiz</button>
+          <button type="button" data-to="jogo">Jogo</button>
         </nav>
 
         <div class="a11y-bar" role="toolbar" aria-label="Preferências de acessibilidade">
@@ -55,7 +55,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="conteudo" tabindex="-1">
 
       <!-- ── INÍCIO ──────────────────────────────────────────────────────── -->
       <section id="inicio" class="hero">
@@ -75,7 +75,7 @@
 
             <div class="hero-actions">
               <button type="button" class="btn btn-primary" data-to="desafio">Conhecer o projeto</button>
-              <button type="button" class="btn btn-secondary" data-to="quiz">Responder ao quiz</button>
+              <button type="button" class="btn btn-secondary" data-to="jogo">Jogar missão</button>
             </div>
 
             <div class="avatar-row">
@@ -431,124 +431,38 @@
         </div>
       </section>
 
-      <!-- ── QUIZ ────────────────────────────────────────────────────────── -->
-      <section id="quiz" class="section">
+      <!-- ── JOGO EDUCATIVO (página separada) ─────────────────────────────── -->
+      <section id="jogo" class="section light">
         <div class="container">
           <div class="section-head reveal-up">
-            <p class="section-label">Teste seus conhecimentos</p>
-            <h2>Quiz sobre agro e sustentabilidade</h2>
-            <p>Responda às 8 perguntas e veja como atitudes conscientes ajudam o campo e o meio ambiente.</p>
+            <p class="section-label">Jogo educativo</p>
+            <h2>Salve a Fazendinha do Agrinho</h2>
+            <p>Embarque com a turma do Agrinho: leia a historinha, responda o quiz e ajude a recuperar uma fazenda degradada com práticas de agro sustentável.</p>
           </div>
 
-          <div class="quiz-list" id="quizList">
-
-            <article class="quiz-card reveal-up delay-1">
-              <h3>1) Um produtor quer aumentar a produção em 30%. Qual deve ser a primeira ação?</h3>
-              <div class="answers" data-q="0">
-                <button type="button" data-correct="0">Desmatar uma área de mata nativa para ampliar a lavoura</button>
-                <button type="button" data-correct="1">Aplicar tecnologia de precisão e melhorar a gestão da área já cultivada</button>
-                <button type="button" data-correct="0">Usar mais agrotóxicos para garantir a colheita</button>
-              </div>
-              <p class="feedback" id="fb-0" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-2">
-              <h3>2) Sua lavoura precisa de mais água, mas a nascente fica em área protegida. O que fazer?</h3>
-              <div class="answers" data-q="1">
-                <button type="button" data-correct="0">Desviar a nascente para dentro da lavoura</button>
-                <button type="button" data-correct="1">Investir em cisternas e captar água da chuva para irrigação</button>
-                <button type="button" data-correct="0">Perfurar poços sem autorização ambiental</button>
-              </div>
-              <p class="feedback" id="fb-1" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-3">
-              <h3>3) Um vizinho oferece dinheiro para você retirar a mata ciliar da sua propriedade. Você:</h3>
-              <div class="answers" data-q="2">
-                <button type="button" data-correct="0">Aceita. A mata ciliar não tem valor econômico direto</button>
-                <button type="button" data-correct="0">Vende metade. Um pouco não vai fazer diferença</button>
-                <button type="button" data-correct="1">Recusa. A mata ciliar é obrigatória por lei e protege rios e nascentes</button>
-              </div>
-              <p class="feedback" id="fb-2" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-1">
-              <h3>4) O que é rotação de culturas?</h3>
-              <div class="answers" data-q="3">
-                <button type="button" data-correct="0">Usar o mesmo tipo de planta em todas as safras</button>
-                <button type="button" data-correct="1">Alternar diferentes culturas na mesma área entre as safras</button>
-                <button type="button" data-correct="0">Plantar em fileiras retas sem cobertura do solo</button>
-              </div>
-              <p class="feedback" id="fb-3" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-2">
-              <h3>5) Você tem resíduos orgânicos da criação de animais. Qual é a melhor solução?</h3>
-              <div class="answers" data-q="4">
-                <button type="button" data-correct="0">Lançar os resíduos diretamente no rio próximo</button>
-                <button type="button" data-correct="0">Queimar os resíduos a céu aberto</button>
-                <button type="button" data-correct="1">Usar um biodigestor para transformar em energia e adubo natural</button>
-              </div>
-              <p class="feedback" id="fb-4" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-3">
-              <h3>6) O que são matas ciliares?</h3>
-              <div class="answers" data-q="5">
-                <button type="button" data-correct="0">Plantações de árvores frutíferas para o comércio</button>
-                <button type="button" data-correct="1">Vegetação que protege as margens de rios e nascentes</button>
-                <button type="button" data-correct="0">Florestas plantadas exclusivamente para a produção de madeira</button>
-              </div>
-              <p class="feedback" id="fb-5" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-1">
-              <h3>7) Sua lavoura foi atacada por pragas. Qual a abordagem mais sustentável?</h3>
-              <div class="answers" data-q="6">
-                <button type="button" data-correct="0">Pulverizar toda a propriedade com defensivos preventivamente</button>
-                <button type="button" data-correct="1">Usar drone para identificar as áreas afetadas e tratar só o necessário</button>
-                <button type="button" data-correct="0">Abandonar a safra e esperar o problema resolver sozinho</button>
-              </div>
-              <p class="feedback" id="fb-6" role="alert"></p>
-            </article>
-
-            <article class="quiz-card reveal-up delay-2">
-              <h3>8) Qual é a relação entre campo e cidade?</h3>
-              <div class="answers" data-q="7">
-                <button type="button" data-correct="0">O campo depende da cidade, mas a cidade não precisa do campo</button>
-                <button type="button" data-correct="0">Eles são completamente independentes um do outro</button>
-                <button type="button" data-correct="1">O campo produz alimentos que chegam à mesa das cidades; as cidades fornecem tecnologia e serviços ao campo</button>
-              </div>
-              <p class="feedback" id="fb-7" role="alert"></p>
-            </article>
-
-          </div>
-
-          <div class="score reveal-scale" id="scoreBox" aria-live="polite">Sua pontuação: 0/8</div>
-          <p id="quizFinishMsg" class="quiz-finish-msg" aria-live="polite"></p>
-          <div class="cert-result is-hidden" id="certResult" aria-live="polite">
-            <p class="cert-pass-hint is-hidden" id="certPassHint">Clique no certificado piscando para abrir</p>
-            <button type="button" class="cert-card" id="certCard" aria-label="Abrir certificado">
-              <div class="cert-card-body">
-                <span class="cert-card-seal" aria-hidden="true">&#127942;</span>
-                <p class="cert-card-kicker">Agro Forte · Agrinho 2026</p>
-                <p class="cert-card-title">Agente do Agro Sustentável</p>
-                <p class="cert-card-name" id="certPreviewName"></p>
-                <p class="cert-card-foot">Produzir preservando</p>
-              </div>
-            </button>
-            <p class="cert-miss-msg is-hidden" id="certMissMsg"></p>
-            <div class="cert-retry-wrap is-hidden" id="certRetryWrap">
-              <button type="button" class="btn btn-primary" id="certRetryBtn">&#128260; Refazer o quiz</button>
+          <div class="game-launch-card reveal-up">
+            <div class="game-launch-visual">
+              <img src="./img/game/fazenda_ruim.png" alt="Fazenda com problemas" class="game-launch-img game-launch-img-bad" />
+              <span class="game-launch-arrow" aria-hidden="true">→</span>
+              <img src="./img/game/fazenda_boa.png" alt="Fazenda recuperada" class="game-launch-img game-launch-img-good" />
             </div>
+            <ul class="game-launch-steps">
+              <li><span>1</span> Historinha com a turma do Agrinho</li>
+              <li><span>2</span> Quiz de sustentabilidade (6 perguntas)</li>
+              <li><span>3</span> Corrija 6 problemas na fazenda</li>
+            </ul>
+            <a href="./jogo.html" class="btn btn-primary game-launch-btn" target="_blank" rel="noopener noreferrer">Abrir jogo em nova aba</a>
           </div>
 
-          <p class="quiz-closing-note">
-            O projeto "Agro Forte: Produzir Preservando" mostra que o agronegócio pode
-            ser moderno, produtivo e sustentável. Por meio da tecnologia, do cuidado com
-            o solo, da preservação da água e da participação dos jovens, é possível
-            construir um campo mais eficiente e responsável com o futuro.
-          </p>
+          <div class="quiz-closing-card reveal-up">
+            <span class="quiz-closing-icon" aria-hidden="true">&#127793;</span>
+            <p class="quiz-closing-note">
+              <strong>Produzir e preservar? Dá sim!</strong> No Agro Forte, tecnologia no campo,
+              solo vivo, água limpa e jovens engajados mostram que o agronegócio pode ser
+              moderno, produtivo e sustentável ao mesmo tempo. Bora levar essa missão para
+              a vida real!
+            </p>
+          </div>
         </div>
       </section>
 
@@ -573,6 +487,13 @@
           <span>Ministério da Agricultura, Pecuária e Abastecimento</span>
           <span>Absolar: Associação Brasileira de Energia Solar Fotovoltaica</span>
         </div>
+        <div class="foot-credits">
+          <strong>Créditos de imagens e ícones:</strong>
+          <span><code>img/lavoura.png</code> — gerada com IA (prompt no README)</span>
+          <span><code>img/favicon.svg</code> — autor do projeto (SVG)</span>
+          <span><code>img/game/</code> — arte visual do jogo educativo, produzida para este projeto</span>
+          <span>Emojis — Unicode nativo do navegador</span>
+        </div>
       </div>
     </footer>
 
@@ -587,25 +508,6 @@
         <input type="text" id="nameInput" class="name-input" maxlength="40"
           placeholder="Ex.: Maria" autocomplete="name" />
         <button type="button" class="btn btn-primary" id="nameSubmit">Começar</button>
-      </div>
-    </div>
-
-    <!-- ── MODAL ───────────────────────────────────────────────────────────── -->
-    <div id="certModal" class="cert-modal" aria-hidden="true">
-      <div class="cert-backdrop" data-close-cert></div>
-      <div class="cert-dialog" role="dialog" aria-modal="true" aria-labelledby="certTitle">
-        <span class="cert-deco cert-deco-tl" aria-hidden="true">&#127806;</span>
-        <span class="cert-deco cert-deco-tr" aria-hidden="true">&#127795;</span>
-        <span class="cert-deco cert-deco-bl" aria-hidden="true">&#127804;</span>
-        <span class="cert-deco cert-deco-br" aria-hidden="true">&#127811;</span>
-        <div class="cert-badge" aria-hidden="true">&#127942;</div>
-        <p class="cert-kicker">Agrinho 2026 · Agro Forte</p>
-        <h2 id="certTitle">Parabéns!</h2>
-        <p class="cert-subtitle">Você é Agente do Agro Sustentável</p>
-        <p class="cert-name" id="certName"></p>
-        <p class="cert-detail" id="certDetail"></p>
-        <p class="cert-foot">Continue produzindo alimentos e cuidando do meio ambiente!</p>
-        <button type="button" class="btn btn-primary cert-close-btn" id="certClose">Fechar</button>
       </div>
     </div>
 

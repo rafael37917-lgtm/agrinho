@@ -1,3 +1,10 @@
+/**
+ * Agro Forte — script.js
+ * Site principal (index.html) | Agrinho 2026
+ *
+ * Módulos: boas-vindas, acessibilidade (fonte/escuro), menu mobile,
+ *          contadores animados, modais (mapa/juventude), simulador sustentável
+ */
 // ── Saudação personalizada + preferências de acessibilidade ───────────────────
 const htmlEl        = document.documentElement;
 const heroGreeting  = document.getElementById("heroGreeting");
@@ -347,17 +354,6 @@ const simPercent = document.getElementById("simPercent");
 const simMsg     = document.getElementById("simMsg");
 const simCbs     = document.querySelectorAll(".sim-cb");
 const simTotal   = simCbs.length;
-const certResult = document.getElementById("certResult");
-const certCard   = document.getElementById("certCard");
-const certPreviewName = document.getElementById("certPreviewName");
-const certPassHint = document.getElementById("certPassHint");
-const certMissMsg = document.getElementById("certMissMsg");
-const certRetryWrap = document.getElementById("certRetryWrap");
-const certRetryBtn = document.getElementById("certRetryBtn");
-const certModal  = document.getElementById("certModal");
-const certName   = document.getElementById("certName");
-const certDetail = document.getElementById("certDetail");
-const certClose  = document.getElementById("certClose");
 
 let simCurrentPct = 0;
 let simRafId = null;
@@ -378,62 +374,6 @@ function syncMapPins() {
   document.querySelectorAll(".farm-pin").forEach((pin) => {
     pin.classList.toggle("pin-active", active.has(pin.getAttribute("data-spot")));
   });
-}
-
-function updateCertUI() {
-  const quizDone = Object.keys(answered).length >= totalQuestions;
-  if (!quizDone) {
-    certResult?.classList.add("is-hidden");
-    return;
-  }
-  const pct = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
-  const passed = totalQuestions > 0 && score / totalQuestions > 0.8;
-  const name = localStorage.getItem("agrinho-user-name") || "Visitante";
-
-  certResult?.classList.remove("is-hidden");
-  if (certPreviewName) certPreviewName.textContent = name;
-
-  certCard?.classList.remove("cert-card-win", "cert-card-rip");
-  void certCard?.offsetWidth;
-
-  if (passed) {
-    certCard?.classList.add("cert-card-win");
-    certCard?.removeAttribute("disabled");
-    certPassHint?.classList.remove("is-hidden");
-    certMissMsg?.classList.add("is-hidden");
-    certRetryWrap?.classList.add("is-hidden");
-  } else {
-    certCard?.classList.add("cert-card-rip");
-    certCard?.setAttribute("disabled", "disabled");
-    certPassHint?.classList.add("is-hidden");
-    certMissMsg?.classList.remove("is-hidden");
-    certRetryWrap?.classList.remove("is-hidden");
-    if (certMissMsg) {
-      certMissMsg.textContent = `Poxa! Você acertou apenas ${pct}%. Releia o site, revise o mapa e o simulador, e tente o quiz de novo. Você consegue!`;
-    }
-  }
-}
-
-function openCertModal() {
-  if (!certModal || totalQuestions === 0) return;
-  if (certCard?.hasAttribute("disabled")) return;
-  if (Object.keys(answered).length < totalQuestions) return;
-  if (score / totalQuestions <= 0.8) return;
-  const name = localStorage.getItem("agrinho-user-name") || "Visitante";
-  const pct = Math.round((score / totalQuestions) * 100);
-  if (certName) certName.textContent = name;
-  if (certDetail) certDetail.textContent = `${score}/${totalQuestions} acertos no quiz (${pct}%)`;
-  certModal.classList.add("is-open");
-  certModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-  certClose?.focus({ preventScroll: true });
-}
-
-function closeCertModal() {
-  if (!certModal) return;
-  certModal.classList.remove("is-open");
-  certModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
 }
 
 function getSimMsgData(pct) {
@@ -480,97 +420,3 @@ function updateSimulator() {
 
 simCbs.forEach((cb) => cb.addEventListener("change", updateSimulator));
 syncMapPins();
-
-certCard?.addEventListener("click", openCertModal);
-
-function restartQuiz() {
-  score = 0;
-  for (const k in answered) delete answered[k];
-  updateScore();
-
-  document.querySelectorAll(".answers button").forEach((b) => {
-    b.classList.remove("correct", "wrong");
-    b.disabled = false;
-  });
-  document.querySelectorAll(".feedback").forEach((fb) => {
-    fb.classList.remove("show", "ok", "bad");
-    fb.textContent = "";
-  });
-
-  if (quizFinishMsg) { quizFinishMsg.classList.remove("show"); quizFinishMsg.textContent = ""; }
-  certResult?.classList.add("is-hidden");
-  certCard?.classList.remove("cert-card-win", "cert-card-rip");
-
-  const quizSection = document.getElementById("quiz");
-  if (quizSection && header) {
-    const off = header.offsetHeight + 12;
-    window.scrollTo({ top: quizSection.getBoundingClientRect().top + window.scrollY - off, behavior: "smooth" });
-  }
-}
-
-certRetryBtn?.addEventListener("click", restartQuiz);
-certClose?.addEventListener("click", closeCertModal);
-certModal?.addEventListener("click", (e) => {
-  if (e.target instanceof Element && e.target.hasAttribute("data-close-cert")) closeCertModal();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && certModal?.classList.contains("is-open")) closeCertModal();
-});
-
-// ── Quiz ──────────────────────────────────────────────────────────────────────
-const quizList      = document.getElementById("quizList");
-const scoreBox      = document.getElementById("scoreBox");
-const quizFinishMsg = document.getElementById("quizFinishMsg");
-const totalQuestions = quizList ? quizList.querySelectorAll(".answers[data-q]").length : 0;
-
-let score    = 0;
-const answered = {};
-
-function updateScore() {
-  if (scoreBox) scoreBox.textContent = `Sua pontuação: ${score}/${totalQuestions}`;
-}
-
-function checkQuizComplete() {
-  if (Object.keys(answered).length < totalQuestions) return;
-
-  const ratio = score / totalQuestions;
-  let msg = "";
-  if (ratio === 1)        msg = "🏆 Parabéns! Você acertou tudo! Você é um verdadeiro agente do agro sustentável!";
-  else if (ratio >= 0.75) msg = "🌿 Muito bem! Você entende profundamente o agro sustentável!";
-  else if (ratio >= 0.5)  msg = "👍 Bom resultado! Você já conhece boas práticas do agro. Continue aprendendo!";
-  else                    msg = "🌱 Você está começando sua jornada sustentável. Releia o conteúdo e tente de novo!";
-
-  if (quizFinishMsg) { quizFinishMsg.textContent = msg; quizFinishMsg.classList.add("show"); }
-  updateCertUI();
-}
-
-document.querySelectorAll(".answers").forEach((group) => {
-  const qId     = group.getAttribute("data-q");
-  const feedback = document.getElementById(`fb-${qId}`);
-
-  group.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (!qId || answered[qId]) return;
-      answered[qId] = true;
-
-      const isCorrect = btn.getAttribute("data-correct") === "1";
-      if (isCorrect) score++;
-
-      group.querySelectorAll("button").forEach((b) => {
-        if (b.getAttribute("data-correct") === "1") b.classList.add("correct");
-        if (b === btn && !isCorrect) b.classList.add("wrong");
-        b.disabled = true;
-      });
-
-      if (feedback) {
-        feedback.classList.add("show", isCorrect ? "ok" : "bad");
-        feedback.textContent = isCorrect
-          ? "✅ Correto! Essa escolha ajuda o agro a ser mais sustentável."
-          : "❌ Quase! A melhor resposta é a alternativa sustentável.";
-      }
-
-      updateScore();
-      checkQuizComplete();
-    });
-  });
-});

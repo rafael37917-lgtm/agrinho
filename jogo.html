@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Salve a Fazendinha do Agrinho — jogo educativo sobre agro sustentável." />
+  <title>Salve a Fazendinha | Agrinho 2026</title>
+  <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+  <link rel="stylesheet" href="./game.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-jogo">Pular para o conteúdo principal</a>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-card">
+      <img src="./img/game/agrinho.png" alt="Agrinho carregando" />
+      <h2>Preparando a aventura…</h2>
+      <div class="loading-bar"><span id="loadingBar"></span></div>
+      <p id="loadingText">Carregando a turma do Agrinho</p>
+    </div>
+  </div>
+
+  <div id="confetti-layer"></div>
+
+  <header class="topbar">
+    <div class="brand-wrap">
+      <a class="back-site" href="./index.html" aria-label="Voltar ao site Agro Forte">← Site</a>
+      <div class="brand-icon">🌱</div>
+      <div>
+        <div class="brand">AGRINHO</div>
+        <small>Agro forte, futuro sustentável</small>
+      </div>
+    </div>
+    <div class="hud">
+      <div class="hud-pill">⭐ <span id="score">0</span></div>
+      <div class="hud-pill">✅ <span id="fixedCount">0</span>/6</div>
+      <div class="hud-pill">🏆 <span id="bestScore">0</span></div>
+      <button id="soundBtn" class="hud-btn" aria-label="Som">🔊</button>
+    </div>
+  </header>
+
+  <main id="conteudo-jogo" tabindex="-1">
+    <section id="home" class="screen active">
+      <div class="hero-grid">
+        <div class="panel hero-copy">
+          <span class="eyebrow">MISSÃO ESPECIAL</span>
+          <h1>Salve a Fazendinha do Agrinho!</h1>
+          <p>Entre em uma aventura sustentável, responda ao quiz e transforme uma fazenda cheia de problemas em um lugar limpo, vivo e feliz.</p>
+          <p class="hero-cast-text"><strong>Com toda a turma do Agrinho!</strong></p>
+          <div class="hero-cast-row">
+            <div class="cast-card"><img src="./img/game/agrinho.png" alt="Agrinho" /><span>Agrinho</span></div>
+            <div class="cast-card"><img src="./img/game/florinha.png" alt="Florinha" /><span>Florinha</span></div>
+            <div class="cast-card"><img src="./img/game/abelha.png" alt="Zé Colmeia" /><span>Zé Colmeia</span></div>
+            <div class="cast-card"><img src="./img/game/arvore_mascote.png" alt="Dona Árvore" /><span>Dona Árvore</span></div>
+            <div class="cast-card"><img src="./img/game/gota_mascote.png" alt="Pinguim da Água" /><span>Pinguim da Água</span></div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" data-go="story">Começar aventura</button>
+            <button class="btn btn-secondary" data-go="how">Como jogar</button>
+          </div>
+        </div>
+        <div class="panel hero-stage">
+          <div class="hero-soft-overlay"></div>
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <img src="./img/game/arvore_mascote.png" alt="Dona Árvore" class="hero-char arvore" />
+          <img src="./img/game/agrinho.png" alt="Agrinho" class="hero-char agrinho" />
+          <img src="./img/game/florinha.png" alt="Florinha" class="hero-char florinha" />
+          <img src="./img/game/gota_mascote.png" alt="Pinguim da Água" class="hero-char gota" />
+          <img src="./img/game/abelha.png" alt="Zé Colmeia" class="hero-char abelha bee-flight" />
+          <div class="speech bubble-left">Vamos cuidar da natureza?</div>
+          <div class="speech bubble-right">Toda a turma veio ajudar!</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="screen">
+      <div class="panel centered-panel medium">
+        <span class="eyebrow">GUIA RÁPIDO</span>
+        <h2>Como jogar</h2>
+        <div class="guide-grid">
+          <div class="guide-item"><span class="guide-num">1</span><span class="guide-icon">💬</span><b>Historinha</b><small>Veja a conversa da turma.</small></div>
+          <div class="guide-item"><span class="guide-num">2</span><span class="guide-icon">🧠</span><b>Quiz</b><small>Acerte pelo menos 4 de 6 perguntas.</small></div>
+          <div class="guide-item"><span class="guide-num">3</span><span class="guide-icon">🔎</span><b>Fazenda</b><small>Corrija 6 problemas espalhados.</small></div>
+          <div class="guide-item"><span class="guide-num">4</span><span class="guide-icon">🏆</span><b>Vitória</b><small>Alcance até 950 pontos.</small></div>
+        </div>
+        <div class="actions center">
+          <button class="btn btn-secondary" data-go="home">Voltar</button>
+          <button class="btn btn-primary" data-go="story">Continuar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="screen">
+      <div class="panel story-panel">
+        <div class="story-top">
+          <div>
+            <span class="eyebrow">HISTORINHA</span>
+            <h2>Antes do jogo começar…</h2>
+          </div>
+          <div class="story-counter"><span id="storyCount">1</span>/4</div>
+        </div>
+
+        <article class="story-scene active" data-story="0">
+          <div class="story-bg story-bg-1"></div>
+          <img src="./img/game/agrinho.png" class="story-char s-agrinho" alt="Agrinho" />
+          <img src="./img/game/florinha.png" class="story-char s-florinha" alt="Florinha" />
+          <div class="talk-bubble tb-left">Florinha, a fazendinha está com muitos problemas!</div>
+          <div class="talk-bubble tb-right">Vamos ajudar a natureza antes que piore!</div>
+        </article>
+
+        <article class="story-scene" data-story="1">
+          <div class="story-bg story-bg-2"></div>
+          <img src="./img/game/abelha.png" class="story-char s-abelha" alt="Zé Colmeia" />
+          <img src="./img/game/arvore_mascote.png" class="story-char s-arvore" alt="Dona Árvore" />
+          <div class="talk-bubble tb-left wide">Eu posso ajudar a cuidar das plantas e da polinização!</div>
+          <div class="talk-bubble tb-right wide">E eu vou ensinar como preservar o solo e a vegetação.</div>
+        </article>
+
+        <article class="story-scene" data-story="2">
+          <div class="story-bg story-bg-3"></div>
+          <img src="./img/game/gota_mascote.png" class="story-char s-gota" alt="Pinguim da Água" />
+          <img src="./img/game/florinha.png" class="story-char s-florinha right" alt="Florinha" />
+          <div class="talk-bubble tb-left wide">A água precisa de cuidado! Nada de lixo e desperdício.</div>
+          <div class="talk-bubble tb-right wide">Com reciclagem, árvores e soluções corretas, tudo vai melhorar.</div>
+        </article>
+
+        <article class="story-scene" data-story="3">
+          <div class="story-bg story-bg-4"></div>
+          <img src="./img/game/agrinho.png" class="story-char s-agrinho" alt="Agrinho" />
+          <img src="./img/game/abelha.png" class="story-char s-abelha top" alt="Zé Colmeia" />
+          <img src="./img/game/gota_mascote.png" class="story-char s-gota right" alt="Pinguim da Água" />
+          <div class="talk-bubble tb-left wide">Agora é com você: responda ao quiz e conserte os 6 problemas!</div>
+          <div class="talk-bubble tb-right wide">Se acertar bem no quiz, a missão será liberada!</div>
+        </article>
+
+        <div class="story-nav">
+          <button id="storyPrev" class="btn btn-secondary">Anterior</button>
+          <button id="storyNext" class="btn btn-primary">Próximo</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="screen">
+      <div class="panel compare-panel">
+        <div class="compare-head">
+          <div>
+            <span class="eyebrow">COMPARE</span>
+            <h2>Da degradação à sustentabilidade</h2>
+          </div>
+          <p>Veja a transformação: de um cenário degradado, com lixo e abandono, para uma fazenda viva, limpa, organizada e sustentável.</p>
+        </div>
+        <div class="compare-grid visual-compare">
+          <figure>
+            <img src="./img/game/fazenda_ruim.png" alt="Fazenda feia com lixo e problemas" />
+            <figcaption>🚫 Antes: poluição, desperdício e abandono.</figcaption>
+          </figure>
+          <figure>
+            <img src="./img/game/fazenda_boa.png" alt="Fazenda bonita e sustentável" />
+            <figcaption>✅ Depois: cuidado com a natureza, produção e equilíbrio ambiental.</figcaption>
+          </figure>
+        </div>
+        <div class="actions center compare-actions">
+          <button class="btn btn-secondary" data-go="story">Voltar</button>
+          <button class="btn btn-primary" id="startQuizBtn">Continuar para o quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="screen">
+      <div class="panel quiz-panel">
+        <div class="quiz-head">
+          <div>
+            <span class="eyebrow">QUIZ</span>
+            <h2 id="quizCounter">Pergunta 1 de 6</h2>
+          </div>
+          <div class="quiz-side">
+            <div class="timer-box">⏱️ <span id="timerValue">18</span>s</div>
+            <div class="hud-pill slim">⭐ <span id="quizScore">0</span></div>
+          </div>
+        </div>
+        <div class="progress-line"><span id="quizBar"></span></div>
+        <h3 id="questionText" class="question"></h3>
+        <div id="answerList" class="answer-list"></div>
+        <div id="quizFeedback" class="feedback hidden"></div>
+        <div class="quiz-note">Você precisa de <strong>200 pontos</strong> para passar no quiz.</div>
+      </div>
+    </section>
+
+    <section id="quizFail" class="screen">
+      <div class="panel centered-panel medium">
+        <img src="./img/game/gota_mascote.png" class="fail-mascot" alt="Mascote da água" />
+        <span class="eyebrow">TENTE DE NOVO</span>
+        <h2>Você ainda não passou no quiz.</h2>
+        <p>Para liberar o jogo, é preciso fazer <strong>pelo menos 200 pontos</strong> no quiz.</p>
+        <p class="small-note">Sua pontuação: <strong id="failScore">0</strong> pontos.</p>
+        <div class="actions center">
+          <button class="btn btn-secondary" data-go="compare">Voltar</button>
+          <button class="btn btn-primary" id="retryQuizBtn">Refazer quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="unlock" class="screen">
+      <div class="panel centered-panel medium unlock-panel">
+        <img src="./img/game/trofeu_quiz.png" class="unlock-trophy" alt="Troféu do quiz" />
+        <span class="eyebrow">LIBERADO</span>
+        <h2>Você passou no quiz!</h2>
+        <p>Agora encontre os problemas espalhados pela fazenda e transforme a área feia em uma fazenda bonita.</p>
+        <button class="btn btn-primary pulse" data-go="game">Entrar na fazenda</button>
+      </div>
+    </section>
+
+    <section id="game" class="screen">
+      <div class="game-grid">
+        <aside class="panel game-side">
+          <span class="eyebrow">MISSÃO</span>
+          <h3>Corrija os 6 problemas</h3>
+          <p class="small-note">Clique nos objetos errados espalhados pela fazenda.</p>
+          <div class="mission-stats">
+            <div><strong id="gameScore">0</strong><span>Pontos</span></div>
+            <div><strong id="gameFixedBig">0</strong><span>Corrigidos</span></div>
+          </div>
+          <div class="progress-line"><span id="gameBar"></span></div>
+          <div id="helperBubble" class="helper-bubble">Encontre o primeiro problema brilhando.</div>
+          <div class="compare-mini">
+            <div class="mini-thumb"><img src="./img/game/fazenda_ruim.png" alt="Fazenda ruim" /><small>Antes</small></div>
+            <div class="mini-thumb"><img src="./img/game/fazenda_boa.png" alt="Fazenda boa" /><small>Depois</small></div>
+          </div>
+        </aside>
+
+        <section class="panel farm-panel">
+          <div class="farm-stage" id="farmStage">
+            <img class="farm-bg bad" src="./img/game/fazenda_ruim.png" alt="Fazenda feia" />
+            <img class="farm-bg good" src="./img/game/fazenda_boa.png" alt="Fazenda bonita" />
+            <div class="reveal-divider" id="revealDivider"></div>
+
+            <button class="problem p1" data-problem="pneu">
+              <span class="ring"></span>
+              <img class="problem-img bad-img" src="./img/game/pneu.png" alt="Pneu" />
+            </button>
+            <button class="problem p2" data-problem="tambor">
+              <span class="ring"></span>
+              <img class="problem-img bad-img" src="./img/game/tambor.png" alt="Tambor" />
+            </button>
+            <button class="problem p3" data-problem="toco">
+              <span class="ring"></span>
+              <img class="problem-img bad-img" src="./img/game/toco.png" alt="Toco" />
+            </button>
+            <button class="problem p4" data-problem="cano">
+              <span class="ring"></span>
+              <img class="problem-img bad-img" src="./img/game/cano.png" alt="Cano" />
+            </button>
+            <button class="problem p5" data-problem="lixo">
+              <span class="ring"></span>
+              <img class="problem-img bad-img" src="./img/game/lixo_rio.png" alt="Lixo no rio" />
+            </button>
+            <button class="problem p6" data-problem="arvore">
+              <span class="ring"></span>
+              <img class="problem-img bad-img" src="./img/game/arvore_morta.png" alt="Árvore morta" />
+            </button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="result" class="screen">
+      <div class="panel result-panel">
+        <div class="result-hero">
+          <img id="resultTrophy" src="./img/game/trofeu_max.png" alt="Troféu final" />
+          <div>
+            <span class="eyebrow">PARABÉNS</span>
+            <h2>Fazendinha salva!</h2>
+            <div class="big-score"><span id="finalScore">0</span> pontos</div>
+            <p id="resultMessage">Você transformou a fazenda feia em uma fazenda bonita e sustentável.</p>
+            <div class="actions">
+              <button id="restartBtn" class="btn btn-secondary">Jogar novamente</button>
+              <button id="shareBtn" class="btn btn-primary">Compartilhar</button>
+            </div>
+          </div>
+        </div>
+        <div class="result-bottom">
+          <div class="trophy-row">
+            <div class="trophy-card"><img src="./img/game/trofeu_quiz.png" alt="Troféu quiz" /><span>Quiz</span></div>
+            <div class="trophy-card"><img src="./img/game/trofeu_fazenda.png" alt="Troféu fazenda" /><span>Fazenda</span></div>
+            <div class="trophy-card"><img src="./img/game/trofeu_max.png" alt="Troféu máximo" /><span>Máximo</span></div>
+          </div>
+          <div class="rank-box">Melhor pontuação salva: <strong id="bestScoreResult">0</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="problemDialog" class="problem-dialog">
+    <button id="closeProblemDialog" class="dialog-close">×</button>
+    <div class="dialog-layout">
+      <div class="dialog-visual"><img id="dialogImage" alt="Problema" /></div>
+      <div class="dialog-content">
+        <span class="eyebrow">CORRIGIR PROBLEMA</span>
+        <h2 id="dialogTitle"></h2>
+        <p id="dialogText"></p>
+        <div id="dialogChoices" class="answer-list compact"></div>
+        <div id="dialogFeedback" class="feedback hidden"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="game-footer" aria-label="Créditos do jogo">
+    <p>Arte visual em <code>img/game/</code> — produzida para o projeto Agrinho 2026 ·
+      <a href="./index.html">Voltar ao site</a> ·
+      <a href="https://github.com/rafael37917-lgtm/agrinho" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </footer>
+
+  <script src="./game.js"></script>
+</body>
+</html>
