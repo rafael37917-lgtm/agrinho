@@ -125,7 +125,8 @@ O arquivo `img/favicon.svg` foi criado manualmente em código SVG (emoji de trig
 
 ## Autoria
 
-**Autor:** Weslley Rafael Padilha Branco — 1º Ano do Ensino Médio, Rede Estadual de Ensino do Paraná (Colégio Estadual São Vicente de Paulo - Turma 1º B)
+**Autor:** Weslley Rafael Padilha Branco — 1º Ano do Ensino Médio, Rede Estadual de Ensino do Paraná 
+ (Colégio Estadual São Vicente de Paulo - Turma 1º B)
 
 - **Textos, estrutura do site, quiz, simulador e código HTML/CSS/JS:** produzidos pelo autor do projeto, sem uso de IA generativa para redação ou programação.
 - **Imagem `img/lavoura.png`:** gerada com ChatGPT (prompt documentado acima).
