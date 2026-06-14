@@ -1398,11 +1398,13 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
   .person { font-size: 42px; }
 
-  .youth-card { gap: 10px; padding: 14px 12px; }
-  .yc-emoji   { font-size: 38px; }
-  .yc-content strong { font-size: 14px; }
-  .yc-content p { font-size: 11px; }
-  .yc-plus { width: 28px; height: 28px; font-size: 18px; }
+  /* Juventude: 1 coluna em mobile */
+  .youth-grid { grid-template-columns: 1fr !important; }
+  .youth-card { gap: 10px; padding: 14px 12px; flex-direction: row; align-items: center; }
+  .yc-emoji   { font-size: 42px; flex-shrink: 0; }
+  .yc-content strong { font-size: 15px; }
+  .yc-content p { font-size: 13px; }
+  .yc-plus { width: 28px; height: 28px; font-size: 18px; flex-shrink: 0; }
 
   .topic-hint { font-size: 14px; padding: 9px 12px; }
 
@@ -1772,7 +1774,9 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 }
 
 @media (max-width: 440px) {
-  .font-grp { display: none; }
+  .font-grp { gap: 1px; padding: 2px 3px; }
+  .font-btn  { font-size: 10px; padding: 3px 5px; }
+  .dark-btn  { font-size: 13px; padding: 4px 6px; }
 }
 
 /* ── Modal de boas-vindas ────────────────────────────────────────────────────── */
