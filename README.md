@@ -221,16 +221,4 @@ Antes de enviar o link na Alura, confira:
 
 ---
 
-## Autoavaliação (rubrica edital)
-
-| Critério | Pontos | Justificativa |
-|---|---:|---|
-| Complexidade HTML/CSS | 24–25 | 8 seções semânticas, Grid/Flexbox, modo escuro, animações, jogo responsivo |
-| Usabilidade e acessibilidade | 24–25 | Skip link, fonte escalável, modo escuro, modais acessíveis, reduced motion |
-| Publicação GitHub | 24–25 | README completo, `.nojekyll`, estrutura documentada, checklist edital |
-| Originalidade e créditos | 24–25 | Tema Agrinho original, fontes citadas, créditos de IA e imagens no site e README |
-| **Total estimado** | **96–100** | |
-
----
-
 *Projeto desenvolvido para o Concurso Agrinho 2026: SENAR-PR / SEED-PR*
