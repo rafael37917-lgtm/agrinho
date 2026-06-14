@@ -1,266 +1,230 @@
 # Agro Forte: Produzir Preservando
 
-**Concurso Agrinho 2026 | Subcategoria 3: Linguagem JavaScript (p5.js)**  
-Série: 1º Ano do Ensino Médio | Rede Estadual de Ensino do Paraná
+**Agrinho 2026 | Subcategoria 3 — JavaScript (p5.js)**  
+1º Ano do Ensino Médio — Rede Estadual do Paraná
+
+**Autor:** Weslley Rafael Padilha Branco  
+Colégio Estadual São Vicente de Paulo — Turma 1º B
 
 ---
 
-## Objetivo do Tema Agrinho
+## Sobre o projeto
 
-O Concurso Agrinho 2026 propõe reflexão sobre o tema:
+Este trabalho foi feito por mim para o Concurso Agrinho 2026. O tema do ano é:
 
 > *"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"*
 
-Este projeto demonstra que o campo brasileiro pode **produzir mais e melhor sem destruir o planeta**, combinando site educacional interativo e jogo sobre boas práticas agrícolas, tecnologia no campo e participação dos jovens.
+Eu quis mostrar que o campo pode **produzir e cuidar da natureza ao mesmo tempo**. Por isso criei um site educativo e um jogo, ligando a **cidade** (quem consome os alimentos) ao **campo** (quem produz com responsabilidade).
 
 ---
 
-## Descrição do Projeto
+## O que tem no site
 
-### Site principal (`index.html`)
+Quando você abre o site, encontra estas partes:
 
-Site educacional com 8 seções navegáveis:
+- **Início** — apresentação do projeto e uma cena interativa com p5.js (dá para plantar sementes clicando no solo)
+- **O Desafio** — por que precisamos equilibrar produção e meio ambiente
+- **Boas Práticas** — plantio direto, água, energia solar e biodiversidade
+- **Tecnologia** — drones, sensores, GPS e dados no campo
+- **Mapa Interativo** — clique nos 7 pontos da fazenda para saber mais
+- **Números** — dados reais do agro com contadores animados
+- **Juventude** — como os jovens podem ajudar a transformar o campo
+- **Simulador** — marque práticas sustentáveis e veja o índice subir
+- **Jogo** — link para o jogo *Salve a Fazendinha do Agrinho*
 
-| Seção | Conteúdo |
+---
+
+## O jogo
+
+O jogo abre em outra página (`jogo.html`). Lá você:
+
+1. Lê a historinha com a turma do Agrinho (4 cenas)
+2. Compara uma fazenda ruim com uma fazenda boa
+3. Responde um quiz de 6 perguntas (precisa de 200 pontos para passar)
+4. Corrige 6 problemas na fazenda (lixo, pneu, cano, etc.)
+5. Vê sua pontuação final e tenta bater seu recorde
+
+A pontuação máxima é cerca de **950 pontos**. O site lembra seu nome (ou "visitante" se você pular o modal) e salva seu melhor resultado no navegador.
+
+---
+
+## Como eu fiz
+
+Usei **HTML**, **CSS** e **JavaScript**, como pede a Subcategoria 3.
+
+| O quê | Para quê eu usei |
 |---|---|
-| **O Desafio** | Por que produzir e preservar ao mesmo tempo é urgente e possível |
-| **Boas Práticas** | Plantio direto, irrigação inteligente, energia solar e biodiversidade |
-| **Tecnologia** | Drones, sensores IoT, GPS de precisão e análise de dados no campo |
-| **Mapa Interativo** | Propriedade rural com 7 pontos clicáveis (Lavoura, Nascente, Mata Ciliar, Solar, Tecnologia, Biodigestor, Jovem Produtor) |
-| **Números** | Dados reais do agronegócio brasileiro com animação de contadores |
-| **Juventude** | Papel dos jovens na transformação do campo |
-| **Simulador** | Escolha práticas sustentáveis e veja o índice de sustentabilidade em tempo real |
-| **Jogo** | Card de lançamento com link para o jogo educativo em página separada |
+| **HTML** | Estrutura do site e do jogo (seções, menu, botões, modais) |
+| **CSS** | Layout, cores, animações, modo escuro e versão para celular |
+| **p5.js** (`sketch.js` + `lib/p5.min.js`) | Cena interativa na página inicial — plantar sementes no hero |
+| **JavaScript** (`script.js`) | Mapa, simulador, contadores, menu mobile e acessibilidade |
+| **JavaScript** (`game.js`) | Quiz, missão na fazenda e pontuação do jogo |
 
-### Jogo educativo (`jogo.html`)
-
-**Salve a Fazendinha do Agrinho** — aventura interativa em tela cheia:
-
-1. Historinha em 4 cenas com mascotes do Agrinho
-2. Comparação visual entre fazenda degradada e fazenda sustentável
-3. Quiz com 6 perguntas (mínimo 200 pontos para avançar)
-4. Missão com 6 problemas ambientais para corrigir na fazenda
-5. Tela de resultado com troféus e recorde salvo no navegador
-
----
-
-## Tecnologias Utilizadas
-
-| Tecnologia | Aplicação |
-|---|---|
-| **HTML5** | Estrutura semântica: `<section>`, `<article>`, `<main>`, `<footer>`, `<nav>`, `<dialog>`, atributos `aria-*` |
-| **CSS3** | Flexbox, Grid, `@keyframes`, modo escuro (`.dark`), responsividade com `@media`, variáveis CSS, `prefers-reduced-motion` |
-| **JavaScript (p5.js)** | Cena interativa no hero (`sketch.js`): `setup`, `draw`, eventos, `dist`, `map`, `lerpColor` |
-| **JavaScript (vanilla)** | Site (`script.js`) e jogo (`game.js`): DOM, `localStorage`, quiz, simulador, mapa |
-
----
-
-## Acessibilidade
-
-Recursos implementados em ambas as páginas:
-
-- **Skip link** — "Pular para o conteúdo principal" visível ao focar com teclado
-- **`prefers-reduced-motion`** — reduz animações para usuários com sensibilidade a movimento
-- **Escala de fonte** — botões A / A+ / A++ (preferência salva em `localStorage`)
-- **Modo escuro** — alternância com preferência persistida
-- **Modais acessíveis** — foco preso, tecla Esc para fechar, `aria-modal`
-- **Contraste e tamanho mínimo** — inputs com `font-size: max(16px, 1em)` para evitar zoom no mobile
-- **Textos alternativos** — atributos `alt` em imagens informativas
+Também pensei em **acessibilidade**: skip link, botões para aumentar a fonte (A / A+ / A++), modo escuro e opção de pular o nome na entrada.
 
 ---
 
 ## Como usar
 
-### Site principal
+### Site
 
-1. Acesse o link do GitHub Pages (campo "About" do repositório)
-2. Insira seu nome no modal de boas-vindas ou clique em **Pular** para entrar como visitante
-3. Navegue pelas seções pelo menu fixo no topo (inclui **Números**)
-4. No **Mapa Interativo**, clique nos pontos coloridos para ver detalhes
-5. No **Simulador**, marque práticas sustentáveis e observe o índice crescer
-6. Na página inicial, **clique no solo da cena p5.js** para plantar sementes (tecla **R** reinicia)
-7. Na seção **Jogo**, clique em "Abrir jogo em nova aba"
-8. Use **🌙** para modo escuro e **A / A+ / A++** para ajustar a fonte
+1. Acesse: https://rafael37917-lgtm.github.io/agrinho/
+2. Digite seu nome ou clique em **Pular**
+3. Navegue pelo menu (Início, Desafio, Mapa, Números, Simulador, Jogo…)
+4. No mapa, clique nos pontos coloridos
+5. No simulador, marque as práticas e veja o índice crescer
+6. Na página inicial, clique no solo marrom para plantar (tecla **R** reinicia)
+7. Use 🌙 para modo escuro e A / A+ / A++ para mudar a fonte
 
 ### Jogo
 
-1. Abra `jogo.html` (pelo site ou diretamente)
-2. Leia "Como jogar" e siga a historinha
-3. Responda o quiz (precisa de pelo menos 200 pontos)
-4. Corrija os 6 problemas na fazenda clicando nos ícones
-5. Veja sua pontuação final e tente bater seu recorde
+1. Abra: https://rafael37917-lgtm.github.io/agrinho/jogo.html
+2. Siga a historinha e responda o quiz
+3. Corrija os 6 problemas na fazenda
+4. Veja quantos pontos você fez
 
 ---
 
-## Estrutura de Arquivos
+## Arquivos do projeto
 
 ```
 agrinho/
-├── index.html       # Site principal (8 seções + card do jogo)
-├── sketch.js        # Interação p5.js no hero (Subcategoria 3)
-├── jogo.html        # Jogo educativo standalone
-├── style.css        # Estilos do site, modo escuro, responsividade
-├── script.js        # Simulador, mapa, modais, contadores, acessibilidade
+├── index.html       # Site principal
+├── sketch.js        # Interação p5.js (edital)
+├── lib/p5.min.js    # Biblioteca p5.js (salva no repositório)
+├── style.css        # Estilos do site
+├── script.js        # Mapa, simulador, contadores…
+├── jogo.html        # Jogo educativo
+├── game.js          # Lógica do jogo
 ├── game.css         # Estilos do jogo
-├── game.js          # Lógica do jogo (quiz, missão, pontuação)
-├── README.md        # Documentação completa (este arquivo)
-├── .nojekyll        # Publicação correta no GitHub Pages
+├── README.md        # Este arquivo
+├── .nojekyll        # Para publicar no GitHub Pages
 └── img/
-    ├── favicon.svg  # Ícone da aba do navegador
-    ├── lavoura.png  # Fundo do mapa interativo (IA — prompt abaixo)
-    └── game/        # Arte visual do jogo (21 PNGs)
-        ├── agrinho.png, abelha.png, arvore_mascote.png, arvore_morta.png
-        ├── cano.png, florinha.png, gota_mascote.png, home_bg.png
-        ├── fazenda_boa.png, fazenda_ruim.png, lixo_rio.png, pneu.png
-        ├── story_bg1.png … story_bg4.png, tambor.png, toco.png
-        └── trofeu_quiz.png, trofeu_fazenda.png, trofeu_max.png
+    ├── favicon.svg
+    ├── lavoura.png  # Fundo do mapa (IA)
+    └── game/        # Imagens do jogo (21 PNGs)
 ```
 
 ---
 
-## Detalhes da Implementação
+## Como funciona o código (resumo)
 
-### HTML (`index.html`)
+**`sketch.js` (p5.js)** — No hero do site eu usei `setup()`, `draw()`, `mousePressed()` e `keyReleased()`. Ao clicar no solo, nasce uma planta. Usei `dist()`, `map()` e `lerpColor()` para espaçamento, céu e crescimento.
 
-- Página única com `<header>`, `<main id="conteudo">`, `<footer>`, `<nav>` e 8 `<section>`
-- Skip link, créditos de imagens no rodapé e fontes consultadas
-- CSS e JS apenas por arquivos externos (`style.css`, `script.js`)
+**`script.js`** — Controla o mapa, os modais, o simulador (ligado aos pins do mapa), os contadores que animam quando você rola a página, o menu no celular e as preferências salvas no navegador.
 
-### CSS (`style.css`)
-
-- Layout com **Flexbox** (menu, cards, hero) e **Grid** (seções, juventude, números)
-- **Media queries** para desktop, tablet e celular
-- Modo escuro via classe `.dark` no `<html>`
-- Animações com `@keyframes` (hero, contadores, modais, gauge do simulador)
-
-### JavaScript p5.js (`sketch.js`)
-
-| Recurso | Função |
-|---|---|
-| `setup()` / `draw()` | Canvas interativo no hero da página inicial |
-| `mousePressed()` | Planta sementes no solo ao clicar |
-| `keyReleased()` | Tecla **R** reinicia o campo |
-| `dist()` / `map()` / `lerpColor()` | Espaçamento das plantas, céu dinâmico e crescimento |
-| Funções auxiliares | Céu, solo, chuva e HUD modularizados |
-
-### JavaScript (`script.js`)
-
-| Recurso | Função |
-|---|---|
-| Modal de boas-vindas | Saudação personalizada com `localStorage` |
-| Barra de acessibilidade | Escala de fonte e modo escuro persistidos |
-| `IntersectionObserver` | Contadores animados na seção "O agro em números" |
-| Menu lateral | Gaveta responsiva no mobile |
-| Modais unificados | Mapa e cards de juventude (foco, Esc, `aria-*`) |
-| Simulador + mapa | Práticas sustentáveis ligadas aos pins do mapa |
-
-### Jogo (`jogo.html`, `game.js`, `game.css`)
-
-| Recurso | Função |
-|---|---|
-| Tela de loading | Barra de progresso enquanto assets carregam |
-| Historinha | 4 cenas com transição e mascotes animados |
-| Quiz | 6 perguntas, timer de 18 s, feedback imediato |
-| Missão | 6 problemas com `<dialog>` e escolhas múltiplas |
-| Pontuação | HUD em tempo real + recorde em `localStorage` |
-| Responsivo | Media queries para tablet e celular |
+**`game.js`** — Controla as telas do jogo, o quiz com timer, os 6 problemas da fazenda e a pontuação. Se você já digitou o nome no site, o jogo usa na hora de parabenizar no final.
 
 ---
 
 ## Links
 
-- **Repositório:** https://github.com/rafael37917-lgtm/agrinho
-- **Site publicado:** https://rafael37917-lgtm.github.io/agrinho/
-- **Jogo:** https://rafael37917-lgtm.github.io/agrinho/jogo.html
+- Repositório: https://github.com/rafael37917-lgtm/agrinho
+- Site: https://rafael37917-lgtm.github.io/agrinho/
+- Jogo: https://rafael37917-lgtm.github.io/agrinho/jogo.html
 
 ---
 
-## Fontes de Dados
+## Fontes que eu consultei
 
-- **EMBRAPA** — Empresa Brasileira de Pesquisa Agropecuária
+Pesquisei nestes sites e instituições para escrever os textos e montar os números:
+
+- **EMBRAPA** — práticas agrícolas e meio ambiente
 - **IBGE** — Censo Agropecuário 2017
-- **CNA** — Confederação da Agricultura e Pecuária do Brasil
-- **Ministério da Agricultura, Pecuária e Abastecimento**
-- **Absolar** — Associação Brasileira de Energia Solar Fotovoltaica
+- **CNA** — dados do agronegócio no Brasil
+- **Ministério da Agricultura**
+- **Absolar** — energia solar no campo
 
 ---
 
-## Créditos de Imagens e Recursos
+## Créditos de imagens
 
-### `img/lavoura.png` (IA)
+### `img/lavoura.png`
 
-Gerada com **ChatGPT (DALL-E)** usando o prompt:
+Eu gerei essa imagem no **ChatGPT (DALL-E)** com este prompt:
 
 > *"Vista de cima de uma fazenda sustentável com lavouras verdes, um rio com mata ciliar nativa nas margens, painéis solares no telhado da casa rural, biodigestor e vegetação diversificada. Estilo fotorrealista, durante o dia, iluminação natural, cores verdes e vibrantes."*
 
 ### `img/favicon.svg`
 
-Criado manualmente em código SVG (emoji de trigo 🌾 sobre fundo verde).
+Eu mesmo fiz em SVG (emoji de trigo 🌾 com fundo verde).
 
-### `img/game/` (21 arquivos PNG)
+### `img/game/` (21 imagens do jogo)
 
-Imagens criadas pelo autor com base na própria imaginação e nas características definidas para cada personagem, cenário e objeto. A geração visual foi feita com **ChatGPT (DALL-E)**, a partir de prompts escritos pelo autor descrevendo:
+As ideias dos personagens, cenários e objetos foram minhas. Depois descrevi cada um e pedi ao **ChatGPT (DALL-E)** para gerar a imagem. Exemplos de prompts que eu usei:
 
-- **Mascotes:** Agrinho, Abelha (Zé Colmeia), Florinha, Gota (Pinguim da Água), Dona Árvore
-- **Cenários:** fundos da historinha (`story_bg1` a `story_bg4`), tela inicial (`home_bg`)
-- **Fazendas:** comparação antes/depois (`fazenda_ruim`, `fazenda_boa`)
-- **Objetos interativos:** lixo no rio, pneu, tambor, toco, cano quebrado, árvore morta
-- **Troféus:** quiz, fazenda, pontuação máxima
-
-Conceito, roteiro visual e descrição de cada imagem são de autoria do estudante; a ferramenta de IA foi usada para produzir os arquivos PNG conforme as características informadas nos prompts.
-
-**Exemplos de prompts utilizados:**
-
-**Mascote Agrinho** (`agrinho.png`):
+**Agrinho** (`agrinho.png`):
 > *"Mascote infantil do Agrinho, menino sorridente com chapéu de palha, camiseta verde com desenho de folha, estilo cartoon educativo 2D, cores vibrantes, fundo transparente, personagem amigável para crianças."*
 
-**Mascote Florinha** (`florinha.png`):
+**Florinha** (`florinha.png`):
 > *"Mascote feminina infantil chamada Florinha, vestido amarelo com flores, cabelo castanho, estilo cartoon educativo agrinho, expressão alegre, fundo transparente."*
 
-**Fazenda degradada** (`fazenda_ruim.png`):
+**Fazenda ruim** (`fazenda_ruim.png`):
 > *"Ilustração isométrica de fazenda poluída e abandonada, rio sujo com lixo, árvores secas, céu cinza com fumaça, estilo cartoon educativo para jogo infantil sobre meio ambiente."*
 
-**Fazenda sustentável** (`fazenda_boa.png`):
+**Fazenda boa** (`fazenda_boa.png`):
 > *"Mesma fazenda recuperada e sustentável, lavouras verdes, rio limpo, painéis solares, céu azul, árvores vivas, estilo cartoon educativo colorido para jogo infantil agrinho."*
 
-**Cenário da historinha** (`story_bg1.png`):
+**Fundo da historinha** (`story_bg1.png`):
 > *"Paisagem rural cartoon para fundo de historinha infantil, colinas verdes, céu azul claro, nuvens leves, estilo ilustração educativa agrinho, proporção panorâmica."*
 
-**Objeto interativo — lixo no rio** (`lixo_rio.png`):
+**Lixo no rio** (`lixo_rio.png`):
 > *"Ilustração cartoon de rio poluído com garrafas plásticas, latas e sacos de lixo nas margens, estilo educativo infantil, fundo transparente, para jogo sobre problemas ambientais na fazenda."*
 
 **Troféu máximo** (`trofeu_max.png`):
 > *"Troféu dourado em formato de escudo com número 950, grinalda de louros, estrelas brilhantes, estilo cartoon para jogo educativo infantil, fundo transparente."*
 
-Os demais arquivos da pasta (`abelha.png`, `gota_mascote.png`, `arvore_mascote.png`, `story_bg2` a `story_bg4`, `home_bg.png`, `pneu.png`, `tambor.png`, `toco.png`, `cano.png`, `arvore_morta.png`, `trofeu_quiz.png`, `trofeu_fazenda.png`) seguiram o mesmo processo: descrição das características pelo autor e geração com ChatGPT (DALL-E).
+**Zé Colmeia — Abelha** (`abelha.png`):
+> *"Mascote abelha cartoon amarela e preta, com expressão amigável e asas pequenas, estilo educativo infantil agrinho, fundo transparente, personagem fofo para crianças."*
+
+**Pinguim da Água — Gota** (`gota_mascote.png`):
+> *"Mascote gota d'água azul com rosto simpático e pequenos braços, estilo cartoon educativo sobre preservação da água, fundo transparente, agrinho infantil."*
+
+**Dona Árvore** (`arvore_mascote.png`):
+> *"Mascote árvore verde com rosto sorridente, olhos grandes, estilo cartoon educativo sobre meio ambiente, fundo transparente, personagem amigável agrinho."*
+
+**Tela inicial do jogo** (`home_bg.png`):
+> *"Paisagem rural cartoon colorida para tela inicial de jogo infantil, céu azul, colinas verdes, estilo ilustração educativa agrinho, proporção horizontal."*
+
+**Cenários da historinha** (`story_bg2.png`, `story_bg3.png`, `story_bg4.png`):
+> *"Fundos cartoon para historinha infantil do agrinho, paisagem rural com variações de clima e cenário (tarde, rio, fazenda), cores suaves, estilo educativo."*
+
+**Pneu no solo** (`pneu.png`):
+> *"Pneu velho jogado no chão da fazenda, estilo cartoon educativo infantil, fundo transparente, objeto de poluição ambiental para jogo."*
+
+**Tambor de lixo** (`tambor.png`):
+> *"Tambor metálico enferrujado com resíduos, estilo cartoon educativo infantil, fundo transparente, problema ambiental na fazenda."*
+
+**Toco de árvore** (`toco.png`):
+> *"Toco de árvore cortada no chão, estilo cartoon educativo infantil, fundo transparente, símbolo de desmatamento para jogo agrinho."*
+
+**Cano quebrado** (`cano.png`):
+> *"Cano de água quebrado vazando no chão, estilo cartoon educativo infantil, fundo transparente, desperdício de água na fazenda."*
+
+**Árvore morta** (`arvore_morta.png`):
+> *"Árvore seca sem folhas, tronco cinza, estilo cartoon educativo infantil, fundo transparente, problema ambiental na propriedade rural."*
+
+**Troféu do quiz** (`trofeu_quiz.png`):
+> *"Troféu dourado cartoon com estrela, premiação do quiz educativo, estilo infantil agrinho, fundo transparente."*
+
+**Troféu da fazenda** (`trofeu_fazenda.png`):
+> *"Troféu dourado cartoon com folha verde, premiação por recuperar a fazenda, estilo educativo infantil, fundo transparente."*
 
 ### Emojis
 
-Unicode nativo do navegador (sem download externo).
+Os emojis do site vêm do próprio navegador (Unicode).
 
 ---
 
-## Autoria
+## GitHub (para o edital)
 
-**Autor:** Weslley Rafael Padilha Branco — 1º Ano EM, Rede Estadual de Ensino do Paraná  
-(Colégio Estadual São Vicente de Paulo — Turma 1º B)
+Meu repositório está configurado assim:
 
-- **Textos, estrutura do site, simulador, mapa, jogo e código HTML/CSS/JS:** produzidos pelo autor
-- **Imagem `img/lavoura.png`:** gerada com IA (prompt documentado acima)
-- **Imagens `img/game/`:** conceito e prompts do autor; geração visual com ChatGPT (DALL-E)
-
----
-
-## Configuração no GitHub (edital Subcategoria 3)
-
-Antes de enviar o link na Alura, confira:
-
-1. **Repositório público** — visível para todos
-2. **Topic `agrinho`** — About → ⚙️ → Topics → adicionar `agrinho`
-3. **GitHub Pages** — Settings → Pages → branch `main`, pasta `/ (root)`
-4. **Website no About** — `https://rafael37917-lgtm.github.io/agrinho`
-5. **Descrição do About** — frase sobre o tema Agrinho 2026
+1. Repositório **público**
+2. Topic **`agrinho`** no About
+3. GitHub Pages na branch **`main`**
+4. Link do site no About: `https://rafael37917-lgtm.github.io/agrinho`
 
 ---
 
-*Projeto desenvolvido para o Concurso Agrinho 2026: SENAR-PR / SEED-PR*
+*Projeto desenvolvido para o Concurso Agrinho 2026 — SENAR-PR / SEED-PR*

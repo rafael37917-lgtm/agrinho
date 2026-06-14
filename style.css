@@ -1107,110 +1107,7 @@ html.dark .sketch-hint kbd {
 
 body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
-/* â”€â”€ Quiz â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.quiz-list { display: grid; gap: 12px; }
-
-.quiz-card {
-  border-radius: 24px;
-  background: #fff;
-  padding: 18px;
-  box-shadow: 0 12px 18px #0f172a14;
-}
-
-.quiz-card h3 { font-size: 20px; margin-top: 6px; }
-
-.quiz-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border-radius: 99px;
-  background: #dcfce7;
-  color: #065f46;
-  margin-bottom: 2px;
-}
-
-.answers {
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.answers button {
-  border: 2px solid #e2e8f0;
-  background: #f8fafc;
-  color: #334155;
-  border-radius: 12px;
-  padding: 12px;
-  text-align: left;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.35;
-  cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.answers button:hover { border-color: #86efac; background: #ecfdf5; }
-.answers button.correct { border-color: #22c55e; background: #dcfce7; color: #14532d; }
-.answers button.wrong   { border-color: #fb923c; background: #ffedd5; color: #9a3412; }
-.answers button:disabled { cursor: default; }
-
-.feedback {
-  margin-top: 10px;
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-weight: 800;
-  display: none;
-}
-
-.feedback.show { display: block; }
-.feedback.ok  { background: #dcfce7; color: #14532d; }
-.feedback.bad { background: #ffedd5; color: #9a3412; }
-
-.score {
-  margin-top: 20px;
-  border-radius: 30px;
-  padding: 20px;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 900;
-  color: #fff;
-  background: linear-gradient(90deg, #047857, #84cc16);
-  box-shadow: 0 20px 30px #0f172a26;
-}
-
-.quiz-finish-msg {
-  margin-top: 16px;
-  border-radius: 20px;
-  padding: 16px 20px;
-  font-size: 18px;
-  font-weight: 800;
-  text-align: center;
-  background: linear-gradient(135deg, #f0fdf4, #ecfccb);
-  border: 2px solid #bbf7d0;
-  color: #064e3b;
-  display: none;
-}
-
-.quiz-finish-msg.show {
-  display: block;
-  animation: modalPopIn 0.4s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.quiz-restart-wrap {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-}
-
-.quiz-restart-wrap.is-hidden {
-  display: none;
-}
-
-.game-launch-card {
+/* ── Card de encerramento (seção jogo) ─────────────────────────────────────── */
   margin-top: 8px;
   padding: 28px 24px;
   border-radius: 24px;
@@ -1495,7 +1392,6 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 @media (max-width: 1180px) {
   .hero-grid, .split, .tech-grid { grid-template-columns: 1fr; gap: 26px; }
   .hero-panel { width: min(100%, 680px); }
-  .answers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .desafio-cards { grid-template-columns: 1fr; }
 }
 
@@ -1587,7 +1483,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .menu button:hover { background: #d1fae5; }
 
   .hero-grid, .split, .tech-grid, .cards,
-  .people-grid, .youth-grid, .tech-cards, .answers, .foot-wrap {
+  .people-grid, .youth-grid, .tech-cards, .foot-wrap {
     grid-template-columns: 1fr;
     display: grid;
   }
@@ -1597,7 +1493,6 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .counters-grid { grid-template-columns: repeat(2, 1fr); }
   .hero { padding: 42px 0 56px; }
   .hero-copy p { font-size: 18px; }
-  .score { font-size: 30px; }
   .desafio-cards { grid-template-columns: 1fr; }
   .sim-layout { grid-template-columns: 1fr; }
   .sim-result { flex-direction: row; justify-content: center; gap: 24px; min-width: unset; }
@@ -1622,8 +1517,6 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
   .avatar-row span { width: 48px; height: 48px; font-size: 30px; }
 
-  .answers { grid-template-columns: 1fr; }
-
   .person { font-size: 42px; }
 
   /* Juventude: 1 coluna em mobile */
@@ -1638,9 +1531,6 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
   .topic-modal-dialog { width: min(94vw, 520px); padding: 20px 16px 18px; border-radius: 20px; }
   #topicModalText { font-size: 16px; line-height: 1.62; }
-
-  .score { font-size: 24px; padding: 16px; }
-  .quiz-finish-msg { font-size: 16px; padding: 14px 16px; }
 
   .sim-checks { grid-template-columns: 1fr; }
   .sim-result { flex-direction: column; }
@@ -2116,12 +2006,10 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 .topic-hint,
 .foot-wrap > p,
 .foot-wrap small,
-.quiz-finish-msg,
 .farm-hint,
 .card p,
 .tech-card,
 .desafio-card p,
-.quiz-card p,
 .quiz-closing-note,
 .counter-label,
 .sim-item > span,
@@ -2131,10 +2019,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   font-size: calc(15px * var(--font-scale));
 }
 
-.quiz-card h3 { font-size: calc(20px * var(--font-scale)); }
-.answers button { font-size: calc(14px * var(--font-scale)); }
-
-/* â”€â”€ Modo escuro â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Modo escuro ───────────────────────────────────────────────────────────── */
 html.dark body {
   background: #071812;
   color: #d1fae5;
@@ -2181,7 +2066,6 @@ html.dark .hero-greeting {
 html.dark .section.light { background: #0a1810; }
 html.dark .card,
 html.dark .desafio-card,
-html.dark .quiz-card,
 html.dark .counter-item,
 html.dark .tech-card {
   background: #0f2318;
@@ -2315,21 +2199,6 @@ html.dark .desafio-quote {
   border-left-color: #22c55e;
   color: #a7f3d0;
 }
-
-/* Quiz */
-html.dark .answers button {
-  background: #0f2318;
-  border-color: #1a3d24;
-  color: #c9f7d4;
-}
-html.dark .answers button:hover {
-  border-color: #22c55e;
-  background: #1a3d24;
-}
-html.dark .answers button.correct { border-color: #22c55e; background: #052e16; color: #bbf7d0; }
-html.dark .answers button.wrong   { border-color: #f97316; background: #431407; color: #fed7aa; }
-html.dark .feedback.ok  { background: #052e16; color: #bbf7d0; }
-html.dark .feedback.bad { background: #431407; color: #fed7aa; }
 
 /* Simulador */
 html.dark .sim-item {
