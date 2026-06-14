@@ -483,6 +483,10 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   .story-scene{min-height:min(44dvh,340px)}
   .story-char{height:40% !important}
   .talk-bubble,.speech{font-size:10px;padding:7px 9px;max-width:46%}
+
+  .compare-head h2{font-size:clamp(18px,5.5vw,24px) !important}
+  .compare-head p{font-size:12px;padding:8px 10px}
+  .story-top h2{font-size:clamp(18px,5.5vw,24px) !important}
 }
 
 /* Correção da comparação: controles sempre visíveis sem rolagem */
@@ -679,6 +683,30 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   .tb-left{left:2% !important;top:4% !important;bottom:auto !important}
   .tb-right{right:2% !important;top:auto !important;bottom:7% !important}
   .tb-left:after,.tb-right:after{width:10px;height:10px}
+
+  .compare-panel{padding:12px 14px 10px;gap:8px}
+  .compare-head{flex-direction:column;align-items:flex-start;gap:8px}
+  .compare-head h2{
+    font-size:clamp(20px,5.2vw,28px) !important;
+    line-height:1.15;
+    margin-bottom:2px;
+  }
+  .compare-head .eyebrow{font-size:10px;padding:6px 10px;letter-spacing:.06em}
+  .compare-head p{
+    max-width:100%;
+    font-size:13px;
+    line-height:1.4;
+    padding:10px 12px;
+  }
+  .visual-compare{height:auto;gap:10px}
+  .visual-compare figure{padding:8px}
+  .visual-compare img{max-height:36dvh}
+  .visual-compare figcaption{font-size:12px;padding-top:6px}
+  .compare-actions .btn{padding:11px 14px;font-size:14px}
+
+  .story-panel{padding:12px 14px;gap:8px}
+  .story-top h2{font-size:clamp(20px,5vw,28px) !important;line-height:1.15}
+  .story-top .eyebrow{font-size:10px;padding:6px 10px}
 }
 @keyframes storyColorize{
   from{filter:grayscale(1)}
