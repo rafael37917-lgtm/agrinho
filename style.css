@@ -1323,9 +1323,12 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    gap: 6px;
   }
+  .brand-icon { width: 36px; height: 36px; font-size: 18px; }
+  .brand strong { font-size: 14px; }
+  .brand small { display: none; } /* esconde subtítulo no mobile */
   .a11y-bar { margin-left: auto; }
-  .brand small { font-size: 12px; }
 
   /* Gaveta lateral esquerda */
   .menu {
