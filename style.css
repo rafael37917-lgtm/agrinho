@@ -303,10 +303,55 @@ p { margin: 0; line-height: 1.65; }
 .float-b { animation: floatB 4s infinite ease-in-out; }
 
 .plant-wrap {
-  height: 230px;
+  height: auto;
   position: relative;
   margin: 16px auto 10px;
   max-width: 290px;
+}
+
+.agro-sketch {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px #0f172a18;
+  border: 2px solid #86efac55;
+  background: #dbeafe;
+}
+
+.agro-sketch canvas {
+  display: block;
+  width: 100% !important;
+  height: 220px !important;
+}
+
+.sketch-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  color: #64748b;
+}
+
+.sketch-hint kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+  font-size: 10px;
+}
+
+html.dark .agro-sketch {
+  border-color: #065f46;
+  background: #0f172a;
+}
+
+html.dark .sketch-hint { color: #94a3b8; }
+html.dark .sketch-hint kbd {
+  background: #064e3b;
+  border-color: #059669;
+  color: #d1fae5;
 }
 
 .soil {

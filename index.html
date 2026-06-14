@@ -100,31 +100,13 @@
             </div>
 
             <div class="plant-wrap">
-              <div class="sun-glow"></div>
-              <!-- nuvens (modo claro) -->
-              <div class="cloud cloud-a"></div>
-              <div class="cloud cloud-b"></div>
-              <!-- estrelas (modo escuro) -->
-              <div class="star star-1"></div>
-              <div class="star star-2"></div>
-              <div class="star star-3"></div>
-              <div class="star star-4"></div>
-              <div class="star star-5"></div>
-              <div class="star star-6"></div>
-              <div class="drop drop-1">&#128167;</div>
-              <div class="drop drop-2">&#128167;</div>
-              <div class="drop drop-3">&#128167;</div>
-              <div class="butterfly">&#129419;</div>
-              <div class="soil">
-                <div class="grass g1"></div>
-                <div class="grass g2"></div>
-                <div class="grass g3"></div>
-                <div class="grass g4"></div>
-                <div class="grass g5"></div>
-              </div>
-              <div class="stem"></div>
-              <div class="leaf leaf-left"></div>
-              <div class="leaf leaf-right"></div>
+              <div
+                id="agroSketch"
+                class="agro-sketch"
+                role="img"
+                aria-label="Cena interativa em p5.js: clique no solo para plantar sementes sustentáveis. Pressione R para reiniciar."
+              ></div>
+              <p class="sketch-hint">Interação p5.js · clique para plantar · tecla <kbd>R</kbd> reinicia</p>
             </div>
 
             <div class="panel-tags">
@@ -491,7 +473,7 @@
           <strong>Créditos de imagens e ícones:</strong>
           <span><code>img/lavoura.png</code> — gerada com IA (prompt no README)</span>
           <span><code>img/favicon.svg</code> — autor do projeto (SVG)</span>
-          <span><code>img/game/</code> — arte visual do jogo educativo, produzida para este projeto</span>
+          <span><code>img/game/</code> — conceito do autor; imagens geradas com ChatGPT (DALL-E) a partir dos prompts descritos no README</span>
           <span>Emojis — Unicode nativo do navegador</span>
         </div>
       </div>
@@ -526,6 +508,8 @@
     <!-- overlay da gaveta mobile -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+    <script src="./sketch.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

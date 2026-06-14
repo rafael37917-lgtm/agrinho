@@ -1,6 +1,6 @@
 # Agro Forte: Produzir Preservando
 
-**Concurso Agrinho 2026 | Subcategoria 3: Programação Front-End**  
+**Concurso Agrinho 2026 | Subcategoria 3: Linguagem JavaScript (p5.js)**  
 Série: 1º Ano do Ensino Médio | Rede Estadual de Ensino do Paraná
 
 ---
@@ -50,9 +50,8 @@ Site educacional com 8 seções navegáveis:
 |---|---|
 | **HTML5** | Estrutura semântica: `<section>`, `<article>`, `<main>`, `<footer>`, `<nav>`, `<dialog>`, atributos `aria-*` |
 | **CSS3** | Flexbox, Grid, `@keyframes`, modo escuro (`.dark`), responsividade com `@media`, variáveis CSS, `prefers-reduced-motion` |
-| **JavaScript** | DOM, `IntersectionObserver`, `localStorage`, `requestAnimationFrame`, quiz, simulador, jogo interativo, acessibilidade |
-
-> **Nota sobre o edital:** a Subcategoria 3 exige HTML, CSS e JavaScript. Este projeto atende com JavaScript vanilla (sem frameworks). Confirme com o professor orientador se a edição 2026 aceita Front-End puro em vez de p5.js.
+| **JavaScript (p5.js)** | Cena interativa no hero (`sketch.js`): `setup`, `draw`, eventos, `dist`, `map`, `lerpColor` |
+| **JavaScript (vanilla)** | Site (`script.js`) e jogo (`game.js`): DOM, `localStorage`, quiz, simulador, mapa |
 
 ---
 
@@ -79,8 +78,9 @@ Recursos implementados em ambas as páginas:
 3. Navegue pelas seções pelo menu fixo no topo
 4. No **Mapa Interativo**, clique nos pontos coloridos para ver detalhes
 5. No **Simulador**, marque práticas sustentáveis e observe o índice crescer
-6. Na seção **Jogo**, clique em "Abrir jogo em nova aba"
-7. Use **🌙** para modo escuro e **A / A+ / A++** para ajustar a fonte
+6. Na página inicial, **clique no solo da cena p5.js** para plantar sementes (tecla **R** reinicia)
+7. Na seção **Jogo**, clique em "Abrir jogo em nova aba"
+8. Use **🌙** para modo escuro e **A / A+ / A++** para ajustar a fonte
 
 ### Jogo
 
@@ -97,6 +97,7 @@ Recursos implementados em ambas as páginas:
 ```
 agrinho/
 ├── index.html       # Site principal (8 seções + card do jogo)
+├── sketch.js        # Interação p5.js no hero (Subcategoria 3)
 ├── jogo.html        # Jogo educativo standalone
 ├── style.css        # Estilos do site, modo escuro, responsividade
 ├── script.js        # Simulador, mapa, modais, contadores, acessibilidade
@@ -131,6 +132,16 @@ agrinho/
 - **Media queries** para desktop, tablet e celular
 - Modo escuro via classe `.dark` no `<html>`
 - Animações com `@keyframes` (hero, contadores, modais, gauge do simulador)
+
+### JavaScript p5.js (`sketch.js`)
+
+| Recurso | Função |
+|---|---|
+| `setup()` / `draw()` | Canvas interativo no hero da página inicial |
+| `mousePressed()` | Planta sementes no solo ao clicar |
+| `keyReleased()` | Tecla **R** reinicia o campo |
+| `dist()` / `map()` / `lerpColor()` | Espaçamento das plantas, céu dinâmico e crescimento |
+| Funções auxiliares | Céu, solo, chuva e HUD modularizados |
 
 ### JavaScript (`script.js`)
 
@@ -188,7 +199,15 @@ Criado manualmente em código SVG (emoji de trigo 🌾 sobre fundo verde).
 
 ### `img/game/` (21 arquivos PNG)
 
-Arte visual produzida para o módulo jogo educativo **Salve a Fazendinha**, incluindo mascotes (Agrinho, Abelha, Florinha, Gota, Árvore), cenários da historinha, fazendas comparativas, objetos interativos (lixo, pneu, cano, tambor, toco) e troféus de conclusão.
+Imagens criadas pelo autor com base na própria imaginação e nas características definidas para cada personagem, cenário e objeto. A geração visual foi feita com **ChatGPT (DALL-E)**, a partir de prompts escritos pelo autor descrevendo:
+
+- **Mascotes:** Agrinho, Abelha (Zé Colmeia), Florinha, Gota (Pinguim da Água), Dona Árvore
+- **Cenários:** fundos da historinha (`story_bg1` a `story_bg4`), tela inicial (`home_bg`)
+- **Fazendas:** comparação antes/depois (`fazenda_ruim`, `fazenda_boa`)
+- **Objetos interativos:** lixo no rio, pneu, tambor, toco, cano quebrado, árvore morta
+- **Troféus:** quiz, fazenda, pontuação máxima
+
+Conceito, roteiro visual e descrição de cada imagem são de autoria do estudante; a ferramenta de IA foi usada apenas para produzir os arquivos PNG conforme as características informadas nos prompts.
 
 ### Emojis
 
@@ -203,7 +222,7 @@ Unicode nativo do navegador (sem download externo).
 
 - **Textos, estrutura do site, simulador, mapa, jogo e código HTML/CSS/JS:** produzidos pelo autor
 - **Imagem `img/lavoura.png`:** gerada com IA (prompt documentado acima)
-- **Arte `img/game/`:** produzida para este projeto Agrinho 2026
+- **Imagens `img/game/`:** conceito e prompts do autor; geração visual com ChatGPT (DALL-E)
 
 ---
 
