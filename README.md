@@ -73,7 +73,7 @@ Também pensei em **acessibilidade**: skip link, botões para aumentar a fonte (
 3. Navegue pelo menu (Início, Desafio, Mapa, Números, Simulador, Jogo…)
 4. No mapa, clique nos pontos coloridos
 5. No simulador, marque as práticas e veja o índice crescer
-6. Na página inicial, clique no solo marrom para plantar (tecla **R** reinicia)
+6. Na página inicial, toque no solo para plantar; depois chove, o caminhão chega e você colhe clicando nas plantas (o ciclo reinicia sozinho)
 7. Use 🌙 para modo escuro e A / A+ / A++ para mudar a fonte
 
 ### Jogo
@@ -109,7 +109,7 @@ agrinho/
 
 ## Como funciona o código (resumo)
 
-**`sketch.js` (p5.js)** — No hero do site eu usei `setup()`, `draw()`, `mousePressed()` e `keyReleased()`. Ao clicar no solo, nasce uma planta. Usei `dist()`, `map()` e `lerpColor()` para espaçamento, céu e crescimento.
+**`sketch.js` (p5.js)** — No hero do site eu usei `setup()`, `draw()` e `mousePressed()`. O mini-jogo segue um ciclo: plantar sementes no solo → chuva → caminhão entra → colher clicando nas plantas → caminhão sai cheio e reinicia. Usei `dist()`, `map()` e `lerpColor()` para espaçamento, céu e crescimento.
 
 **`script.js`** — Controla o mapa, os modais, o simulador (ligado aos pins do mapa), os contadores que animam quando você rola a página, o menu no celular e as preferências salvas no navegador.
 

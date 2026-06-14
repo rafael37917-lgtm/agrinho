@@ -174,9 +174,24 @@ html, body {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 34px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 38px);
+  align-items: center;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-copy .pill {
+  font-size: 13px;
+  padding: 7px 14px;
+  margin-bottom: 10px;
+}
+
+.hero-copy .hero-greeting {
+  font-size: calc(14px * var(--font-scale));
+  margin-bottom: 8px;
 }
 
 .pill {
@@ -223,9 +238,16 @@ h3 { margin: 0 0 6px; font-size: 24px; color: #052e16; }
 
 p { margin: 0; line-height: 1.65; }
 
+.hero-copy h1 {
+  margin: 10px 0 16px;
+  font-size: clamp(32px, 4.8vw, 58px);
+  line-height: 1.04;
+}
+
 .hero-copy p {
-  max-width: 650px;
-  font-size: clamp(18px, 2vw, 22px);
+  max-width: 560px;
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.62;
   color: #334155;
 }
 
@@ -233,7 +255,7 @@ p { margin: 0; line-height: 1.65; }
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .btn {
@@ -269,60 +291,34 @@ p { margin: 0; line-height: 1.65; }
 .avatar-row span:hover { transform: translateY(-5px) rotate(-5deg); }
 
 .hero-panel {
-  border: 8px solid #fff;
-  border-radius: 44px;
-  padding: 18px;
-  width: min(100%, 540px);
-  margin: 0 auto;
+  border: clamp(5px, 0.65vw, 8px) solid #fff;
+  border-radius: clamp(28px, 3vw, 44px);
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
   background: linear-gradient(135deg, #059669, #84cc16, #38bdf8);
   box-shadow: 0 30px 40px #0f172a2e;
-}
-
-.panel-top { display: flex; justify-content: space-between; }
-
-.mini-card {
-  width: 132px;
-  background: #ffffffe0;
-  border-radius: 24px;
-  text-align: center;
-  padding: 12px 10px;
-  box-shadow: 0 10px 20px #0f172a20;
-}
-
-.mini-card .icon { font-size: 34px; }
-
-.mini-card p {
-  margin-top: 6px;
-  font-weight: 900;
-  color: #065f46;
-  font-size: 12px;
-  line-height: 1.25;
-}
-
-.float-a { animation: floatA 3.2s infinite ease-in-out; }
-.float-b { animation: floatB 4s infinite ease-in-out; }
-
-.plant-wrap {
-  height: auto;
-  position: relative;
-  margin: 16px auto 10px;
-  max-width: 290px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
 }
 
 .agro-sketch {
   width: 100%;
-  height: 220px;
-  border-radius: 20px;
+  height: 100%;
+  min-height: 0;
+  border-radius: clamp(22px, 2.4vw, 36px);
   overflow: hidden;
-  box-shadow: 0 14px 32px #0f172a18;
-  border: 2px solid #86efac55;
-  background: #dbeafe;
+  background: #87ceeb;
+  cursor: pointer;
 }
 
 .agro-sketch canvas {
   display: block;
   width: 100% !important;
-  height: 220px !important;
+  height: 100% !important;
 }
 
 html.dark .agro-sketch {
@@ -368,24 +364,6 @@ html.dark .agro-sketch {
 
 .drop { position: absolute; top: 8px; right: 50px; font-size: 28px; animation: waterDrop 2.3s infinite ease-in-out; }
 
-.panel-tags {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.panel-tags span {
-  text-align: center;
-  background: #ffffffdd;
-  border-radius: 18px;
-  padding: 10px 8px;
-  font-weight: 900;
-  color: #065f46;
-  font-size: 11px;
-  line-height: 1.25;
-}
-
-/* â”€â”€ SeÃ§Ãµes base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .section {
   padding: 96px 0;
   scroll-margin-top: 110px;
@@ -414,7 +392,23 @@ html.dark .agro-sketch {
 .section-head {
   max-width: 700px;
   text-align: center;
-  margin: 0 auto 32px;
+  margin: 0 auto 48px;
+}
+
+.section-head h2 {
+  margin-bottom: 16px;
+}
+
+.section-head > p {
+  margin-top: 4px;
+}
+
+#simulador {
+  padding-bottom: 88px;
+}
+
+#jogo {
+  padding-top: 88px;
 }
 
 /* â”€â”€ Contadores (nÃºmeros do agro) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -887,14 +881,15 @@ html.dark .agro-sketch {
 .sim-layout {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 32px;
+  gap: 40px 48px;
   align-items: center;
+  margin-bottom: 12px;
 }
 
 .sim-checks {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 14px;
 }
 
 .sim-item {
@@ -993,7 +988,7 @@ html.dark .agro-sketch {
 }
 
 .sim-map-hint {
-  margin-top: 18px;
+  margin-top: 40px;
   text-align: center;
   font-size: 14px;
   font-weight: 700;
@@ -1085,8 +1080,8 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
 /* ── Card do jogo (seção jogo) ─────────────────────────────────────────────── */
 .game-launch-card {
-  margin: 8px auto 0;
-  padding: 32px 36px;
+  margin: 24px auto 0;
+  padding: 36px 40px;
   max-width: 960px;
   border-radius: 24px;
   text-align: center;
@@ -1181,7 +1176,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 }
 
 .quiz-closing-card {
-  margin-top: 32px;
+  margin-top: 40px;
   padding: 22px 20px;
   border-radius: 22px;
   text-align: center;
@@ -1226,51 +1221,13 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 .foot-brand strong, .foot-brand small { display: block; }
 .foot-brand small { color: #86efac; }
 
-.foot-sources {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid #065f46;
-  font-size: 12px;
+.foot-wrap > p {
+  flex: 1 1 220px;
+  max-width: 520px;
+  margin: 0;
   color: #86efac;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  align-items: center;
-  width: 100%;
-}
-
-.foot-sources strong {
-  color: #a7f3d0;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.foot-credits {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #065f46;
-  font-size: 12px;
-  color: #86efac;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  align-items: center;
-  width: 100%;
-}
-
-.foot-credits strong {
-  color: #a7f3d0;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.foot-credits code {
-  font-size: 11px;
-  color: #bbf7d0;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* â”€â”€ Youth quote (Juventude) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -1384,25 +1341,25 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 /* â”€â”€ Responsividade â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 1180px) {
   .hero-grid, .split, .tech-grid { grid-template-columns: 1fr; gap: 26px; }
-  .hero-panel { width: min(100%, 680px); }
+  .hero-panel { max-width: min(100%, 720px); margin-inline: auto; }
   .desafio-cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1440px) and (min-width: 981px) {
   .hero { padding: 52px 0 64px; }
   .hero-grid { gap: 24px; }
-  h1 { font-size: clamp(54px, 5.2vw, 74px); line-height: 0.96; }
-  .hero-copy p { max-width: 590px; font-size: clamp(17px, 1.5vw, 20px); }
-  .hero-panel { width: min(100%, 500px); padding: 16px; }
-  .mini-card { width: 122px; }
+  h1 { font-size: clamp(40px, 5vw, 56px); line-height: 1.02; }
+  .hero-copy h1 { font-size: clamp(30px, 4.2vw, 52px); }
+  .hero-copy p { max-width: 540px; font-size: clamp(16px, 1.55vw, 19px); }
 }
 
 @media (max-width: 1366px) and (min-width: 981px) and (max-height: 820px) {
   .header { padding: 8px 0; }
   .hero { padding: 44px 0 54px; }
   .pill { margin-bottom: 8px; }
-  h1 { margin: 6px 0; font-size: clamp(48px, 4.9vw, 66px); }
-  .hero-copy p { font-size: 18px; line-height: 1.55; }
+  h1 { margin: 6px 0; font-size: clamp(36px, 4.5vw, 50px); }
+  .hero-copy h1 { font-size: clamp(28px, 4vw, 46px); }
+  .hero-copy p { font-size: 17px; line-height: 1.58; }
   .hero-actions { margin-top: 18px; }
   .avatar-row { margin-top: 18px; }
 }
@@ -1481,8 +1438,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
     display: grid;
   }
 
-  .hero-panel { width: 100%; }
-  .panel-tags { grid-template-columns: 1fr; }
+  .hero-panel { max-width: min(100%, 640px); margin-inline: auto; }
   .counters-grid { grid-template-columns: repeat(2, 1fr); }
   .hero { padding: 42px 0 56px; }
   .hero-copy p { font-size: 18px; }
@@ -1491,19 +1447,36 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .sim-result { flex-direction: row; justify-content: center; gap: 24px; min-width: unset; }
   .sim-msg { max-width: 260px; text-align: left; }
 
-  /* SeÃ§Ãµes */
-  .section { padding: 60px 0; }
+  /* Seções */
+  .section { padding: 64px 0; }
+  #simulador { padding-bottom: 56px; }
+  #jogo { padding-top: 56px; }
+  .section-head { margin-bottom: 36px; }
 
   /* Mapa: aumentar pins no mobile */
   .fp-icon { width: 40px; height: 40px; font-size: 18px; }
   .fp-label { font-size: 10px; padding: 2px 6px; }
 }
 
+@media (max-width: 900px) and (min-width: 641px) {
+  .hero-panel { max-width: min(100%, 600px); }
+}
+
 @media (max-width: 640px) {
-  h1 { font-size: clamp(34px, 13vw, 54px); line-height: 0.98; }
+  h1 { font-size: clamp(30px, 10vw, 42px); line-height: 1.05; }
+  .hero-copy h1 { font-size: clamp(28px, 10vw, 40px); }
+  .hero-copy p { font-size: clamp(16px, 4.2vw, 18px); }
   h2 { font-size: clamp(28px, 9vw, 40px); }
 
   .pill { font-size: 13px; }
+
+  .hero-panel {
+    max-width: 100%;
+    border-width: 6px;
+    border-radius: 28px;
+  }
+
+  .agro-sketch { border-radius: 22px; }
 
   .hero-actions { flex-direction: column; align-items: stretch; }
   .btn { width: 100%; display: flex; justify-content: center; }
@@ -1529,17 +1502,17 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .sim-result { flex-direction: column; }
   .sim-msg { max-width: 100%; text-align: center; }
 
-  /* SeÃ§Ãµes */
-  .section { padding: 44px 0; }
+  /* Seções */
+  .section { padding: 48px 0; }
+  #simulador { padding-bottom: 44px; }
+  #jogo { padding-top: 44px; }
+  .section-head { margin-bottom: 28px; }
+  .sim-layout { gap: 28px; }
+  .sim-map-hint { margin-top: 28px; }
   .counters-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .counter-item { padding: 22px 14px 18px; }
 
-  /* Hero panel mini-cards */
-  .mini-card { width: 108px; }
-  .mini-card p { font-size: 13px; }
-  .mini-card .icon { font-size: 28px; }
-
-  /* Mapa: ocultar labels nos pins (evita sobreposiÃ§Ã£o) */
+  /* Mapa: ocultar labels nos pins (evita sobreposição) */
   .fp-label { display: none; }
   .fp-icon { width: 36px; height: 36px; font-size: 16px; }
   .farm-map { min-height: 200px; }
@@ -1591,11 +1564,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
 /* â”€â”€ Telas muito pequenas (â‰¤ 380px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 380px) {
-  .mini-card { width: 92px; padding: 10px 6px; }
-  .mini-card p { font-size: 11px; }
-  .panel-top { gap: 8px; }
   .btn { font-size: 15px; padding: 13px 20px; }
-  .plant-wrap { max-width: 240px; }
   .youth-card { padding: 12px 10px; gap: 8px; }
   .yc-emoji { font-size: 32px; }
   .yc-content strong { font-size: 13px; }
@@ -2030,7 +1999,6 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 .quiz-closing-note,
 .counter-label,
 .sim-item > span,
-.foot-sources span,
 #topicModalText,
 .welcome-text {
   font-size: calc(15px * var(--font-scale));
@@ -2144,18 +2112,6 @@ html.dark .sun-glow::after {
 }
 /* Gotas ocultam Ã  noite */
 html.dark .drop { display: none; }
-
-html.dark .mini-card {
-  background: rgba(15, 35, 24, 0.92);
-  border: 1px solid #1a3d24;
-}
-
-html.dark .mini-card p { color: #a7f3d0; }
-
-html.dark .panel-tags span {
-  background: rgba(15, 35, 24, 0.92);
-  color: #a7f3d0;
-}
 
 html.dark .footer { background: #020617; }
 
