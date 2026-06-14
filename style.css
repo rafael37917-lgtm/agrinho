@@ -1176,16 +1176,20 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 }
 
 .game-launch-visual {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  justify-items: center;
+  gap: 12px 16px;
+  max-width: 720px;
+  margin: 0 auto 20px;
 }
 
 .game-launch-img {
-  width: min(280px, 42vw);
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  display: block;
   border-radius: 18px;
   box-shadow: 0 12px 28px #0f172a18;
 }
@@ -1194,6 +1198,7 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   font-size: 28px;
   font-weight: 900;
   color: #059669;
+  line-height: 1;
 }
 
 .game-launch-steps {
@@ -1616,6 +1621,20 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
   .sim-gauge::before { inset: 22px; }
   .sim-percent { font-size: 28px; }
   .sim-result { min-width: unset; }
+
+  .game-launch-visual {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 300px;
+  }
+
+  .game-launch-img {
+    max-width: 100%;
+  }
+
+  .game-launch-arrow {
+    transform: rotate(90deg);
+  }
 }
 
 /* â”€â”€ Telas muito pequenas (â‰¤ 380px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
