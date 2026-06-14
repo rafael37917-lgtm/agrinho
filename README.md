@@ -147,7 +147,7 @@ Eu gerei essa imagem no **ChatGPT (DALL-E)** com este prompt:
 
 ### `img/favicon.svg`
 
-Eu mesmo fiz em SVG (emoji de trigo 🌾 com fundo verde).
+Ícone baixado no **[Freepik](https://www.freepik.com/)** (trigo / agricultura), adaptado para SVG e usado como favicon do site. Crédito ao autor(a) da imagem original na plataforma Freepik, conforme licença de uso exigida pelo site.
 
 ### `img/game/` (21 imagens do jogo)
 
