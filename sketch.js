@@ -284,6 +284,11 @@ function hudScale() {
   return constrain(min(width / 560, height / 420), 0.72, 1.05);
 }
 
+/** Celular e tablet: canvas estreito ou baixo. */
+function isCompactCanvas() {
+  return width <= 820;
+}
+
 function hudFont(sizePx, weight) {
   const size = Math.max(11, Math.round(sizePx * hudScale()));
   return `${weight} ${size}px Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif`;
@@ -442,17 +447,32 @@ function drawIntroCard() {
 }
 
 function drawHarvestHint() {
-  const bounds = truckBounds();
-  const cx = (bounds.left + bounds.right) * 0.5;
-  const cy = bounds.top - 10 * truckScale();
-  const msg = width < 360 ? 'Clique nas plantas p/ colher' : 'Clique nas plantas para colher';
+  const compact = isCompactCanvas();
+  const msg = compact
+    ? (width < 400 ? 'Toque nas plantas p/ colher' : 'Toque nas plantas para colher')
+    : 'Clique nas plantas para colher';
+
+  let cx;
+  let cy;
+  if (compact) {
+    cx = width * 0.5;
+    const top = soilTopY() + 14;
+    cy = top + (height - top) * 0.32;
+  } else {
+    const bounds = truckBounds();
+    cx = (bounds.left + bounds.right) * 0.5;
+    cy = bounds.top - 10 * truckScale();
+  }
+
   drawSpeechCard(cx, cy, msg, 10, 1);
 }
 
 function drawSpeechCard(cx, cy, text, sizePx, alpha) {
   const labelW = hudMeasure(text, sizePx, '700') + 24;
   const labelH = Math.round(28 * hudScale());
-  const lx = cx - labelW / 2;
+  const margin = 10;
+  const safeCx = constrain(cx, margin + labelW / 2, max(margin + labelW / 2, width - margin - labelW / 2));
+  const lx = safeCx - labelW / 2;
   const ly = cy - labelH / 2;
 
   fill(0, 0, 6, 84 * alpha);
@@ -462,7 +482,7 @@ function drawSpeechCard(cx, cy, text, sizePx, alpha) {
   noFill();
   rect(lx, ly, labelW, labelH, 10);
   noStroke();
-  hudText(text, cx, cy, sizePx, '700', 'center', 'middle', 0.96 * alpha);
+  hudText(text, safeCx, cy, sizePx, '700', 'center', 'middle', 0.96 * alpha);
 }
 
 // ── Caminhão (desenho) ──────────────────────────────────────────────────────

@@ -253,13 +253,157 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   .compare-head{flex-direction:column;align-items:flex-start}
   .result-hero,.result-bottom,.dialog-layout{grid-template-columns:1fr}
 }
+@media (max-width: 1024px){
+  #game .game-grid{
+    display:flex;
+    flex-direction:column;
+    height:auto;
+    min-height:calc(100dvh - 120px);
+    gap:12px;
+  }
+  #game .game-side{flex:0 0 auto;order:1}
+  #game .farm-panel{
+    order:2;
+    flex:1 1 auto;
+    min-height:46dvh;
+    padding:8px;
+  }
+  #game .farm-stage{
+    height:100%;
+    min-height:46dvh;
+    touch-action:manipulation;
+  }
+  #game .problem{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    z-index:5;
+  }
+}
 @media (max-width: 800px){
   html,body{overflow:auto}
-  main{height:auto;overflow:visible}
-  .screen{height:auto;min-height:calc(100vh - 76px)}
+  main{
+    height:auto;
+    min-height:calc(100dvh - 64px - env(safe-area-inset-bottom, 0px));
+    overflow:visible;
+    padding:10px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .topbar{
+    height:auto;
+    min-height:64px;
+    padding:calc(8px + env(safe-area-inset-top, 0px)) 12px 8px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .brand{font-size:22px}
+  .brand-wrap small{font-size:11px;line-height:1.25;max-width:150px}
+  .hud{gap:6px;margin-left:auto}
+  .hud-pill,.hud-btn,.timer-box{padding:8px 10px;font-size:13px}
+  .back-site{padding:6px 10px;font-size:12px;margin-right:6px}
+  .screen{height:auto;min-height:calc(100dvh - 64px - env(safe-area-inset-top, 0px))}
   .visual-compare,.guide-grid,.trophy-row{grid-template-columns:1fr}
   .story-panel,.compare-panel,.quiz-panel,.result-panel,.centered-panel.medium{height:auto}
-  .speech{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-stage{min-height:340px;padding-top:0;display:block}
+  .hero-char.agrinho{height:46%;left:2%;bottom:4%}
+  .hero-char.florinha{height:48%;right:1%;bottom:4%}
+  .hero-char.arvore{height:36%;left:32%;bottom:2%}
+  .hero-char.gota{height:24%;right:28%;bottom:6%}
+  .hero-char.abelha{width:72px;left:44%;top:10%;bottom:auto}
+  .speech{display:block;max-width:44%;font-size:12px;padding:10px 12px;z-index:6}
+  .bubble-left{left:3%;top:6%}
+  .bubble-right{right:3%;top:6%}
+
+  .story-panel{padding:12px;gap:10px}
+  .story-top{flex-wrap:wrap;gap:10px}
+  .story-top h2{font-size:clamp(22px,6vw,32px);line-height:1.1}
+  .story-scene{
+    display:block !important;
+    flex-direction:unset;
+    padding:0;
+    min-height:min(48dvh,380px);
+    aspect-ratio:16/10;
+  }
+  .story-char{
+    position:absolute !important;
+    height:44% !important;
+    width:auto !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:0 !important;
+    margin:0 !important;
+  }
+  .s-agrinho{left:6% !important}
+  .s-florinha,.s-florinha.right{right:6% !important;left:auto !important}
+  .s-arvore{right:5% !important;left:auto !important;height:46% !important}
+  .s-abelha,.s-abelha.top{
+    left:8% !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:4% !important;
+    width:72px !important;
+    height:auto !important;
+    transform:none !important;
+  }
+  .s-gota,.s-gota.right{left:8% !important;height:34% !important;bottom:4% !important}
+  .s-gota.right{right:8% !important;left:auto !important}
+  .story-scene[data-story="0"] .s-agrinho{left:10% !important;height:42% !important}
+  .story-scene[data-story="0"] .s-florinha{right:10% !important;height:44% !important}
+  .story-scene[data-story="2"] .s-gota{left:10% !important;height:32% !important}
+  .story-scene[data-story="2"] .s-florinha.right{right:12% !important;bottom:18% !important;height:40% !important}
+  .talk-bubble{
+    position:absolute;
+    display:block;
+    font-size:11px;
+    max-width:44%;
+    padding:8px 10px;
+    top:6%;
+    line-height:1.35;
+    z-index:6;
+  }
+  .talk-bubble.wide{max-width:44%}
+  .tb-left{left:3%;top:6%}
+  .tb-right{right:3%;top:6%}
+
+  #game .game-grid{
+    display:flex;
+    flex-direction:column;
+    height:auto;
+    min-height:calc(100dvh - 120px);
+    gap:12px;
+  }
+  #game .game-side{flex:0 0 auto;order:1}
+  #game .farm-panel{
+    order:2;
+    flex:1 1 auto;
+    min-height:52dvh;
+    padding:8px;
+  }
+  #game .farm-stage{
+    height:100%;
+    min-height:52dvh;
+    touch-action:manipulation;
+  }
+  #game .problem{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    z-index:5;
+  }
+  #game .problem .ring{pointer-events:none}
+
+  .dialog-layout{grid-template-columns:1fr}
+  .dialog-visual{height:180px}
+}
+@media (max-width:520px){
+  .hud-pill:nth-child(3){display:none}
+  .hero-stage{min-height:300px}
+  .hero-char.agrinho{height:42%}
+  .hero-char.florinha{height:44%}
+  .story-scene{min-height:min(44dvh,340px)}
+  .story-char{height:40% !important}
+  .talk-bubble,.speech{font-size:10px;padding:7px 9px;max-width:46%}
+  #game .farm-panel,#game .farm-stage{min-height:48dvh}
+  .p1,.p2,.p3,.p4,.p5,.p6{transform:scale(1.08);transform-origin:center bottom}
 }
 
 /* Correção da comparação: controles sempre visíveis sem rolagem */
@@ -304,7 +448,7 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 .story-bg-2{background-image:url('./img/game/story_bg2.png')}
 .story-bg-3{background-image:url('./img/game/story_bg3.png')}
 .story-bg-4{background-image:url('./img/game/story_bg4.png')}
-.story-scene::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 35%, rgba(0,0,0,0) 60%)}
+.story-scene::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 35%, rgba(0,0,0,0) 60%);pointer-events:none}
 .story-char{z-index:3}
 .s-agrinho{left:4%;height:62%;bottom:2%}
 .s-florinha{right:5%;height:68%;bottom:2%}
@@ -392,44 +536,6 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   .problem-dialog{max-height:84vh}
   .dialog-layout{grid-template-columns:230px 1fr}
   .dialog-visual{height:210px}
-}
-@media (max-width:800px){
-  html,body{overflow:auto}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-stage{min-height:380px;padding-top:78px}
-  .hero-char.agrinho{height:48%;left:3%}
-  .hero-char.florinha{height:50%;right:2%}
-  .hero-char.arvore{height:38%;left:34%}
-  .hero-char.gota{height:26%;right:30%}
-  .hero-char.abelha{width:78px;left:46%;top:64px}
-  .speech{display:block;max-width:46%;font-size:13px;padding:10px 12px;top:8px}
-  .bubble-left{left:4%}
-  .bubble-right{right:4%}
-
-  .story-panel{padding:14px 12px;gap:10px}
-  .story-top h2{font-size:32px}
-  .story-scene{min-height:380px}
-  .story-char{height:46% !important;width:auto !important;bottom:2%}
-  .s-abelha,.s-abelha.top{height:auto;width:80px !important;left:6% !important;top:auto !important;bottom:6px !important;transform:none}
-  .s-florinha.right,.s-gota.right{right:5% !important;left:auto !important}
-  .talk-bubble{position:absolute;font-size:13px;max-width:46%;padding:10px 12px;top:8px;line-height:1.35}
-  .talk-bubble.wide{max-width:46%}
-  .tb-left{left:4%;top:8%}
-  .tb-right{right:4%;top:8%}
-
-  .dialog-layout{grid-template-columns:1fr}
-  .dialog-visual{height:180px}
-}
-@media (max-width:520px){
-  .speech,.talk-bubble{position:static;display:block;max-width:none;width:100%;margin-bottom:8px;font-size:13px}
-  .speech:after,.talk-bubble:after{display:none}
-  .hero-stage{display:flex;flex-direction:column;padding:12px;min-height:auto;gap:8px}
-  .hero-stage .hero-char{position:relative;height:140px !important;width:auto;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;margin:0 auto}
-  .hero-char.abelha{height:70px !important}
-  .story-scene{display:flex !important;flex-direction:column;padding:12px;gap:8px;min-height:auto;background-size:cover}
-  .story-scene:not(.active){display:none !important}
-  .story-char{position:relative !important;height:130px !important;width:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;margin:0 auto}
-  .s-abelha,.s-abelha.top{height:70px !important;width:auto !important}
 }
 
 .back-site {
