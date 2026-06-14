@@ -347,10 +347,12 @@ const simPercent = document.getElementById("simPercent");
 const simMsg     = document.getElementById("simMsg");
 const simCbs     = document.querySelectorAll(".sim-cb");
 const simTotal   = simCbs.length;
-const certOffer  = document.getElementById("certOffer");
-const certBtn    = document.getElementById("certBtn");
-const certMiss   = document.getElementById("certMiss");
+const certResult = document.getElementById("certResult");
+const certCard   = document.getElementById("certCard");
+const certPreviewName = document.getElementById("certPreviewName");
+const certPassHint = document.getElementById("certPassHint");
 const certMissMsg = document.getElementById("certMissMsg");
+const certRetryWrap = document.getElementById("certRetryWrap");
 const certRetryBtn = document.getElementById("certRetryBtn");
 const certModal  = document.getElementById("certModal");
 const certName   = document.getElementById("certName");
@@ -381,21 +383,40 @@ function syncMapPins() {
 function updateCertUI() {
   const quizDone = Object.keys(answered).length >= totalQuestions;
   if (!quizDone) {
-    certOffer?.classList.add("is-hidden");
-    certMiss?.classList.add("is-hidden");
+    certResult?.classList.add("is-hidden");
     return;
   }
   const pct = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
   const passed = totalQuestions > 0 && score / totalQuestions > 0.8;
-  certOffer?.classList.toggle("is-hidden", !passed);
-  certMiss?.classList.toggle("is-hidden", passed);
-  if (certMissMsg && !passed) {
-    certMissMsg.textContent = `Puxa! Você fez ${pct}%, mas o certificado só libera acima de 80%. Releia o site, revise o mapa e o simulador, e tente o quiz de novo. Você consegue!`;
+  const name = localStorage.getItem("agrinho-user-name") || "Visitante";
+
+  certResult?.classList.remove("is-hidden");
+  if (certPreviewName) certPreviewName.textContent = name;
+
+  certCard?.classList.remove("cert-card-win", "cert-card-rip");
+  void certCard?.offsetWidth;
+
+  if (passed) {
+    certCard?.classList.add("cert-card-win");
+    certCard?.removeAttribute("disabled");
+    certPassHint?.classList.remove("is-hidden");
+    certMissMsg?.classList.add("is-hidden");
+    certRetryWrap?.classList.add("is-hidden");
+  } else {
+    certCard?.classList.add("cert-card-rip");
+    certCard?.setAttribute("disabled", "disabled");
+    certPassHint?.classList.add("is-hidden");
+    certMissMsg?.classList.remove("is-hidden");
+    certRetryWrap?.classList.remove("is-hidden");
+    if (certMissMsg) {
+      certMissMsg.textContent = `Poxa! Você acertou apenas ${pct}%. Releia o site, revise o mapa e o simulador, e tente o quiz de novo. Você consegue!`;
+    }
   }
 }
 
 function openCertModal() {
   if (!certModal || totalQuestions === 0) return;
+  if (certCard?.hasAttribute("disabled")) return;
   if (Object.keys(answered).length < totalQuestions) return;
   if (score / totalQuestions <= 0.8) return;
   const name = localStorage.getItem("agrinho-user-name") || "Visitante";
@@ -460,8 +481,34 @@ function updateSimulator() {
 simCbs.forEach((cb) => cb.addEventListener("change", updateSimulator));
 syncMapPins();
 
-certBtn?.addEventListener("click", openCertModal);
-certRetryBtn?.addEventListener("click", () => quizRestart?.click());
+certCard?.addEventListener("click", openCertModal);
+
+function restartQuiz() {
+  score = 0;
+  for (const k in answered) delete answered[k];
+  updateScore();
+
+  document.querySelectorAll(".answers button").forEach((b) => {
+    b.classList.remove("correct", "wrong");
+    b.disabled = false;
+  });
+  document.querySelectorAll(".feedback").forEach((fb) => {
+    fb.classList.remove("show", "ok", "bad");
+    fb.textContent = "";
+  });
+
+  if (quizFinishMsg) { quizFinishMsg.classList.remove("show"); quizFinishMsg.textContent = ""; }
+  certResult?.classList.add("is-hidden");
+  certCard?.classList.remove("cert-card-win", "cert-card-rip");
+
+  const quizSection = document.getElementById("quiz");
+  if (quizSection && header) {
+    const off = header.offsetHeight + 12;
+    window.scrollTo({ top: quizSection.getBoundingClientRect().top + window.scrollY - off, behavior: "smooth" });
+  }
+}
+
+certRetryBtn?.addEventListener("click", restartQuiz);
 certClose?.addEventListener("click", closeCertModal);
 certModal?.addEventListener("click", (e) => {
   if (e.target instanceof Element && e.target.hasAttribute("data-close-cert")) closeCertModal();
@@ -474,8 +521,6 @@ document.addEventListener("keydown", (e) => {
 const quizList      = document.getElementById("quizList");
 const scoreBox      = document.getElementById("scoreBox");
 const quizFinishMsg = document.getElementById("quizFinishMsg");
-const quizRestartWrap = document.getElementById("quizRestartWrap");
-const quizRestart   = document.getElementById("quizRestart");
 const totalQuestions = quizList ? quizList.querySelectorAll(".answers[data-q]").length : 0;
 
 let score    = 0;
@@ -496,7 +541,6 @@ function checkQuizComplete() {
   else                    msg = "🌱 Você está começando sua jornada sustentável. Releia o conteúdo e tente de novo!";
 
   if (quizFinishMsg) { quizFinishMsg.textContent = msg; quizFinishMsg.classList.add("show"); }
-  if (quizRestartWrap) quizRestartWrap.classList.remove("is-hidden");
   updateCertUI();
 }
 
@@ -530,30 +574,3 @@ document.querySelectorAll(".answers").forEach((group) => {
     });
   });
 });
-
-if (quizRestart) {
-  quizRestart.addEventListener("click", () => {
-    score = 0;
-    for (const k in answered) delete answered[k];
-    updateScore();
-
-    document.querySelectorAll(".answers button").forEach((b) => {
-      b.classList.remove("correct", "wrong");
-      b.disabled = false;
-    });
-    document.querySelectorAll(".feedback").forEach((fb) => {
-      fb.classList.remove("show", "ok", "bad");
-      fb.textContent = "";
-    });
-
-    if (quizFinishMsg)   { quizFinishMsg.classList.remove("show"); quizFinishMsg.textContent = ""; }
-    if (quizRestartWrap) quizRestartWrap.classList.add("is-hidden");
-    updateCertUI();
-
-    const quizSection = document.getElementById("quiz");
-    if (quizSection && header) {
-      const off = header.offsetHeight + 12;
-      window.scrollTo({ top: quizSection.getBoundingClientRect().top + window.scrollY - off, behavior: "smooth" });
-    }
-  });
-}

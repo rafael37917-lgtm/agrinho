@@ -526,15 +526,21 @@
 
           <div class="score reveal-scale" id="scoreBox" aria-live="polite">Sua pontuação: 0/8</div>
           <p id="quizFinishMsg" class="quiz-finish-msg" aria-live="polite"></p>
-          <div class="quiz-restart-wrap is-hidden" id="quizRestartWrap">
-            <button type="button" class="btn btn-primary" id="quizRestart">&#128260; Refazer o quiz</button>
-          </div>
-          <div class="cert-offer is-hidden" id="certOffer">
-            <button type="button" class="btn btn-secondary" id="certBtn">&#127942; Ver meu certificado</button>
-          </div>
-          <div class="cert-miss is-hidden" id="certMiss" aria-live="polite">
-            <p class="cert-miss-msg" id="certMissMsg"></p>
-            <button type="button" class="btn btn-primary" id="certRetryBtn">&#128260; Refazer o quiz</button>
+          <div class="cert-result is-hidden" id="certResult" aria-live="polite">
+            <p class="cert-pass-hint is-hidden" id="certPassHint">Clique no certificado piscando para abrir</p>
+            <button type="button" class="cert-card" id="certCard" aria-label="Abrir certificado">
+              <div class="cert-card-body">
+                <span class="cert-card-seal" aria-hidden="true">&#127942;</span>
+                <p class="cert-card-kicker">Agro Forte · Agrinho 2026</p>
+                <p class="cert-card-title">Agente do Agro Sustentável</p>
+                <p class="cert-card-name" id="certPreviewName"></p>
+                <p class="cert-card-foot">Produzir preservando</p>
+              </div>
+            </button>
+            <p class="cert-miss-msg is-hidden" id="certMissMsg"></p>
+            <div class="cert-retry-wrap is-hidden" id="certRetryWrap">
+              <button type="button" class="btn btn-primary" id="certRetryBtn">&#128260; Refazer o quiz</button>
+            </div>
           </div>
 
           <p class="quiz-closing-note">
