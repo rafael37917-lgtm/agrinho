@@ -1,8 +1,13 @@
 /**
  * Agro Forte — sketch.js | p5.js | Agrinho 2026 — Subcategoria 3
  *
- * Plante 10 sementes → chuva → colheita com caminhão → reinício.
+ * Mini-jogo no hero: plantar → chuva → colheita → caminhão → reinício.
+ *
+ * Funções p5 usadas: setup(), draw(), mousePressed(), touchStarted(),
+ * windowResized(), map(), dist(), lerp(), lerpColor(), sin(), cos().
  */
+
+// ── Estado global ───────────────────────────────────────────────────────────
 
 let plants = [];
 let rainDrops = [];
@@ -13,7 +18,7 @@ let reduceMotion = false;
 let sketchObserver = null;
 let introDismissed = false;
 let introStartMs = 0;
-let gamePhase = 'planting';
+let gamePhase = 'planting'; // planting | raining | truck_in | harvest | truck_out
 let phaseStartMs = 0;
 let truckX = 0;
 let harvestedCount = 0;
@@ -23,6 +28,9 @@ const SOIL_RATIO = 0.36;
 const STAR_COUNT = 52;
 const INTRO_MS = 4500;
 
+// ── Canvas e inicialização ──────────────────────────────────────────────────
+
+/** Lê o tamanho real do container HTML para o canvas responsivo. */
 function canvasSize() {
   const container = document.getElementById('agroSketch');
   if (!container) return { w: 400, h: 300 };
@@ -62,6 +70,7 @@ function initStars() {
   }
 }
 
+/** Zera partículas e volta à fase de plantio. */
 function resetGame(restartIntro) {
   plants = [];
   rainDrops = [];
@@ -102,6 +111,8 @@ function phaseElapsed() {
   return millis() - phaseStartMs;
 }
 
+// ── Caminhão ────────────────────────────────────────────────────────────────
+
 function truckParkX() {
   return width * 0.1;
 }
@@ -114,6 +125,7 @@ function truckScale() {
   return hudScale();
 }
 
+/** Retângulo usado para esconder plantas atrás do caminhão. */
 function truckBounds() {
   const s = truckScale();
   const x = truckX;
@@ -128,6 +140,7 @@ function truckBounds() {
   };
 }
 
+/** Área reservada onde o jogador não pode plantar sementes. */
 function truckReserveZone() {
   const s = truckScale();
   return {
@@ -141,6 +154,8 @@ function plantHiddenByTruck(plant) {
   const zone = truckBounds();
   return plant.x >= zone.left && plant.x <= zone.right;
 }
+
+// ── Loop principal ──────────────────────────────────────────────────────────
 
 function draw() {
   if (!document.getElementById('agroSketch')) return;
@@ -162,6 +177,10 @@ function draw() {
   if (gamePhase === 'planting') drawIntroCard();
 }
 
+/**
+ * Avança as fases do mini-jogo conforme o tempo e o progresso do jogador.
+ * planting → raining → truck_in → harvest → truck_out → planting
+ */
 function updateGame() {
   if (gamePhase === 'planting' && plants.length >= MAX_PLANTS) {
     dismissIntro();
@@ -190,12 +209,15 @@ function updateGame() {
     if (phaseElapsed() > 2400) resetGame(true);
   }
 
+  // Broto inicial: cresce um pouco, mas só floresce na chuva (growPlants).
   if (gamePhase === 'planting' && !reduceMotion) {
     for (const plant of plants) {
       plant.age = min(plant.age + 0.005, 0.34);
     }
   }
 }
+
+// ── Eventos (mouse e toque) ─────────────────────────────────────────────────
 
 function mousePressed() {
   if (!mouseInsideCanvas()) return;
@@ -232,6 +254,8 @@ function mouseInsideCanvas() {
   return mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height;
 }
 
+// ── Utilitários ─────────────────────────────────────────────────────────────
+
 function isDarkMode() {
   return document.documentElement.classList.contains('dark');
 }
@@ -244,6 +268,7 @@ function dismissIntro() {
   introDismissed = true;
 }
 
+/** Controla o fade do card de instruções no início. */
 function introAlpha() {
   if (introDismissed || gamePhase !== 'planting') return 0;
   const elapsed = millis() - introStartMs;
@@ -281,6 +306,7 @@ function hudMeasure(str, sizePx, weight) {
   return ctx.measureText(str).width;
 }
 
+/** Aumenta idade das plantas; espiga só aparece após a chuva. */
 function growPlants(speed) {
   for (const plant of plants) {
     plant.age = min(plant.age + speed, 1);
@@ -288,6 +314,9 @@ function growPlants(speed) {
   }
 }
 
+// ── Cenário (céu, colinas, solo) ───────────────────────────────────────────
+
+/** Gradiente do céu com lerpColor; posição do mouse altera levemente o tom. */
 function drawSky() {
   const horizon = soilTopY();
   const rainy = gamePhase === 'raining';
@@ -378,6 +407,7 @@ function drawHills() {
   hillShape(base + 2, 0.014, 14, 1.2);
 }
 
+/** Colinas desenhadas com sin/cos para evitar faixa vazia no horizonte. */
 function hillShape(baseY, freq, amp, phase) {
   beginShape();
   vertex(-2, baseY + 10);
@@ -397,6 +427,8 @@ function drawSoil() {
   fill(dark ? color(95, 38, 38) : color(92, 58, 44));
   rect(0, top, width, 16);
 }
+
+// ── Interface (balões de texto) ─────────────────────────────────────────────
 
 function drawIntroCard() {
   const alpha = introAlpha();
@@ -433,6 +465,8 @@ function drawSpeechCard(cx, cy, text, sizePx, alpha) {
   hudText(text, cx, cy, sizePx, '700', 'center', 'middle', 0.96 * alpha);
 }
 
+// ── Caminhão (desenho) ──────────────────────────────────────────────────────
+
 function drawTruckWheel(wx, wy, s) {
   fill(0, 0, 22);
   circle(wx, wy, 18 * s);
@@ -440,6 +474,7 @@ function drawTruckWheel(wx, wy, s) {
   circle(wx, wy, 8 * s);
 }
 
+/** Pickup lateral; caçamba enche conforme harvestedCount. */
 function drawTruck() {
   if (gamePhase === 'planting' || gamePhase === 'raining') return;
 
@@ -499,6 +534,8 @@ function drawTruck() {
   drawTruckWheel(x + 72 * s, y + bodyH + 2 * s, s);
 }
 
+// ── Plantas e colheita ──────────────────────────────────────────────────────
+
 function plantSize(plant) {
   return map(plant.age, 0, 1, 8, 34);
 }
@@ -511,6 +548,7 @@ function plantHitRadius(plant) {
   return plantSize(plant) * 0.62;
 }
 
+/** Valida solo, distância entre sementes e zona do caminhão antes de plantar. */
 function tryPlantSeed(x, y) {
   if (gamePhase !== 'planting') return;
   const top = soilTopY();
@@ -532,6 +570,7 @@ function tryPlantSeed(x, y) {
   });
 }
 
+/** Usa dist() para detectar clique em planta madura e enviar grãos ao caminhão. */
 function tryHarvestClick(x, y) {
   if (gamePhase !== 'harvest') return false;
 
@@ -561,6 +600,7 @@ function spawnGrainFlight(x, y) {
   });
 }
 
+/** Anima grãos voando em arco (lerp + sin) até a caçamba. */
 function drawGrainFlights() {
   for (let i = grainFlights.length - 1; i >= 0; i--) {
     const g = grainFlights[i];
@@ -598,6 +638,8 @@ function drawHarvestSparks() {
     if (s.life <= 0) harvestSparks.splice(i, 1);
   }
 }
+
+// ── Chuva ───────────────────────────────────────────────────────────────────
 
 function spawnRainDrop(x, y, speed) {
   if (rainDrops.length > 120) return;
@@ -637,6 +679,7 @@ function drawPlants() {
   }
 }
 
+/** Broto (folhas) ou espiga completa, conforme plant.bloomed. */
 function drawPlantSprite(x, y, size, hue, bloomed) {
   fill(hue, 50, 28);
   rect(x - 2.5, y - size * 0.58, 5, size * 0.58, 2);
