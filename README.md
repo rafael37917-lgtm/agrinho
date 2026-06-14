@@ -111,9 +111,6 @@ Antes de enviar o link na Alura, confira no repositório:
 3. **GitHub Pages** — Settings → Pages → branch `main`, pasta `/ (root)`
 4. **Website no About** — `https://rafael37917-lgtm.github.io/agrinho`
 5. **Descrição do About** — frase sobre o tema Agrinho 2026
-
-> Após 14/06/2026, 23h59, o edital proíbe alterações no GitHub até o resultado final.
-
 ---
 
 *Projeto desenvolvido para o Concurso Agrinho 2026 — SENAR-PR / SEED-PR*
