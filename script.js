@@ -11,6 +11,7 @@ const heroGreeting  = document.getElementById("heroGreeting");
 const welcomeModal  = document.getElementById("welcomeModal");
 const nameInput     = document.getElementById("nameInput");
 const nameSubmit    = document.getElementById("nameSubmit");
+const nameSkip      = document.getElementById("nameSkip");
 const darkToggle    = document.getElementById("darkToggle");
 const fontNormal    = document.getElementById("fontNormal");
 const fontMedium    = document.getElementById("fontMedium");
@@ -18,6 +19,9 @@ const fontLarge     = document.getElementById("fontLarge");
 
 const fontScales = [1, 1.2, 1.4];
 const fontBtns   = [fontNormal, fontMedium, fontLarge];
+
+const USER_NAME_KEY = "agrinho-user-name";
+const GUEST_NAME    = "visitante";
 
 // Exibe "Olá, [nome]!" no hero
 function showGreeting(name) {
@@ -52,8 +56,14 @@ function handleNameSubmit() {
     nameInput?.focus();
     return;
   }
-  localStorage.setItem("agrinho-user-name", name);
+  localStorage.setItem(USER_NAME_KEY, name);
   showGreeting(name);
+  closeWelcome();
+}
+
+function handleNameSkip() {
+  localStorage.setItem(USER_NAME_KEY, GUEST_NAME);
+  showGreeting(GUEST_NAME);
   closeWelcome();
 }
 
@@ -79,11 +89,9 @@ function setDarkMode(on) {
 }
 
 nameSubmit?.addEventListener("click", handleNameSubmit);
+nameSkip?.addEventListener("click", handleNameSkip);
 nameInput?.addEventListener("keydown", (e) => {
   if (e.key === "Enter") handleNameSubmit();
-});
-welcomeModal?.addEventListener("click", (e) => {
-  if (e.target instanceof Element && e.target.hasAttribute("data-close-welcome")) closeWelcome();
 });
 
 fontNormal?.addEventListener("click", () => applyFontScale(0));
@@ -91,7 +99,7 @@ fontMedium?.addEventListener("click", () => applyFontScale(1));
 fontLarge?.addEventListener("click", () => applyFontScale(2));
 darkToggle?.addEventListener("click", () => setDarkMode(!htmlEl.classList.contains("dark")));
 
-const savedName = localStorage.getItem("agrinho-user-name");
+const savedName = localStorage.getItem(USER_NAME_KEY);
 if (savedName) {
   showGreeting(savedName);
 } else {

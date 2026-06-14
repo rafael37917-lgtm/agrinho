@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
     <header class="header">
       <div class="container nav">
         <button type="button" class="brand" data-to="inicio" aria-label="Ir para início">
@@ -35,6 +36,7 @@
           <button type="button" data-to="solucoes">Boas práticas</button>
           <button type="button" data-to="tecnologia">Tecnologia</button>
           <button type="button" data-to="mapa">Mapa</button>
+          <button type="button" data-to="numeros">Números</button>
           <button type="button" data-to="jovens">Juventude</button>
           <button type="button" data-to="simulador">Simulador</button>
           <button type="button" data-to="jogo">Jogo</button>
@@ -68,7 +70,7 @@
             <p id="heroGreeting" class="hero-greeting" hidden aria-live="polite"></p>
             <h1>Agro forte: <span>produzir preservando</span>.</h1>
             <p>
-              <br>Projeto desenvolvido para mostrar que o campo
+              Festejando a conexão entre <strong>campo e cidade</strong>: este projeto mostra que o agronegócio
               pode produzir alimentos, gerar desenvolvimento e cuidar do meio ambiente
               com tecnologia, conhecimento e responsabilidade.
             </p>
@@ -481,7 +483,7 @@
 
     <!-- ── BOAS-VINDAS ─────────────────────────────────────────────────────── -->
     <div id="welcomeModal" class="welcome-modal" aria-hidden="true">
-      <div class="welcome-backdrop" data-close-welcome></div>
+      <div class="welcome-backdrop"></div>
       <div class="welcome-dialog" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
         <p class="welcome-kicker">Agro Forte</p>
         <h2 id="welcomeTitle">Bem-vindo(a) ao projeto!</h2>
@@ -489,7 +491,10 @@
         <label class="welcome-label" for="nameInput">Seu nome</label>
         <input type="text" id="nameInput" class="name-input" maxlength="40"
           placeholder="Ex.: Maria" autocomplete="name" />
-        <button type="button" class="btn btn-primary" id="nameSubmit">Começar</button>
+        <div class="welcome-actions">
+          <button type="button" class="btn btn-primary" id="nameSubmit">Começar</button>
+          <button type="button" class="btn btn-secondary" id="nameSkip">Pular</button>
+        </div>
       </div>
     </div>
 

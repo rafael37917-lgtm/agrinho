@@ -74,8 +74,8 @@ Recursos implementados em ambas as páginas:
 ### Site principal
 
 1. Acesse o link do GitHub Pages (campo "About" do repositório)
-2. Insira seu nome no modal de boas-vindas (saudação personalizada)
-3. Navegue pelas seções pelo menu fixo no topo
+2. Insira seu nome no modal de boas-vindas ou clique em **Pular** para entrar como visitante
+3. Navegue pelas seções pelo menu fixo no topo (inclui **Números**)
 4. No **Mapa Interativo**, clique nos pontos coloridos para ver detalhes
 5. No **Simulador**, marque práticas sustentáveis e observe o índice crescer
 6. Na página inicial, **clique no solo da cena p5.js** para plantar sementes (tecla **R** reinicia)
@@ -207,7 +207,32 @@ Imagens criadas pelo autor com base na própria imaginação e nas característi
 - **Objetos interativos:** lixo no rio, pneu, tambor, toco, cano quebrado, árvore morta
 - **Troféus:** quiz, fazenda, pontuação máxima
 
-Conceito, roteiro visual e descrição de cada imagem são de autoria do estudante; a ferramenta de IA foi usada apenas para produzir os arquivos PNG conforme as características informadas nos prompts.
+Conceito, roteiro visual e descrição de cada imagem são de autoria do estudante; a ferramenta de IA foi usada para produzir os arquivos PNG conforme as características informadas nos prompts.
+
+**Exemplos de prompts utilizados:**
+
+**Mascote Agrinho** (`agrinho.png`):
+> *"Mascote infantil do Agrinho, menino sorridente com chapéu de palha, camiseta verde com desenho de folha, estilo cartoon educativo 2D, cores vibrantes, fundo transparente, personagem amigável para crianças."*
+
+**Mascote Florinha** (`florinha.png`):
+> *"Mascote feminina infantil chamada Florinha, vestido amarelo com flores, cabelo castanho, estilo cartoon educativo agrinho, expressão alegre, fundo transparente."*
+
+**Fazenda degradada** (`fazenda_ruim.png`):
+> *"Ilustração isométrica de fazenda poluída e abandonada, rio sujo com lixo, árvores secas, céu cinza com fumaça, estilo cartoon educativo para jogo infantil sobre meio ambiente."*
+
+**Fazenda sustentável** (`fazenda_boa.png`):
+> *"Mesma fazenda recuperada e sustentável, lavouras verdes, rio limpo, painéis solares, céu azul, árvores vivas, estilo cartoon educativo colorido para jogo infantil agrinho."*
+
+**Cenário da historinha** (`story_bg1.png`):
+> *"Paisagem rural cartoon para fundo de historinha infantil, colinas verdes, céu azul claro, nuvens leves, estilo ilustração educativa agrinho, proporção panorâmica."*
+
+**Objeto interativo — lixo no rio** (`lixo_rio.png`):
+> *"Ilustração cartoon de rio poluído com garrafas plásticas, latas e sacos de lixo nas margens, estilo educativo infantil, fundo transparente, para jogo sobre problemas ambientais na fazenda."*
+
+**Troféu máximo** (`trofeu_max.png`):
+> *"Troféu dourado em formato de escudo com número 950, grinalda de louros, estrelas brilhantes, estilo cartoon para jogo educativo infantil, fundo transparente."*
+
+Os demais arquivos da pasta (`abelha.png`, `gota_mascote.png`, `arvore_mascote.png`, `story_bg2` a `story_bg4`, `home_bg.png`, `pneu.png`, `tambor.png`, `toco.png`, `cano.png`, `arvore_morta.png`, `trofeu_quiz.png`, `trofeu_fazenda.png`) seguiram o mesmo processo: descrição das características pelo autor e geração com ChatGPT (DALL-E).
 
 ### Emojis
 

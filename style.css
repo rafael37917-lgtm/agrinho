@@ -2097,6 +2097,15 @@ body.modal-open { overflow: hidden; overscroll-behavior: contain; }
 
 .welcome-dialog .btn { width: 100%; }
 
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.welcome-actions .btn { width: 100%; }
+
 /* â”€â”€ Escala de fonte (textos de leitura, exclui nav/menu) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .section-label,
 .pill,
