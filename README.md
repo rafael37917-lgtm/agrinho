@@ -42,8 +42,6 @@ Site educacional com 8 seções navegáveis:
 4. Missão com 6 problemas ambientais para corrigir na fazenda
 5. Tela de resultado com troféus e recorde salvo no navegador
 
-Pontuação máxima aproximada: **950 pontos**. Recorde persistido em `localStorage` (`agrinho_best_score_v5`).
-
 ---
 
 ## Tecnologias Utilizadas
