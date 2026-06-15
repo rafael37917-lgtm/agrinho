@@ -458,7 +458,7 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   :root{--topbar-h:54px}
   .hud-pill:nth-child(3){display:none}
   .brand-wrap small{max-width:118px}
-  .hero-stage{min-height:300px}
+  .hero-stage{min-height:0}
   .hero-char.agrinho{height:42%}
   .hero-char.florinha{height:44%}
   .story-scene{min-height:min(40dvh,320px)}
@@ -753,24 +753,80 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   .compare-actions .btn{padding:11px 14px;font-size:14px}
 
   #home.screen.active{
-    display:flex;
-    flex-direction:column;
+    display:block;
     overflow-x:hidden;
     width:100%;
   }
   #home .hero-grid{
+    display:flex;
+    flex-direction:column;
+    grid-template-columns:1fr !important;
     width:100%;
     max-width:100%;
+    height:auto !important;
+    gap:0;
     overflow:hidden;
   }
-  #home .hero-stage{
+  #home .hero-copy{
     width:100%;
     max-width:100%;
-    min-height:0 !important;
-    max-height:36dvh;
-    aspect-ratio:16/10;
+    padding:16px 14px 18px;
     overflow:hidden;
+    box-sizing:border-box;
   }
+  #home .hero-copy::before,
+  #home .hero-copy::after{display:none}
+  #home .hero-copy h1{
+    font-size:clamp(22px,6.5vw,30px) !important;
+    line-height:1.08;
+    margin-bottom:8px;
+    word-break:break-word;
+  }
+  #home .hero-copy p{
+    font-size:14px;
+    max-width:100%;
+    margin-bottom:8px;
+  }
+  #home .hero-cast-text{font-size:14px;margin-top:4px;margin-bottom:4px}
+  #home .hero-cast-row{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:4px;
+    width:100%;
+    margin-top:4px;
+  }
+  #home .cast-card{
+    width:auto;
+    min-width:0;
+    gap:4px;
+  }
+  #home .cast-card img{
+    width:100%;
+    max-width:48px;
+    height:auto;
+    aspect-ratio:1;
+    margin:0 auto;
+    border-width:2px;
+  }
+  #home .cast-card span{
+    font-size:clamp(7px,2vw,9px);
+    line-height:1.15;
+    word-break:break-word;
+    hyphens:auto;
+    max-width:100%;
+  }
+  #home .actions{
+    flex-direction:column;
+    width:100%;
+    gap:8px;
+    margin-top:12px;
+  }
+  #home .actions .btn{
+    width:100%;
+    padding:12px 16px;
+    font-size:14px;
+  }
+  #home .hero-stage{display:none}
 
   .problem-dialog{
     width:min(94vw,440px);
@@ -851,10 +907,6 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
     grid-template-columns:1fr !important;
     height:auto !important;
     gap:12px;
-  }
-  .hero-stage{
-    min-height:min(36dvh,300px) !important;
-    aspect-ratio:16/10;
   }
   .hero-copy h1{
     font-size:clamp(26px,7vw,38px) !important;
