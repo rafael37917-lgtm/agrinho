@@ -136,6 +136,15 @@ const problems = {
   }
 };
 
+function shuffleArray(array) {
+  const copy = array.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 function updateHud(){
   els.score.textContent = state.score;
   els.fixedCount.textContent = state.fixed;
@@ -255,10 +264,11 @@ function renderQuizQuestion(){
   els.questionText.textContent = q.q;
   els.answerList.innerHTML = '';
   els.quizFeedback.className = 'feedback hidden';
-  q.a.forEach((option, idx) => {
+  shuffleArray(q.a.map((option, idx) => ({ option, idx }))).forEach(({ option, idx }) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.textContent = option;
+    btn.dataset.choiceIdx = String(idx);
     btn.addEventListener('click', () => answerQuiz(idx, false, btn));
     els.answerList.appendChild(btn);
   });
@@ -269,7 +279,9 @@ function answerQuiz(choiceIndex, isTimeout=false, clickedButton=null){
   clearInterval(state.quizTimer);
   const q = quizData[state.quizIndex];
   [...els.answerList.children].forEach(btn => btn.disabled = true);
-  const correctBtn = els.answerList.children[q.c];
+  const correctBtn = [...els.answerList.children].find(
+    el => Number(el.dataset.choiceIdx) === q.c
+  );
   if(correctBtn) correctBtn.classList.add('correct');
 
   let correct = choiceIndex === q.c;
@@ -340,10 +352,11 @@ function openProblem(key){
   els.dialogText.textContent = p.text;
   els.dialogChoices.innerHTML = '';
   els.dialogFeedback.className = 'feedback hidden';
-  p.choices.forEach((choice, idx) => {
+  shuffleArray(p.choices.map((choice, idx) => ({ choice, idx }))).forEach(({ choice, idx }) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.textContent = choice;
+    btn.dataset.choiceIdx = String(idx);
     btn.addEventListener('click', () => solveProblem(key, idx, btn));
     els.dialogChoices.appendChild(btn);
   });
@@ -353,7 +366,9 @@ function openProblem(key){
 function solveProblem(key, choiceIdx, btn){
   const p = problems[key];
   [...els.dialogChoices.children].forEach(item => item.disabled = true);
-  const correctBtn = els.dialogChoices.children[p.correct];
+  const correctBtn = [...els.dialogChoices.children].find(
+    el => Number(el.dataset.choiceIdx) === p.correct
+  );
   correctBtn?.classList.add('correct');
   const correct = choiceIdx === p.correct;
 

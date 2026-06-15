@@ -58,6 +58,14 @@ Eu adaptei o **site** e o **jogo** para funcionar bem no celular (iPhone e Andro
 - **Jogo — fazenda:** modal dos problemas com imagem pequena no topo (não cobre o texto)
 - **Jogo — resultado:** cabeçalho sem sobreposição de pontuação; botão **Compartilhar** envia o card com pontuação e links do site e do jogo
 
+### Historinha — quem fala
+
+Em cada cena, os balões mostram o **nome do personagem** antes da fala (Agrinho, Florinha, Zé Colmeia, Dona Árvore, Pinguim). No celular, tablet e iPhone, os textos ficam em cards empilhados acima da cena.
+
+### Quiz e missão — respostas em ordem aleatória
+
+As alternativas do **quiz** e dos **6 problemas da fazenda** são **embaralhadas** toda vez que aparecem, para o jogador não decorar a posição da resposta certa.
+
 ### Compartilhar resultado
 
 No fim do jogo, o botão **Compartilhar** monta uma mensagem assim:
@@ -132,11 +140,47 @@ agrinho/
 
 ## Como funciona o código (resumo)
 
-**`sketch.js` (p5.js)** — No hero do site eu usei `setup()`, `draw()` e `mousePressed()`. O mini-jogo segue um ciclo: plantar sementes no solo → chuva → caminhão entra → colher clicando nas plantas → caminhão sai cheio e reinicia. Usei `dist()`, `map()` e `lerpColor()` para espaçamento, céu e crescimento.
+**`sketch.js` (p5.js)** — No hero do site eu usei `setup()`, `draw()`, `mousePressed()` e `touchStarted()`. O mini-jogo segue um ciclo: plantar sementes no solo → chuva → caminhão entra → colher clicando nas plantas → caminhão sai cheio e reinicia. Usei variáveis (`let`), condicionais (`if`), loops (`for`), funções auxiliares, `dist()`, `map()`, `lerpColor()`, `sin()` e `cos()` para espaçamento, céu, crescimento e animações.
 
-**`script.js`** — Controla o mapa, os modais, o simulador (ligado aos pins do mapa), os contadores que animam quando você rola a página, o menu no celular e as preferências salvas no navegador.
+**`script.js`** — Controla o mapa, os modais, o simulador (ligado aos pins do mapa), os contadores que animam quando você rola a página, o menu no celular e as preferências salvas no navegador (`localStorage`).
 
-**`game.js`** — Controla as telas do jogo, o quiz com timer, os 6 problemas da fazenda, a pontuação e o **compartilhar** (mensagem com links do site e do jogo). Se você já digitou o nome no site, o jogo mostra *"Olá, [nome]!"* só no início. O recorde fica salvo no navegador (`localStorage`).
+**`game.js`** — Controla as telas do jogo, a historinha (4 cenas), o quiz com timer, os 6 problemas da fazenda, a pontuação, o **compartilhar** (mensagem com links do site e do jogo) e a função `shuffleArray()` que embaralha as alternativas. Se você já digitou o nome no site, o jogo mostra *"Olá, [nome]!"* só no início. O recorde fica salvo no navegador (`localStorage`).
+
+---
+
+## Conformidade com o edital (Subcategoria 3)
+
+Checklist do **Regulamento Agrinho 2026 — Programação**, item 8.3 (1º EM, Pensamento Computacional):
+
+| Exigência | Status |
+|---|---|
+| Tema oficial: *Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente* | ✅ |
+| JavaScript com biblioteca **p5.js** | ✅ (`sketch.js` + `lib/p5.min.js`) |
+| Repositório **público** no GitHub | ✅ |
+| Arquivos obrigatórios: `index.html`, `sketch.js`, `style.css` | ✅ |
+| CSS e JS em **arquivos externos** (sem inline no HTML) | ✅ |
+| Site publicado no **GitHub Pages** | ✅ |
+| Topic **`agrinho`** no About do repositório | ✅ (conferir no GitHub) |
+| README com instruções, tecnologias, objetivo do tema e créditos | ✅ |
+| Textos autorais + imagens IA com **prompts documentados** | ✅ |
+| Imagens da internet com **crédito e licença** (Freepik) | ✅ |
+| Código comentado e organizado | ✅ |
+
+### Rubrica estimada (4 critérios × 25 pts = 100)
+
+| Critério do edital | O que o projeto entrega |
+|---|---|
+| **Complexidade e Estrutura** | p5.js: `setup`, `draw`, variáveis, `if`/`for`, eventos, funções extras, `dist()`/`map()` |
+| **Interatividade e Funcionamento** | Site + mini-jogo p5 + jogo completo; instruções; responsivo; acessibilidade |
+| **Originalidade** | Tema agrinho, narrativa própria, simulador, mapa, jogo; créditos de IA |
+| **Organização e Documentação** | README completo, comentários no código, GitHub público com Pages |
+
+### Antes de enviar na Alura
+
+1. Confirmar **2+ unidades** da trilha 2026 concluídas na Alura  
+2. Enviar o link do repositório: https://github.com/rafael37917-lgtm/agrinho  
+3. Testar o site e o jogo no celular (aba anônima)  
+4. Conferir topic **`agrinho`** e link do site no **About** do GitHub
 
 ---
 
@@ -250,4 +294,4 @@ Meu repositório está configurado assim:
 
 ---
 
-*Projeto desenvolvido para o Concurso Agrinho 2026 — SENAR-PR / SEED-PR*
+*Tema Agrinho 2026 — Subcategoria 3 (JavaScript + p5.js) | SENAR-PR / SEED-PR | Versão final — junho/2026*
