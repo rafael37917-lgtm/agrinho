@@ -350,18 +350,17 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 
   .brand{font-size:clamp(17px,2.8vw,22px)}
 
-  .brand-wrap small{
-    font-size:clamp(9px,1.7vw,11px);
-    line-height:1.15;
-    max-width:100%;
-  }
+  .brand-wrap small{display:none}
 
   .hud{
     flex:0 0 auto;
     flex-wrap:nowrap;
-    gap:5px;
+    gap:4px;
     margin-left:0;
+    max-width:46%;
   }
+
+  .hud-pill:nth-child(3){display:none}
 
   .hud-pill,.hud-btn,.timer-box{
     padding:6px 8px;
@@ -456,8 +455,26 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
 }
 @media (max-width:520px){
   :root{--topbar-h:54px}
-  .hud-pill:nth-child(3){display:none}
-  .brand-wrap small{max-width:118px}
+  .topbar{
+    flex-wrap:wrap;
+    row-gap:6px;
+    align-items:center;
+  }
+  .brand-wrap{
+    flex:1 1 calc(100% - 112px);
+    max-width:calc(100% - 112px);
+    min-width:0;
+  }
+  .brand{font-size:clamp(15px,4.2vw,19px)}
+  .hud{
+    flex:0 0 auto;
+    max-width:118px;
+    gap:3px;
+  }
+  .hud-pill,.hud-btn{
+    padding:5px 6px;
+    font-size:10px;
+  }
   .hero-stage{min-height:0}
   .hero-char.agrinho{height:42%}
   .hero-char.florinha{height:44%}
@@ -756,6 +773,43 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
   .visual-compare img{max-height:36dvh}
   .visual-compare figcaption{font-size:12px;padding-top:6px}
   .compare-actions .btn{padding:11px 14px;font-size:14px}
+
+  .result-panel{padding:14px;gap:12px}
+  .result-hero{
+    grid-template-columns:1fr;
+    gap:10px;
+    text-align:center;
+  }
+  .result-hero img{
+    height:min(120px,24dvh);
+    width:auto;
+    max-width:100%;
+    margin:0 auto;
+  }
+  .result-hero > div{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-width:0;
+  }
+  .result-hero h2{font-size:clamp(22px,6vw,28px);margin-bottom:6px}
+  .big-score{
+    font-size:clamp(22px,6.5vw,30px);
+    margin:2px 0 10px;
+    line-height:1.1;
+  }
+  .result-hero p{font-size:14px;text-align:center;max-width:100%}
+  .result-hero .actions{
+    width:100%;
+    flex-direction:column;
+    margin-top:10px;
+    gap:8px;
+  }
+  .result-hero .actions .btn{width:100%}
+  .result-bottom{grid-template-columns:1fr;gap:10px}
+  .trophy-card{padding:10px;font-size:12px}
+  .trophy-card img{height:68px}
+  .rank-box{padding:14px;font-size:16px}
 
   #home.screen.active{
     display:block;

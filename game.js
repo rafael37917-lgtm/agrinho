@@ -15,6 +15,8 @@ const PASS_SCORE = 200;
 const QUIZ_TIME = 18;
 const BEST_KEY = 'agrinho_best_score_v5';
 const USER_NAME_KEY = 'agrinho-user-name';
+const SITE_URL = 'https://rafael37917-lgtm.github.io/agrinho/';
+const GAME_URL = 'https://rafael37917-lgtm.github.io/agrinho/jogo.html';
 
 const screens = [...document.querySelectorAll('.screen')];
 const storyScenes = [...document.querySelectorAll('.story-scene')];
@@ -458,16 +460,46 @@ function resetGame(){
 }
 
 document.getElementById('restartBtn').addEventListener('click', resetGame);
+function buildShareText() {
+  const title = document.getElementById('resultTitle')?.textContent?.trim() || 'Fazendinha salva!';
+  const message = document.getElementById('resultMessage')?.textContent?.trim() || '';
+  return [
+    '🏆 Salve a Fazendinha do Agrinho',
+    '',
+    'PARABÉNS!',
+    title,
+    `⭐ ${state.score} pontos`,
+    '',
+    message,
+    '',
+    '🎮 Jogue você também:',
+    GAME_URL,
+    '',
+    '🌱 Conheça o projeto:',
+    SITE_URL
+  ].join('\n');
+}
+
 document.getElementById('shareBtn').addEventListener('click', async () => {
-  const text = `Eu fiz ${state.score} pontos no jogo Salve a Fazendinha do Agrinho!`;
-  try{
-    if(navigator.share){
-      await navigator.share({ title: 'Agrinho', text });
+  const text = buildShareText();
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: 'Salve a Fazendinha do Agrinho',
+        text
+      });
     } else {
       await navigator.clipboard.writeText(text);
-      alert('Mensagem copiada para a área de transferência!');
+      alert('Resultado copiado! Cole no WhatsApp ou onde quiser compartilhar.');
     }
-  }catch(e){}
+  } catch (e) {
+    if (e?.name !== 'AbortError') {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Resultado copiado! Cole no WhatsApp ou onde quiser compartilhar.');
+      } catch (_) {}
+    }
+  }
 });
 
 function burstConfetti(count=30){
