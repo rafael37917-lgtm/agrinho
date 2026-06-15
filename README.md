@@ -53,7 +53,7 @@ No **início do jogo**, se você já digitou o nome no site, aparece *"Olá, [no
 Eu adaptei o **site** e o **jogo** para funcionar bem no celular (iPhone e Android):
 
 - **Site:** menu mobile, scroll sem travar, hero responsivo, cards que não estouram a tela
-- **Jogo — tela inicial:** elenco da turma em grade, botões largura total
+- **Jogo — tela inicial:** elenco da turma em grade, botões largura total e **ilustração da fazenda com personagens** embaixo
 - **Jogo — historinha:** balões de texto em cima, cena embaixo, personagens proporcionais, sem scroll lateral
 - **Jogo — fazenda:** modal dos problemas com imagem pequena no topo (não cobre o texto)
 - **Jogo — resultado:** cabeçalho sem sobreposição de pontuação; botão **Compartilhar** envia o card com pontuação e links do site e do jogo
