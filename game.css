@@ -924,9 +924,22 @@ p{margin:0 0 12px;line-height:1.55;font-size:18px}
     display:block !important;
     max-width:40% !important;
     font-size:9px !important;
-    padding:6px 8px !important;
-    line-height:1.2 !important;
+    padding:5px 7px 15px !important;
+    line-height:1.15 !important;
+    position:absolute;
+    overflow:visible;
+    box-sizing:border-box;
   }
+  #home .hero-stage .bubble-left::after,
+  #home .hero-stage .bubble-right::after{
+    width:8px;
+    height:8px;
+    bottom:4px;
+    transform:rotate(45deg);
+    box-shadow:none;
+  }
+  #home .hero-stage .bubble-left::after{left:10px;right:auto}
+  #home .hero-stage .bubble-right::after{right:10px;left:auto}
   #home .hero-char.agrinho{height:44% !important;left:2% !important;bottom:4% !important}
   #home .hero-char.florinha{height:46% !important;right:1% !important;bottom:4% !important}
   #home .hero-char.arvore{height:34% !important;left:30% !important;bottom:2% !important}
