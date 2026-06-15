@@ -42,9 +42,31 @@ O jogo abre em outra página (`jogo.html`). Lá você:
 2. Compara uma fazenda ruim com uma fazenda boa
 3. Responde um quiz de 6 perguntas (precisa de 200 pontos para passar)
 4. Corrige 6 problemas na fazenda (lixo, pneu, cano, etc.)
-5. Vê sua pontuação final e tenta bater seu recorde
+5. Vê sua pontuação final, tenta bater seu recorde e **compartilha** o resultado
 
 A pontuação máxima é cerca de **950 pontos**. O site lembra seu nome (ou "visitante" se você pular o modal) e salva seu melhor resultado no navegador.
+
+No **início do jogo**, se você já digitou o nome no site, aparece *"Olá, [nome]!"* — só uma vez, sem repetir no final.
+
+### Celular e tablet
+
+Eu adaptei o **site** e o **jogo** para funcionar bem no celular (iPhone e Android):
+
+- **Site:** menu mobile, scroll sem travar, hero responsivo, cards que não estouram a tela
+- **Jogo — tela inicial:** elenco da turma em grade, botões largura total
+- **Jogo — historinha:** balões de texto em cima, cena embaixo, personagens proporcionais, sem scroll lateral
+- **Jogo — fazenda:** modal dos problemas com imagem pequena no topo (não cobre o texto)
+- **Jogo — resultado:** cabeçalho sem sobreposição de pontuação; botão **Compartilhar** envia o card com pontuação e links do site e do jogo
+
+### Compartilhar resultado
+
+No fim do jogo, o botão **Compartilhar** monta uma mensagem assim:
+
+- Parabéns, título, pontuação e mensagem do resultado
+- Link do jogo: https://rafael37917-lgtm.github.io/agrinho/jogo.html
+- Link do projeto: https://rafael37917-lgtm.github.io/agrinho/
+
+No celular abre o menu nativo (WhatsApp, etc.). Se o navegador não tiver essa opção, copia o texto para a área de transferência.
 
 ---
 
@@ -82,6 +104,7 @@ Também pensei em **acessibilidade**: skip link, botões para aumentar a fonte (
 2. Siga a historinha e responda o quiz
 3. Corrija os 6 problemas na fazenda
 4. Veja quantos pontos você fez
+5. Toque em **Compartilhar** para enviar seu resultado com os links do projeto
 
 ---
 
@@ -113,7 +136,7 @@ agrinho/
 
 **`script.js`** — Controla o mapa, os modais, o simulador (ligado aos pins do mapa), os contadores que animam quando você rola a página, o menu no celular e as preferências salvas no navegador.
 
-**`game.js`** — Controla as telas do jogo, o quiz com timer, os 6 problemas da fazenda e a pontuação. Se você já digitou o nome no site, o jogo usa na hora de parabenizar no final.
+**`game.js`** — Controla as telas do jogo, o quiz com timer, os 6 problemas da fazenda, a pontuação e o **compartilhar** (mensagem com links do site e do jogo). Se você já digitou o nome no site, o jogo mostra *"Olá, [nome]!"* só no início. O recorde fica salvo no navegador (`localStorage`).
 
 ---
 
